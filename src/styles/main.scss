@@ -1,1 +1,9 @@
-@import "./partials/_TopBoard";
+@import "./modules/_colors";
+@import "./modules/_typography";
+
+@import "./partials/_base";
+@import "./partials/_header";
+@import "./partials/_homepage";
+@import "./partials/_logo";
+@import "./partials/_navBar";
+@import "./partials/_topBoard";
