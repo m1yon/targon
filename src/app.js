@@ -7,7 +7,6 @@ const jsx = (
   <AppRouter />
 );
 
-
 ReactDOM.render(jsx, document.getElementById('app'));
 
 

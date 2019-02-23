@@ -4,7 +4,7 @@ import TopBoard from "../components/TopBoard";
 const Homepage = () => (
   <div>
     <h2>My Homepage</h2>
-    <TopBoard stat="Wins"/>
+    <TopBoard stat="kills"/>
   </div>
 );
 

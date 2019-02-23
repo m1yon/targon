@@ -1,14 +1,22 @@
 import React from "react";
+import DB from "../database";
 
 const TopBoard = (props) => (
   <div>
     <h1>{props.stat}</h1>
-    <p>Faker</p>
-    <p>Sneaky</p>
-    <p>Imaqtpie</p>
-    <p>Tyler1</p>
-    <p>Shifter</p>
+    <Player rank={1} stat={props.stat}/>
+    <Player rank={2} stat={props.stat}/>
+    <Player rank={3} stat={props.stat}/>
+    <Player rank={4} stat={props.stat}/>
+    <Player rank={5} stat={props.stat}/>
   </div>
 );
+
+const Player = (props) => (
+  <div>
+    <p>{DB.players[props.rank - 1].name}</p>
+    <p>{DB.players[props.rank - 1][props.stat]}</p>
+  </div>
+)
 
 export default TopBoard;
