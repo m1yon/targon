@@ -2,7 +2,7 @@ import React from "react";
 import DB from "../database";
 
 const TopBoard = (props) => (
-  <div>
+  <div className="TopBoard">
     <h1>{props.stat}</h1>
     <Player rank={1} stat={props.stat}/>
     <Player rank={2} stat={props.stat}/>

@@ -13,7 +13,7 @@
     "heroku-postbuild": "npm run build:prod"
   },
   "dependencies": {
-    "babel-cli": "6.24.1",
+    "babel-cli": "^6.26.0",
     "babel-core": "6.25.0",
     "babel-loader": "7.1.1",
     "babel-plugin-transform-class-properties": "6.24.1",
@@ -27,7 +27,7 @@
     "firebase": "4.2.0",
     "history": "4.7.2",
     "moment": "^2.24.0",
-    "node-sass": "4.5.3",
+    "node-sass": "^4.5.3",
     "normalize.css": "7.0.0",
     "numeral": "2.0.6",
     "react": "15.6.1",
