@@ -1,9 +1,22 @@
 import React from "react";
 import DB from "../database";
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faAngleRight)
 
 const TopBoard = (props) => (
   <div className="topboard">
-    <h1 className="stat-title">{props.stat.charAt(0).toUpperCase() + props.stat.slice(1)}</h1>
+    <div className="stat-title">
+      <a href="#">
+        {props.stat.charAt(0).toUpperCase() + props.stat.slice(1)}
+      </a>
+      <a href="#">
+        <FontAwesomeIcon icon="angle-right" />
+      </a>
+    </div>
+    
     <hr />
     <Player rank={1} stat={props.stat}/>
     <Player rank={2} stat={props.stat}/>
