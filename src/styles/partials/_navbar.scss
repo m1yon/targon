@@ -1,9 +1,9 @@
 .navbar {
-  background-color: $purple-gray;
+  background-color: $off-black;
   display: flex;
   a { 
     text-decoration: none;
-    color: $off-white;
+    color: $white;
   }
 }
 
@@ -13,4 +13,5 @@
 
 .is-active {
   background-color: $purple;
+  font-weight: 700;
 }

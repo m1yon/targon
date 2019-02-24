@@ -1,5 +1,6 @@
 import React from "react";
 import DB from "../database";
+import { NavLink } from "react-router-dom";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
@@ -30,12 +31,18 @@ const TopBoard = (props) => (
   </div>
 );
 
-
 const Entry = (props) => (
   <div className="entry">
     <div className="entry-info">
       <p>{props.rank}.</p>
-      <p className="entry-name">{DB.players[props.rank - 1].name}</p>
+
+      <NavLink 
+        className="entry-name" 
+        to={`/player/${DB.players[props.rank - 1].name}`}
+      >
+        {DB.players[props.rank - 1].name}
+      </NavLink>
+      
       <p className="team-sfx">{DB.players[props.rank - 1].team}</p>
     </div>
     <p className={`stat-${props.rank}`}>{DB.players[props.rank - 1][props.stat]}</p>

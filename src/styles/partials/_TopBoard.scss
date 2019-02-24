@@ -4,8 +4,18 @@
   flex-direction: column; 
   line-height: .2rem;
   margin-bottom: 4%;
+}
+
+// Title of board (Wins, kills, etc.)
+.stat-title {
+  display: flex;
+  color: $purple;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0%;
 
   a {
+    color: $purple;
     font-size: 1.5rem;
     font-weight: 700;
     text-decoration: none;
@@ -16,22 +26,10 @@
   }
 }
 
-// Title of board (Wins, kills, etc.)
-.stat-title {
-  display: flex;
-  color: $purple;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0%;
-  a {
-    color: $purple;
-  }
-}
-
 // Spacer line
 hr {
   border-width: 0;
-  background-color: $off-white; 
+  background-color: $white; 
   height: 1px;
   margin-bottom: 3%;
   margin-top: 5%;
@@ -52,8 +50,16 @@ hr {
 
 // Entries name
 .entry-name {
-  margin-left: 2%;
+  align-self: center;
+  font-family: $body-font;
+  font-size: 1rem;
   font-weight: 700;
+  margin-left: 2%;
+  text-decoration: none;
+
+  &:hover {
+    color: lighten($color: $purple, $amount: 10);
+  }
 }
 
 // Shorthand teamname

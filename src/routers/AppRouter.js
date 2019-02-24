@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Homepage from "../components/Homepage";
 import PlayerStats from "../components/PlayerStats";
+import PlayerProfile from "../components/PlayerProfile";
 
 const AppRouter = () => (
   <BrowserRouter>
@@ -12,6 +13,7 @@ const AppRouter = () => (
       <Switch>
         <Route path='/' component={Homepage} exact={true}/>
         <Route path='/player-stats' component={PlayerStats} exact={true}/>
+        <Route path='/player/' component={PlayerProfile}/>
       </Switch>
       <Footer />
     </div>
