@@ -1,5 +1,17 @@
+.logo-container {
+  display: flex;
+  height: 5rem;
+  margin: 1% 0%;
+  align-items: center;
+}
+
 .logo {
-  color: $purple;
-  font-size: 3rem;
-  margin: 2%;
+  color: $off-white;
+  font-size: 2rem;
+  font-family: $lato;
+}
+
+.imglogo {
+  margin-right: .5%;
+  width: 4rem;
 }

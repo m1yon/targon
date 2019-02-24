@@ -8,6 +8,7 @@ library.add(faAngleRight)
 
 const TopBoard = (props) => (
   <div className="topboard">
+    {/* title */}
     <div className="stat-title">
       <a href="#">
         {props.stat.charAt(0).toUpperCase() + props.stat.slice(1)}
@@ -17,21 +18,25 @@ const TopBoard = (props) => (
       </a>
     </div>
     
+    {/* Linebreak */}
     <hr />
-    <Player rank={1} stat={props.stat}/>
-    <Player rank={2} stat={props.stat}/>
-    <Player rank={3} stat={props.stat}/>
-    <Player rank={4} stat={props.stat}/>
-    <Player rank={5} stat={props.stat}/>
+
+    {/* Top 5 List */}
+    <Entry rank={1} stat={props.stat}/>
+    <Entry rank={2} stat={props.stat}/>
+    <Entry rank={3} stat={props.stat}/>
+    <Entry rank={4} stat={props.stat}/>
+    <Entry rank={5} stat={props.stat}/>
   </div>
 );
 
-const Player = (props) => (
-  <div className="player">
-    <div className="player-info">
+
+const Entry = (props) => (
+  <div className="entry">
+    <div className="entry-info">
       <p>{props.rank}.</p>
-      <p className="player-name">{DB.players[props.rank - 1].name}</p>
-      <p className="team-name">{DB.players[props.rank - 1].team}</p>
+      <p className="entry-name">{DB.players[props.rank - 1].name}</p>
+      <p className="team-sfx">{DB.players[props.rank - 1].team}</p>
     </div>
     <p className={`stat-${props.rank}`}>{DB.players[props.rank - 1][props.stat]}</p>
   </div>
