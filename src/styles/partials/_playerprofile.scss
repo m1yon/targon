@@ -1,0 +1,41 @@
+.player-profile-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 1% 9%;
+}
+
+.team-banner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+  background-color: red;
+  width: 100%;
+  height: 15rem;
+}
+
+.profile-picture {
+  background-color: blue;
+  margin: 3% 0% 0% 3%;
+  width: 25%;
+  height: 110%;
+}
+
+.player-info-banner {
+  margin: 0% 0% 0% 2%;
+  h1 {
+    font-size: 4rem;
+    margin-bottom: 0%;
+  }
+
+  h2 {
+    font-size: 1rem;
+    margin: -5% 0% 0% 2%;
+    opacity: 0.5;
+  }
+
+  p {
+    margin-left: 2%;
+  }
+}
