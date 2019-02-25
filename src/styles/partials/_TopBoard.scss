@@ -9,31 +9,21 @@
 // Title of board (Wins, kills, etc.)
 .stat-title {
   display: flex;
-  color: $purple;
+  color: $highlight;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0%;
 
   a {
-    color: $purple;
+    color: $highlight;
     font-size: 1.5rem;
     font-weight: 700;
     text-decoration: none;
   }
 
   a:hover {
-    color: lighten($color: $purple, $amount: 10);
+    color: lighten($color: $highlight, $amount: 10);
   }
-}
-
-// Spacer line
-hr {
-  border-width: 0;
-  background-color: $white; 
-  height: 1px;
-  margin-bottom: 3%;
-  margin-top: 5%;
-  width: 100%;
 }
 
 // Row entry
@@ -58,7 +48,7 @@ hr {
   text-decoration: none;
 
   &:hover {
-    color: lighten($color: $purple, $amount: 10);
+    color: lighten($color: $highlight, $amount: 10);
   }
 }
 
@@ -76,3 +66,6 @@ hr {
   font-weight: 700;
   margin: 0%;
 }
+
+
+

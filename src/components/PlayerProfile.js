@@ -1,5 +1,7 @@
 import React from "react";
 
+import PlayerStats from "./PlayerStats";
+
 const PlayerProfile = (props) => {
   const playerName = props.location.pathname.slice(8);
 
@@ -18,8 +20,10 @@ const PlayerProfile = (props) => {
             <p>ADC - Cloud9</p>
           </div>
         </div>
-
       </div>
+
+      <PlayerStats />
+      
     </div>
   );
 };

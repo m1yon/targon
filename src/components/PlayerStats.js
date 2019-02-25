@@ -1,7 +1,12 @@
 import React from "react";
+import PlayerStatsheet from "./PlayerStatsheet";
 
 const PlayerStats = () => (
-  <h2>This is our player stats</h2>
+  <div className="player-stats">
+    <PlayerStatsheet />
+    <hr className="hr-vert" />
+  </div>
+  
 );
 
 export default PlayerStats;
