@@ -7,12 +7,15 @@ const PlayerStats = () => (
   <div className="player-stats">
     <PlayerStatsheet />
     <div className="player-visual-stats-container">
+      <hr className="hr-vert" />
       <BasicAreaChart />
+      <hr className="hr-vert" />
       <BasicAreaChart />
+      <hr className="hr-vert" />
       <BasicAreaChart />
+      <hr className="hr-vert" />
       <BasicAreaChart />
-
-
+      <hr className="hr-vert" />
     </div>
   </div>
 

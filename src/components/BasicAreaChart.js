@@ -20,17 +20,27 @@ const BasicAreaChart = () => (
           height={400}
           data={data}
           margin={{
-            top: 10, right: 30, left: 0, bottom: 0,
+            top: 10, right: 60, left: 0, bottom: 0,
           }}
         >
           <XAxis dataKey="name" />
           <YAxis />
-          <Tooltip />
-          <Area type="monotone" dataKey="kills" stackId="1" stroke="#8884d8" fill="#8884d8" />
-          <Area type="monotone" dataKey="kills" stackId="1" stroke="#82ca9d" fill="#82ca9d" />
+          <Tooltip content={CustomToolTip} />
+          <Area type="monotone" dataKey="kills" stroke="#3b95f7" fill="#3b95f7" />
+          <Area type="monotone" dataKey="avgkills" stroke="#848484" fill="#848484" />
         </AreaChart>
     </ResponsiveContainer>
   </div>
 );
+
+const CustomToolTip = ({ active, payload, label}) => {
+  if(active) {
+    return(
+      <div className="tooltip">
+        <p>First Value {payload[0].value}</p>
+        <p>Second Value {payload[1].value}</p>
+      </div>);
+  }
+};
 
 export default BasicAreaChart;
