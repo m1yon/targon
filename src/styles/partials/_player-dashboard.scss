@@ -1,5 +1,5 @@
 // Container
-.player-profile-container {
+.player-dashboard {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -11,7 +11,7 @@
 }
 
 // Container for team banner
-.team-banner {
+.player-dashboard__team-banner {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
@@ -22,21 +22,21 @@
 }
 
 // Player's team background
-.team-bg {
+.team-banner__bg {
   height: auto;
   opacity: 0.5;
   width: 120%;
 }
 
 // Player's profile picture
-.profile-picture {
+.team-banner__profile-picture {
   height: 15rem;
   margin: 17% 0% 0% 9%;
   width: auto;
 }
 
 // Player's information in banner (display name, real name, position, etc.)
-.player-info-banner {
+.team-banner__player-info {
   margin: 0% 0% 0% 5%;
   h1 {
     font-size: 4rem;
@@ -55,12 +55,12 @@
 }
 
 // Prevent team-bg overflow
-.no-overflow {
+.team-banner--no-overflow {
   position: relative;
 }
 
 // Allow profile picture to overflow
-.overflow {
+.team-banner--overflow {
   display: flex;
   align-items: center;
   height: 15rem;

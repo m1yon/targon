@@ -1,25 +1,23 @@
 import React from "react";
-import PlayerStatsheet from "./PlayerStatsheet";
-import BasicAreaChart from "./BasicAreaChart";
+import PlayerStatsTable from "./PlayerStatsTable";
+import PlayerStatsAreaChart from "./PlayerStatsAreaChart";
 
 
 const PlayerStats = () => (
-  <div className="player-stats">
-    <PlayerStatsheet />
-    <div className="player-visual-stats-container">
+  <div className="player-dashboard__player-stats">
+    <PlayerStatsTable />
+    <div className="player-stats__charts">
       <hr className="hr-vert" />
-      <BasicAreaChart />
+      <PlayerStatsAreaChart />
       <hr className="hr-vert" />
-      <BasicAreaChart />
+      <PlayerStatsAreaChart />
       <hr className="hr-vert" />
-      <BasicAreaChart />
+      <PlayerStatsAreaChart />
       <hr className="hr-vert" />
-      <BasicAreaChart />
+      <PlayerStatsAreaChart />
       <hr className="hr-vert" />
     </div>
   </div>
-
-  
 );
 
 export default PlayerStats;

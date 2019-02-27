@@ -1,5 +1,5 @@
 // Topboard
-.topboard {
+.home-dashboard__top-board {
   display: flex;
   flex-direction: column; 
   line-height: .2rem;
@@ -7,7 +7,7 @@
 }
 
 // Title of board (Wins, kills, etc.)
-.stat-title {
+.top-board__stat-title {
   display: flex;
   color: $highlight;
   justify-content: space-between;
@@ -27,19 +27,19 @@
 }
 
 // Row entry
-.entry {
+.top-board__entry {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
 // Info on left-hand side (Number, entry, team sfx)
-.entry-info {
+.top-board__entry-info {
   display: flex;
 }
 
 // Entries name
-.entry-name {
+.top-board__entry-name {
   align-self: center;
   font-family: $body-font;
   font-size: 1rem;
@@ -53,14 +53,14 @@
 }
 
 // Shorthand teamname
-.team-sfx {
+.top-board__team-sfx {
   font-size: 1rem;
   margin-left: 5%;
   opacity: 0.5;
 }
 
 // The stat for the number one player
-.stat-1 {
+.top-board__stat-1 {
   align-self: center;
   font-size: 1.75rem;
   font-weight: 700;

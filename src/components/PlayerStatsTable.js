@@ -1,9 +1,9 @@
 import React from "react";
 
-const PlayerStatsheet = () => (
-  <div className="player-statsheet">
+const PlayerStatsTable = () => (
+  <div className=".player-stats__stat-sheet">
     <h1>Statistics</h1>
-    <div className="statsheet-header">
+    <div className="stat-sheet__header">
       <p>Stat</p>
       <p>Average</p>
       <p>Placement</p>
@@ -31,11 +31,11 @@ const PlayerStatsheet = () => (
 );
 
 const StatsheetEntry = (props) => (
-  <div className={props.alt == "1" ? "statsheet-entry" : "statsheet-entry statsheet-entry-alt"}>
+  <div className={props.alt == "1" ? "stat-sheet__entry" : "stat-sheet__entry stat-sheet__entry--alt"}>
   <a href="#">{props.statname.charAt(0).toUpperCase() + props.statname.slice(1)}</a>
     <p>{props.avg}</p>
     <p>{props.placement} <span className="placement-outof">/ 241</span></p>
   </div>
 );
 
-export default PlayerStatsheet;
+export default PlayerStatsTable;

@@ -1,4 +1,4 @@
-.player-statsheet {
+.player-stats__stat-sheet {
     display: flex;
     flex-direction: column;
     h1 {
@@ -6,7 +6,7 @@
     }
 }
 
-.statsheet-header {
+.stat-sheet__header {
     display: grid;
     font-weight: 700;
     grid-template-columns: 40% 30% 30%;
@@ -16,7 +16,7 @@
     }
 }
 
-.statsheet-entry {
+.stat-sheet__entry {
     background-color: $black;
     display: grid;
     grid-template-columns: 40% 30% 30%;
@@ -42,7 +42,7 @@
     }
 }
 
-.statsheet-entry-alt {
+.stat-sheet__entry--alt {
   background-color: $off-black;
 }
 

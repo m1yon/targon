@@ -7,10 +7,10 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 library.add(faAngleRight)
 
-const TopBoard = (props) => (
-  <div className="topboard">
+const HomeTopBoard = (props) => (
+  <div className="home-dashboard__top-board">
     {/* title */}
-    <div className="stat-title">
+    <div className="top-board__stat-title">
       <a href="#">
         {props.stat.charAt(0).toUpperCase() + props.stat.slice(1)}
       </a>
@@ -32,21 +32,21 @@ const TopBoard = (props) => (
 );
 
 const Entry = (props) => (
-  <div className="entry">
-    <div className="entry-info">
+  <div className="top-board__entry">
+    <div className="top-board__entry-info">
       <p>{props.rank}.</p>
 
       <NavLink 
-        className="entry-name" 
+        className="top-board__entry-name" 
         to={`/player/${DB.players[props.rank - 1].name}`}
       >
         {DB.players[props.rank - 1].name}
       </NavLink>
       
-      <p className="team-sfx">{DB.players[props.rank - 1].team}</p>
+      <p className="top-board__team-sfx">{DB.players[props.rank - 1].team}</p>
     </div>
-    <p className={`stat-${props.rank}`}>{DB.players[props.rank - 1][props.stat]}</p>
+    <p className={`top-board__stat-${props.rank}`}>{DB.players[props.rank - 1][props.stat]}</p>
   </div>
 )
 
-export default TopBoard;
+export default HomeTopBoard;
