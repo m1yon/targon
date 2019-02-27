@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const PlayerStatsTable = () => (
   <div className=".player-stats__stat-sheet">
@@ -32,7 +33,7 @@ const PlayerStatsTable = () => (
 
 const StatsheetEntry = (props) => (
   <div className={props.alt == "1" ? "stat-sheet__entry" : "stat-sheet__entry stat-sheet__entry--alt"}>
-  <a href="#">{props.statname.charAt(0).toUpperCase() + props.statname.slice(1)}</a>
+  <NavLink to={"/leaderboard/" + props.statname}>{props.statname.charAt(0).toUpperCase() + props.statname.slice(1)}</NavLink>
     <p>{props.avg}</p>
     <p>{props.placement} <span className="placement-outof">/ 241</span></p>
   </div>
