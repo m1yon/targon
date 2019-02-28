@@ -1,0 +1,12 @@
+.leaderboard-dashboard__table {
+  display: flex;
+  flex-direction: column;
+}
+
+.leaderboard-dashboard__entry {
+  display: grid;
+  grid-template-columns: repeat(19, 5.26%);
+  grid-template-rows: 100%;
+  grid-auto-flow: row;
+  
+}
