@@ -15,8 +15,8 @@ const Header = () => (
         </div>
       </NavLink>
       
-      <NavLink className="navbutton" to="/player-stats" activeClassName="is-active">
-          Stats
+      <NavLink className="navbutton" to="/player" activeClassName="is-active">
+          Player
       </NavLink>
     </div>
   </header>
