@@ -11,12 +11,12 @@ const HomeTopBoard = (props) => (
   <div className="home-dashboard__top-board">
     {/* title */}
     <div className="top-board__stat-title">
-      <a href="#">
+      <NavLink to={"/leaderboard/" + props.stat}>
         {props.stat.charAt(0).toUpperCase() + props.stat.slice(1)}
-      </a>
-      <a href="#">
+      </NavLink>
+      <NavLink to={"/leaderboard/" + props.stat}>
         <FontAwesomeIcon icon="angle-right" />
-      </a>
+      </NavLink>
     </div>
     
     {/* Linebreak */}

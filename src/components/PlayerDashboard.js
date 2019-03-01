@@ -1,5 +1,5 @@
 import React from "react";
-
+import { NavLink } from "react-router-dom";
 import PlayerStats from "./PlayerStats";
 
 const PlayerDashboard = (props) => {
@@ -7,7 +7,7 @@ const PlayerDashboard = (props) => {
 
   return(
     <div className="player-dashboard">
-      <div className="player-dashboard__team-banner">
+      <div className="team-banner">
         <div className="team-banner--no-overflow">
           <img src="/img/cloud9.jpg" className="team-banner__bg" />
         </div>
@@ -17,7 +17,7 @@ const PlayerDashboard = (props) => {
           <div className="team-banner__player-info">
             <h1>{playerName}</h1>
             <h2>TYLER STEINKAMP</h2>
-            <p>ADC - Cloud9</p>
+            <NavLink to="/team/cloud9">ADC - Cloud9</NavLink>
           </div>
         </div>
       </div>

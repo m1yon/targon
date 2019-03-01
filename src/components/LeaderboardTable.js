@@ -22,7 +22,7 @@ const LeaderboardTable = ({ data }) => {
 const TableHeader = () => {
   const entries = [<p key={"#"}>#</p>];
   for(let i = 0; i < 4; i++) {
-    entries.push(<p key={i}>{header[i].toUpperCase()}</p>);
+    entries.push(<p key={i}>{header[i][0].toUpperCase() + header[i].slice(1)}</p>);
   }
 
   return(
