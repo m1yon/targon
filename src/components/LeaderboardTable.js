@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const header = [
   "Name",
@@ -34,8 +35,16 @@ const TableHeader = () => {
 const TableEntry = ({ data, number }) => {
   const entries = [""];
   entries.push(<p key={"number" + number}>{number}.</p>)
-  for(let i = 0; i < 4; i++) {
+  entries.push(
+    <NavLink 
+      key={0} 
+      to={"/player/" + data[header[0].toLowerCase()]}
+    >
+      {data[header[0].toLowerCase()]}
+    </NavLink>
+  );
 
+  for(let i = 1; i < 4; i++) {
     entries.push(<p key={i}>{data[header[i].toLowerCase()]}</p>);
   }
 
