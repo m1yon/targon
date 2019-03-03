@@ -3,9 +3,9 @@ import DB from "../database";
 import { NavLink } from "react-router-dom";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { faShare } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faAngleRight)
+library.add(faShare)
 
 const HomeTopBoard = (props) => (
   <div className="home-dashboard__top-board">
@@ -14,8 +14,8 @@ const HomeTopBoard = (props) => (
       <NavLink to={"/leaderboard/" + props.stat}>
         {props.stat.charAt(0).toUpperCase() + props.stat.slice(1)}
       </NavLink>
-      <NavLink to={"/leaderboard/" + props.stat}>
-        <FontAwesomeIcon icon="angle-right" />
+      <NavLink className="top-board__more-icon" to={"/leaderboard/" + props.stat}>
+        <FontAwesomeIcon icon="share" />
       </NavLink>
     </div>
     
