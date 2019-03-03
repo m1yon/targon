@@ -1,5 +1,9 @@
 .navbar {
   background-color: $off-black;
+}
+
+.navbar-button__container {
+  padding: 0% 6%;
   display: flex;
   a { 
     text-decoration: none;
@@ -8,7 +12,7 @@
 }
 
 .navbutton {
-  padding: 1%;
+  padding: .5%;
 }
 
 .is-active {
