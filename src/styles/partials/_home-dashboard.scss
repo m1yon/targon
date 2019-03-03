@@ -2,6 +2,10 @@
   @include dashboard-container;
   display: grid;
   grid-template-columns: 70% 30%;
+
+  h1 {
+    margin: 1rem 0% 2rem 0%;
+  }
 }
 
 .home-dashboard__grid {

@@ -1,5 +1,6 @@
 import React from "react";
 import HomeTopBoard from "./HomeTopBoard"; 
+import HomeMatchHistory from "./HomeMatchHistory";
 
 const HomeDashboard = () => (
   <div className="home-dashboard">
@@ -20,6 +21,12 @@ const HomeDashboard = () => (
         <HomeTopBoard stat="wins"/>
         <HomeTopBoard stat="kills"/>
         <HomeTopBoard stat="wins"/>
+      </div>
+    </div>
+    <div>
+      <h1>Match History</h1>
+      <div>
+        <HomeMatchHistory />
       </div>
     </div>
   </div>
