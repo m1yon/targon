@@ -1,3 +1,47 @@
 .home-dashbaord__match-history {
   display: flex;
 }
+
+.match-history__card {
+  background-color: $gray;
+  display: grid;
+  grid-template-columns: 32% 8% 20% 8% 32%;
+  margin: 2% 0%;
+  padding: .5%;
+  p {
+    font-weight: 700;
+  }
+}
+
+.card__score-box {
+  align-self: center;
+  justify-content: center;
+  justify-self: center;
+  display: flex;
+  background-color: $off-black;
+  height: 80%;
+  width: 85%;
+}
+
+.score-box__score {
+  align-self: center;
+  font-size: 1.5rem;
+  padding: 0%;
+  margin: 0%;
+}
+
+.card__team-1 {
+  justify-self: right;
+}
+
+.card__team-2 {
+  justify-self: left;
+}
+
+.team__icon {
+  display: inline-block;
+  justify-self: center;
+  background: url("/img/c9.png") no-repeat center;
+  background-size: 2rem auto;
+  width: 1.5rem;
+}
