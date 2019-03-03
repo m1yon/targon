@@ -1,37 +1,227 @@
 import React from "react";
 
+const team1 = {
+  "_id": "5c75cad70e74b00b5df7f487",
+  "gameid": 1012525,
+  "url": "https://matchhistory.euw.leagueoflegends.com/en/#match-details/ESPORTSTMNT02/1012525?gameHash=643a3ec475bc65bd&tab=overview",
+  "league": "LCS",
+  "split": "2019-1",
+  "date": 43513.787,
+  "week": 4,
+  "game": 2,
+  "patchno": 9.03,
+  "playerid": 100,
+  "side": "Blue",
+  "position": "Team",
+  "player": "Team",
+  "team": "Cloud9",
+  "champion": "",
+  "ban1": "Yorick",
+  "ban2": "Thresh",
+  "ban3": "Cassiopeia",
+  "ban4": "Kalista",
+  "ban5": "Alistar",
+  "gamelength": 25.46666667,
+  "result": 1,
+  "k": 16,
+  "d": 10,
+  "a": 28,
+  "teamkills": 16,
+  "teamdeaths": 10,
+  "doubles": "",
+  "triples": "",
+  "quadras": "",
+  "pentas": "",
+  "fb": 0,
+  "fbassist": 0,
+  "fbvictim": 1,
+  "fbtime": 3.580016667,
+  "kpm": 0.628272251,
+  "okpm": 0.392670157,
+  "ckpm": 1.020942408,
+  "fd": 0,
+  "fdtime": 7.735983333,
+  "teamdragkills": 2,
+  "oppdragkills": 2,
+  "elementals": 2,
+  "oppelementals": 2,
+  "firedrakes": 1,
+  "waterdrakes": 0,
+  "earthdrakes": 0,
+  "airdrakes": 1,
+  "elders": 0,
+  "oppelders": 0,
+  "herald": 1,
+  "heraldtime": 14.21705,
+  "ft": 1,
+  "fttime": 12.51933333,
+  "firstmidouter": 0,
+  "firsttothreetowers": 1,
+  "teamtowerkills": 7,
+  "opptowerkills": 3,
+  "fbaron": 1,
+  "fbarontime": 22.44938333,
+  "teambaronkills": 1,
+  "oppbaronkills": 0,
+  "dmgtochamps": 62901,
+  "dmgtochampsperminute": 2469.934555,
+  "dmgshare": "",
+  "earnedgoldshare": "",
+  "wards": 70,
+  "wpm": 2.748691099,
+  "wardshare": 1,
+  "wardkills": 36,
+  "wcpm": 1.413612565,
+  "visionwards": 29,
+  "visionwardbuys": 33,
+  "visiblewardclearrate": 0.580645161,
+  "invisiblewardclearrate": 0.367346939,
+  "totalgold": 49735,
+  "earnedgpm": 1286.835079,
+  "goldspent": 41600,
+  "gspd": 0.022485567,
+  "minionkills": 621,
+  "monsterkills": 167,
+  "monsterkillsownjungle": 104,
+  "monsterkillsenemyjungle": 18,
+  "cspm": 30.94240838,
+  "goldat10": 15344,
+  "oppgoldat10": 16416,
+  "gdat10": -1072,
+  "goldat15": 25288,
+  "oppgoldat15": 26392,
+  "gdat15": -1104,
+  "xpat10": 18585,
+  "oppxpat10": 20130,
+  "xpdat10": -1545,
+  "csat10": 305,
+  "oppcsat10": 348,
+  "csdat10": -43,
+  "csat15": 489,
+  "oppcsat15": 513,
+  "csdat15": -24
+}
+
+const team2 = {
+  "_id": "5c75cad70e74b00b5df7f488",
+  "gameid": 1012525,
+  "url": "https://matchhistory.euw.leagueoflegends.com/en/#match-details/ESPORTSTMNT02/1012525?gameHash=643a3ec475bc65bd&tab=overview",
+  "league": "LCS",
+  "split": "2019-1",
+  "date": 43513.787,
+  "week": 4,
+  "game": 2,
+  "patchno": 9.03,
+  "playerid": 200,
+  "side": "Red",
+  "position": "Team",
+  "player": "Team",
+  "team": "OpTic Gaming",
+  "champion": "",
+  "ban1": "Lucian",
+  "ban2": "Ezreal",
+  "ban3": "Sylas",
+  "ban4": "Zilean",
+  "ban5": "Braum",
+  "gamelength": 25.46666667,
+  "result": 0,
+  "k": 10,
+  "d": 16,
+  "a": 20,
+  "teamkills": 10,
+  "teamdeaths": 16,
+  "doubles": "",
+  "triples": "",
+  "quadras": "",
+  "pentas": "",
+  "fb": 1,
+  "fbassist": 1,
+  "fbvictim": 0,
+  "fbtime": 3.580016667,
+  "kpm": 0.392670157,
+  "okpm": 0.628272251,
+  "ckpm": 1.020942408,
+  "fd": 1,
+  "fdtime": 7.735983333,
+  "teamdragkills": 2,
+  "oppdragkills": 2,
+  "elementals": 2,
+  "oppelementals": 2,
+  "firedrakes": 0,
+  "waterdrakes": 0,
+  "earthdrakes": 1,
+  "airdrakes": 1,
+  "elders": 0,
+  "oppelders": 0,
+  "herald": 0,
+  "heraldtime": 14.21705,
+  "ft": 0,
+  "fttime": 12.51933333,
+  "firstmidouter": 1,
+  "firsttothreetowers": 0,
+  "teamtowerkills": 3,
+  "opptowerkills": 7,
+  "fbaron": 0,
+  "fbarontime": 22.44938333,
+  "teambaronkills": 0,
+  "oppbaronkills": 1,
+  "dmgtochamps": 40220,
+  "dmgtochampsperminute": 1579.319372,
+  "dmgshare": "",
+  "earnedgoldshare": "",
+  "wards": 80,
+  "wpm": 3.141361257,
+  "wardshare": 1,
+  "wardkills": 27,
+  "wcpm": 1.060209424,
+  "visionwards": 29,
+  "visionwardbuys": 33,
+  "visiblewardclearrate": 0.483870968,
+  "invisiblewardclearrate": 0.25,
+  "totalgold": 43286,
+  "earnedgpm": 1033.602094,
+  "goldspent": 40675,
+  "gspd": -0.022485567,
+  "minionkills": 646,
+  "monsterkills": 149,
+  "monsterkillsownjungle": 96,
+  "monsterkillsenemyjungle": 9,
+  "cspm": 31.21727749,
+  "goldat10": 16416,
+  "oppgoldat10": 15344,
+  "gdat10": 1072,
+  "goldat15": 26392,
+  "oppgoldat15": 25288,
+  "gdat15": 1104,
+  "xpat10": 20130,
+  "oppxpat10": 18585,
+  "xpdat10": 1545,
+  "csat10": 348,
+  "oppcsat10": 305,
+  "csdat10": 43,
+  "csat15": 513,
+  "oppcsat15": 489,
+  "csdat15": 24
+}
+
 const HomeMatchHistory = () => (
   <div className="home-dashboard__match-history">
-    <MatchHistoryCard />
-    <MatchHistoryCard />
-    <MatchHistoryCard />
-    <MatchHistoryCard />
-    <MatchHistoryCard />
-    <MatchHistoryCard />
-    <MatchHistoryCard />
-    <MatchHistoryCard />
-    <MatchHistoryCard />
-    <MatchHistoryCard />
-    <MatchHistoryCard />
-    <MatchHistoryCard />
-    <MatchHistoryCard />
-    <MatchHistoryCard />
-    <MatchHistoryCard />
-    <MatchHistoryCard />
-    <MatchHistoryCard />
-
+    <MatchHistoryCard team1={team1} team2={team2}/>
   </div>
 );
 
-const MatchHistoryCard = () => (
+const MatchHistoryCard = ({team1, team2}) => (
   <div className="match-history__card">
-    <p className="card__team-1">Cloud9</p>
+    <p className="card__team-1">{team1["team"]}</p>
       <i className="team__icon"></i>
         <div className="card__score-box">
-          <p className="score-box__score">0 - 1</p>
+          <p className="score-box__score">
+            {team1["result"] + " "} 
+            - 
+            {" " + team2["result"]}</p>
         </div>
       <i className="team__icon"></i>
-    <p className="card__team-2">SKT</p>
+    <p className="card__team-2">{team2["team"]}</p>
   </div>
 );
 
