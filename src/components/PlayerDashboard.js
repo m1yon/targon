@@ -1,10 +1,10 @@
 import React from "react";
+import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import PlayerStats from "./PlayerStats";
 
 const PlayerDashboard = (props) => {
   const playerName = props.location.pathname.slice(8);
-
   return(
     <div className="player-dashboard">
       <div className="team-banner">
@@ -15,7 +15,7 @@ const PlayerDashboard = (props) => {
         <div className="team-banner--overflow">
           <img src="/img/tyler1.jpg" className="team-banner__profile-picture" />
           <div className="team-banner__player-info">
-            <h1>{playerName}</h1>
+            <h1>{props.currentPlayer}</h1>
             <h2>TYLER STEINKAMP</h2>
             <NavLink to="/team/cloud9">ADC - Cloud9</NavLink>
           </div>
@@ -28,4 +28,10 @@ const PlayerDashboard = (props) => {
   );
 };
 
-export default PlayerDashboard;
+const mapStateToProps = (state) => {
+  return {
+    currentPlayer: state.currentPlayer
+  };
+};
+
+export default connect(mapStateToProps)(PlayerDashboard);

@@ -1,4 +1,5 @@
 const database = {
+  "currentPlayer": "",
   "players": [
     {
       "name": "Tyler1",
