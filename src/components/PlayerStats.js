@@ -3,9 +3,9 @@ import PlayerStatsTable from "./PlayerStatsTable";
 import PlayerStatsAreaChart from "./PlayerStatsAreaChart";
 
 
-const PlayerStats = () => (
+const PlayerStats = (props) => (
   <div className="player-dashboard__player-stats">
-    <PlayerStatsTable />
+    <PlayerStatsTable player={ props.player } />
     <div className="player-stats__charts">
       <hr className="hr-vert" />
       <PlayerStatsAreaChart />
