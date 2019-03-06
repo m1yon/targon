@@ -6,9 +6,10 @@ import thunkMiddleware from "redux-thunk";
 export default () => {
   const store = createStore(
     players,
-    applyMiddleware(
-      thunkMiddleware
-    )
+    db
+    // applyMiddleware(
+    //   thunkMiddleware
+    // )
   );
 
   return store;

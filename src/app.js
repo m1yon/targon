@@ -13,7 +13,12 @@ const store = configureStore();
 console.log(store.getState());
 
 //store.dispatch(fetchPlayers());
-fetch("/api/players/tyler1").then((result) => { console.log(result) });
+// fetch(":3000/api/player/Sneaky", {
+//   headers: {
+//     "Content-Type": "application/json",
+//     "Accept": "application/json"
+//   }
+// }).then((response) => { console.log(response.json()) });
 
 const jsx = (
   <Provider store={store}>
