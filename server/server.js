@@ -17,12 +17,12 @@ MongoClient.connect(url,{ useNewUrlParser: true }, (err, client) => {
     db = client.db(dbName);
     
     app.listen(port, () => {
-      console.log(`Server is up on Port: ${port}`);
+      console.log(`Server is up on port: ${port}`);
     });
   }
 });
 
-app.use(express.static(publicPath));
+//app.use(express.static(publicPath));
 
 app.get('/api/player/:player', (req,res) => {
   const playerName = req.params.player;
@@ -41,8 +41,8 @@ app.get('/api/topBoardKills', (req,res) => {
   });
 }); 
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(publicPath, 'index.html'));
-});
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(publicPath, 'index.html'));
+// });
 
 
