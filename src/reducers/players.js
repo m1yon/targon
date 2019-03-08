@@ -11,8 +11,8 @@ export default (state = {}, action) => {
     case RECIEVE_GET:
       return {
         ...state,
+        ...action.result,
         "isFetching": false,
-        "result": action.result
       }
   
     default:

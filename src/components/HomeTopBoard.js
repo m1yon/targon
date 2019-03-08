@@ -1,5 +1,6 @@
 import React from "react";
 import DB from "../database";
+import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,14 +8,14 @@ import { faShare } from '@fortawesome/free-solid-svg-icons';
 
 library.add(faShare)
 
-const HomeTopBoard = (props) => (
+const HomeTopBoard = ( { isFetching, stat, players = {} } ) => (
   <div className="home-dashboard__top-board">
     {/* title */}
     <div className="top-board__stat-title">
-      <NavLink to={"/leaderboard/" + props.stat}>
-        {props.stat.charAt(0).toUpperCase() + props.stat.slice(1)}
+      <NavLink to={"/leaderboard/" + stat}>
+        {stat.charAt(0).toUpperCase() + stat.slice(1)}
       </NavLink>
-      <NavLink className="top-board__more-icon" to={"/leaderboard/" + props.stat}>
+      <NavLink className="top-board__more-icon" to={"/leaderboard/" + stat}>
         <FontAwesomeIcon icon="share" />
       </NavLink>
     </div>
@@ -23,30 +24,46 @@ const HomeTopBoard = (props) => (
     <hr />
 
     {/* Top 5 List */}
-    <Entry rank={1} stat={props.stat}/>
-    <Entry rank={2} stat={props.stat}/>
-    <Entry rank={3} stat={props.stat}/>
-    <Entry rank={4} stat={props.stat}/>
-    <Entry rank={5} stat={props.stat}/>
+    {(!isFetching) ? 
+      <div>
+        <Entry rank={1} player={players[0]} />
+        <Entry rank={2} player={players[1]} />
+        <Entry rank={3} player={players[2]} />
+        <Entry rank={4} player={players[3]} />
+        <Entry rank={5} player={players[4]} />
+      </div>
+      : console.log("fetching...")
+    };
+    
   </div>
 );
 
-const Entry = (props) => (
+const Entry = ( { rank, player } ) => (
   <div className="top-board__entry">
     <div className="top-board__entry-info">
-      <p>{props.rank}.</p>
+      <p>{rank}.</p>
 
       <NavLink 
         className="top-board__entry-name" 
-        to={`/player/${DB.players[props.rank - 1].name}`}
+        to={`/player/${player["_id"]}`}
       >
-        {DB.players[props.rank - 1].name}
+        { player["_id"] }
       </NavLink>
       
-      <p className="top-board__team-sfx">{DB.players[props.rank - 1].team}</p>
+      {/* <p className="top-board__team-sfx">{DB.players[props.rank - 1].team}</p> */}
     </div>
-    <p className={`top-board__stat-${props.rank}`}>{DB.players[props.rank - 1][props.stat]}</p>
+    <p className={`top-board__stat-${rank}`}>
+      { player["totalKills"] }
+    </p>
   </div>
 )
 
-export default HomeTopBoard;
+const mapStateToProps = (state, props) => {
+  return {
+    players: state.topboards.kills,
+    isFetching: state.isFetching,
+    stat: props.stat
+  }
+};
+
+export default connect(mapStateToProps)(HomeTopBoard);

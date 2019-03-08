@@ -19,16 +19,38 @@ export const recieveGet = (result) => {
   }
 }
 
-
-export const fetchPlayers = () => {
+// Fetches a specific player
+export const fetchPlayer = (player) => {
   return (dispatch) => {
     dispatch(requestGet());
-    return fetch("/api/player/Sneaky")
+    return fetch("/api/player/" + player)
       .then(
         response => response.json(),
         error => console.log("An error occured.", error)
       )
       .then(json => dispatch(recieveGet(json))
+    )
+  }
+}
+
+// Fetches a specific 
+export const fetchTopboard = () => {
+  return (dispatch) => {
+    dispatch(requestGet());
+    return fetch("/api/topBoardKills")
+      .then(
+        response => response.json(),
+        error => console.log("An error occured.", error)
+      )
+      .then(data => dispatch(
+        recieveGet({
+          "topboards": {
+            "kills": {
+              ...data
+            }
+          }
+        })
+      )
     )
   }
 }
