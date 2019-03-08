@@ -1,0 +1,15 @@
+.player-dashboard__player-stats {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  grid-gap: 2%;
+  margin-top: 5%;
+};  
+
+.player-stats__charts {
+  display: grid;
+  grid-template-columns: 1% 49% 1% 49%;
+  grid-template-rows: 30% 30% 30%;
+}
+
+
+

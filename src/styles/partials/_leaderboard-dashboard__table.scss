@@ -1,0 +1,37 @@
+.leaderboard-dashboard__table {
+  display: flex;
+  flex-direction: column;
+}
+
+.leaderboard-dashboard__entry {
+  background-color: $black;
+  display: grid;
+  grid-template-columns: 3% 10% repeat(17, 5.26%);
+  grid-template-rows: 100%;
+  grid-auto-flow: row;
+  padding: 0% 2%;
+  font-weight: 700;
+  font-size: 1rem;
+
+  p {
+    align-self: center;
+    margin: 15% 0%;
+  }
+
+  a {
+      align-self: center;
+      color: $highlight;
+      text-decoration: none;
+      font-family: $body-font;
+      font-weight: 400;
+      font-size: 1rem;
+  }
+
+  a:hover {
+    color: lighten($color: $highlight, $amount: 10);
+  }
+}
+
+.leaderboard-dashboard__entry-alt {
+  background-color: $off-black;
+}

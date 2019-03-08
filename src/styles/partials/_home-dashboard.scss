@@ -1,0 +1,13 @@
+.home-dashboard {
+  @include dashboard-container;
+  display: grid;
+  grid-template-columns: 75% 25%;
+}
+
+.home-dashboard__grid {
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  grid-gap: 3%;
+  justify-content: start;
+  margin-top: 3%;
+}

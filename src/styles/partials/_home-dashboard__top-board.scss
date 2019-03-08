@@ -1,0 +1,76 @@
+// Topboard
+.home-dashboard__top-board {
+  display: flex;
+  flex-direction: column; 
+  line-height: .2rem;
+  margin-bottom: 3%;
+}
+
+// Title of board (Wins, kills, etc.)
+.top-board__stat-title {
+  display: flex;
+  color: $highlight;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0%;
+
+  a {
+    color: $highlight;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: lighten($color: $highlight, $amount: 10);
+  }
+}
+
+// Top right arrow icon
+.top-board__more-icon {
+  font-size: 1rem !important;
+}
+
+// Row entry
+.top-board__entry {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+// Info on left-hand side (Number, entry, team sfx)
+.top-board__entry-info {
+  display: flex;
+}
+
+// Entries name
+.top-board__entry-name {
+  align-self: center;
+  font-family: $body-font;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-left: 2%;
+  text-decoration: none;
+
+  &:hover {
+    color: lighten($color: $highlight, $amount: 10);
+  }
+}
+
+// Shorthand teamname
+.top-board__team-sfx {
+  font-size: 1rem;
+  margin-left: 5%;
+  opacity: 0.5;
+}
+
+// The stat for the number one player
+.top-board__stat-1 {
+  align-self: center;
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0%;
+}
+
+
+

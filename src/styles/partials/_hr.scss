@@ -1,0 +1,20 @@
+// Spacer line
+hr {
+  border-width: 0;
+  background-color: $gray; 
+  height: 2px;
+  margin-bottom: 3%;
+  margin-top: 5%;
+  width: 100%;
+}
+
+.hr-alt {
+  margin: 0%;
+}
+
+.hr-vert {
+  align-self: center;
+  height: 100%;
+  width: 2px;
+  margin: 0%;
+}
