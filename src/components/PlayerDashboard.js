@@ -2,37 +2,68 @@ import React from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import PlayerStats from "./PlayerStats";
+import { fetchPlayer } from "../actions/players";
 
-const PlayerDashboard = (props) => {
-  const playerName = props.location.pathname.slice(8);
-  return(
-    <div className="player-dashboard">
-      <div className="team-banner">
-        <div className="team-banner--no-overflow">
-          <img src="/img/cloud9.jpg" className="team-banner__bg" />
-        </div>
+class PlayerDashboard extends React.Component {
+  constructor(props) {
+    super(props);
+    const playerName = location.pathname.slice(8);
 
-        <div className="team-banner--overflow">
-          <img src="/img/tyler1.jpg" className="team-banner__profile-picture" />
-          <div className="team-banner__player-info">
-            <h1>{props.player.name}</h1>
-            <h2>TYLER STEINKAMP</h2>
-            <NavLink to="/team/cloud9">ADC - Cloud9</NavLink>
+    this.state = {
+      players: props.players ? props.players : [{ "_id": "" }],
+      isFetching: props.isFetching
+    };
+  }
+
+  componentDidMount() {
+    const playerName = location.pathname.slice(8);
+    this.props.fetchPlayer(playerName);
+  }
+
+  componentWillReceiveProps(newProps) {
+    if(newProps.players != this.props.players)
+      this.setState({ players: newProps.players });
+    if(newProps.isFetching != this.props.isFetching)
+      this.setState({ isFetching: newProps.isFetching });
+  }
+
+  render() {
+    return (
+      <div className="player-dashboard">
+        {!this.state.isFetching ? 
+          <div>
+            <div className="team-banner">
+              <div className="team-banner--no-overflow">
+                <img src="/img/cloud9.jpg" className="team-banner__bg" />
+              </div>
+
+              <div className="team-banner--overflow">
+                <img src="/img/tyler1.jpg" className="team-banner__profile-picture" />
+                <div className="team-banner__player-info">
+                  <h1>{this.state.players[0]["_id"]}</h1>
+                  <h2>TYLER STEINKAMP</h2>
+                  <NavLink to="/team/cloud9">ADC - Cloud9</NavLink>
+                </div>
+              </div>
+            </div>
+            <PlayerStats player={this.state.players[0]} />
           </div>
-        </div>
+        :
+        console.log("fetching...")}
       </div>
-
-      <PlayerStats player={props.player} />
-      
-    </div>
-  );
+    );
+  }
 };
 
-const mapStateToProps = (state, props) => {
-  const playerName = props.location.pathname.slice(8);
+const mapStateToProps = (state) => {
   return {
-    player: state.players.find((player) => player.name === playerName)
+    isFetching: state.isFetching,
+    players: state.players
   };
 };
 
-export default connect(mapStateToProps)(PlayerDashboard);
+const mapDispatchToProps = ( dispatch ) => ({
+  fetchPlayer: (player) => dispatch(fetchPlayer(player))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(PlayerDashboard);

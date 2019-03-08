@@ -10,8 +10,8 @@ const PlayerStatsTable = ({ player }) => (
       <p>Placement</p>
     </div>
     <hr className="hr-alt"/>
-    <StatsheetEntry statname="kills" avg={ player.kills } placement="-" alt="0"/>
-    <StatsheetEntry statname="deaths" avg={ player.deaths } placement="-" alt="1"/>
+    <StatsheetEntry statname="kills" avg={ player.totalKills } placement="-" alt="0"/>
+    <StatsheetEntry statname="deaths" avg={ player.totalDeaths } placement="-" alt="1"/>
     <StatsheetEntry statname="assist" avg="-" placement="-" alt="0"/>
     <StatsheetEntry statname="KDA" avg="-" placement="-" alt="1"/>
     <StatsheetEntry statname="KP" avg="-" placement="-" alt="0"/>

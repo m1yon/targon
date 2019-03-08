@@ -28,7 +28,13 @@ export const fetchPlayer = (player) => {
         response => response.json(),
         error => console.log("An error occured.", error)
       )
-      .then(json => dispatch(recieveGet(json))
+      .then(data => dispatch(
+        recieveGet({
+          "players": {
+            ...data
+          }
+        })
+      )
     )
   }
 }
