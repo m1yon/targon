@@ -15,7 +15,7 @@ MongoClient.connect(url,{ useNewUrlParser: true }, (err, client) => {
   } else {
     console.log('Connection established to', url);
     db = client.db(dbName);
-
+    
     app.listen(port, () => {
       console.log(`Server is up on Port: ${port}`);
     });
@@ -26,12 +26,23 @@ app.use(express.static(publicPath));
 
 app.get('/api/player/:player', (req,res) => {
   const playerName = req.params.player;
-  db.collection('NALCS').find({player: playerName}).toArray().then((docs) => {
-    res.send(docs);
-  });
+  db.collection('players').find({_id: playerName}).toArray().then((docs) => {
+    res.status(200).send(docs);
+    console.log(docs);
+  }); 
 });
+
+app.get('/api/topBoardKills', (req,res) => {
+  db.collection('TopBoards').find({_id: 'topBoardKills'}).toArray().then((docs) => {
+    db.collection('players').find({_id: {$in: [docs[0].players[0], docs[0].players[1], docs[0].players[2], docs[0].players[3], docs[0].players[4]]}}).toArray().then((docs2) => {
+      console.log(docs2);
+      res.send(docs2);
+    });
+  });
+}); 
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(publicPath, 'index.html'));
 });
+
 
