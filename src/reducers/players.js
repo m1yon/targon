@@ -7,14 +7,14 @@ export default (state = {}, action) => {
         ...state,
         "isFetching": true
       }
-
+    
     case RECIEVE_GET:
       return {
         ...state,
         "isFetching": false,
         "result": action.result
       }
-
+  
     default:
       return state;
   };

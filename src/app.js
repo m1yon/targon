@@ -10,15 +10,9 @@ import "normalize.css/normalize.css";
 import "./styles/main.scss";
 
 const store = configureStore();
-console.log(store.getState());
+store.subscribe(() => { console.log(store.getState()) });
 
-//store.dispatch(fetchPlayers());
-// fetch(":3000/api/player/Sneaky", {
-//   headers: {
-//     "Content-Type": "application/json",
-//     "Accept": "application/json"
-//   }
-// }).then((response) => { console.log(response.json()) });
+store.dispatch(fetchPlayers());
 
 const jsx = (
   <Provider store={store}>
