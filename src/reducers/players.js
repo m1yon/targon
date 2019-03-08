@@ -1,4 +1,4 @@
-import { FETCH_PLAYERS, GET_PLAYERS, REQUEST_GET, RECIEVE_GET } from "../actions/players";
+import { FETCH_PLAYERS, GET_PLAYERS, REQUEST_GET, RECIEVE_GET_SUCCESS } from "../actions/players";
 
 export default (state = {}, action) => {
   switch(action.type) {
@@ -8,7 +8,7 @@ export default (state = {}, action) => {
         "isFetching": true
       }
     
-    case RECIEVE_GET:
+    case RECIEVE_GET_SUCCESS:
       return {
         ...state,
         ...action.result,
