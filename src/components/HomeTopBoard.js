@@ -61,7 +61,7 @@ const Entry = ( { rank, player } ) => (
 const mapStateToProps = (state, props) => {
   return {
     players: state.topboards.kills,
-    isFetching: state.isFetching,
+    isFetching: state.topboards.isFetching,
     stat: props.stat
   }
 };

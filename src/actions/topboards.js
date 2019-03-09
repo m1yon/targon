@@ -1,18 +1,18 @@
-export const FETCH_PLAYERS = "FETCH_PLAYERS";
+export const FETCH_PLAYERS = "FETCH_TOPBOARD";
 import { requestGet, recieveGetSuccess } from "./get";
 
-// Fetches a specific player
-export const fetchPlayer = (player) => {
+// Fetches a specific 
+export const fetchTopboard = () => {
   return (dispatch) => {
     dispatch(requestGet());
-    return fetch("/api/player/" + player)
+    return fetch("/api/topBoardKills")
       .then(
         response => response.json(),
         error => console.log("An error occured.", error)
       )
       .then(data => dispatch(
         recieveGetSuccess({
-          "players": {
+          "kills": {
             ...data
           }
         })
@@ -20,5 +20,3 @@ export const fetchPlayer = (player) => {
     )
   }
 }
-
-

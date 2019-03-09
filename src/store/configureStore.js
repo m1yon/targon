@@ -1,10 +1,14 @@
 import { createStore, applyMiddleware, compose } from "redux";
-import players from "../reducers/players";
+import rootReducer from "../reducers/root";
 import thunkMiddleware from "redux-thunk";
 
+// __default state__
 const defaultState = {
-  "isFetching": true,
+  "players": {
+    "isFetching": true
+  },
   "topboards": {
+    "isFetching": true,
     "kills": {
     
     }
@@ -14,7 +18,7 @@ const defaultState = {
 export default () => {
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
   const store = createStore(
-    players,
+    rootReducer,
     defaultState,
     composeEnhancers(
       applyMiddleware(thunkMiddleware)

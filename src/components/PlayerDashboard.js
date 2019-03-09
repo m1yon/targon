@@ -57,7 +57,7 @@ class PlayerDashboard extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    isFetching: state.isFetching,
+    isFetching: state.players.isFetching,
     players: state.players
   };
 };

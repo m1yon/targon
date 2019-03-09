@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import AppRouter from "./routers/AppRouter";
 import configureStore from "./store/configureStore";
 import { Provider } from "react-redux";
-import { fetchPlayer, fetchTopboard } from "./actions/players";
+import { fetchTopboard } from "./actions/topboards";
 
 import "normalize.css/normalize.css";
 import "./styles/main.scss";
