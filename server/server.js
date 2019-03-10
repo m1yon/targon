@@ -26,10 +26,14 @@ MongoClient.connect(url,{ useNewUrlParser: true }, (err, client) => {
 
 app.use(express.static(publicPath));
 
-app.get('/api/player/:player', (req,res) => {
-  const playerName = req.params.player;
-  db.collection('players').find({_id: playerName}).toArray().then((docs) => {
-    res.status(200).send(docs);
+app.get('/api/getPlayers', (req,res) => {
+  db.collection('players').find({}).toArray().then((docs) => {
+    let returnedValue = {};
+    for (let i = 0; i < docs.length -1; i++){
+      returnedValue[docs[i]._id] = docs[i];
+      delete returnedValue[docs[i]._id]._id;
+    }
+    res.status(200).send(returnedValue);
     console.log(docs);
   }); 
 });
