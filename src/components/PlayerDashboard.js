@@ -7,19 +7,17 @@ import { fetchPlayer } from "../actions/players";
 class PlayerDashboard extends React.Component {
   constructor(props) {
     super(props);
+    // Fetch player data
     const playerName = location.pathname.slice(8);
+    this.props.fetchPlayer(playerName);
 
     this.state = {
-      players: props.players ? props.players : [{ "_id": "" }],
+      players: props.players ? props.players : [{ "_id": "" }], // TODO: change this to just player
       isFetching: props.isFetching
     };
   }
 
-  componentDidMount() {
-    const playerName = location.pathname.slice(8);
-    this.props.fetchPlayer(playerName);
-  }
-
+  // TODO: get rid of this function
   componentWillReceiveProps(newProps) {
     if(newProps.players != this.props.players)
       this.setState({ players: newProps.players });
@@ -30,7 +28,7 @@ class PlayerDashboard extends React.Component {
   render() {
     return (
       <div className="player-dashboard">
-        {!this.state.isFetching ? 
+        { !this.state.isFetching ? 
           <div>
             <div className="team-banner">
               <div className="team-banner--no-overflow">
@@ -57,7 +55,7 @@ class PlayerDashboard extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    isFetching: state.players.isFetching,
+    isFetching: state.isFetching,
     players: state.players
   };
 };

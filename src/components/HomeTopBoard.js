@@ -1,5 +1,4 @@
 import React from "react";
-import DB from "../database";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -61,7 +60,7 @@ const Entry = ( { rank, player } ) => (
 const mapStateToProps = (state, props) => {
   return {
     players: state.topboards.kills,
-    isFetching: state.topboards.isFetching,
+    isFetching: state.isFetching,
     stat: props.stat
   }
 };

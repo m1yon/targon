@@ -4,11 +4,10 @@ import thunkMiddleware from "redux-thunk";
 
 // __default state__
 const defaultState = {
+  "isFetching": true,
   "players": {
-    "isFetching": true
   },
   "topboards": {
-    "isFetching": true,
     "kills": {
     
     }

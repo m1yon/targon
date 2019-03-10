@@ -1,7 +1,17 @@
-import { combineReducers } from "redux";
-import players from "./players";
-import topboards from "./topboards";
+import { REQUEST_GET, RECIEVE_GET_SUCCESS } from "../actions/get";
+import getReducer from "./get";
 
-export default combineReducers({
-  topboards
-});
+export default (state = {}, action) => {
+  switch(action.type) {
+    case REQUEST_GET:
+    case RECIEVE_GET_SUCCESS:
+      const res = getReducer(state, action);
+      return ({
+        ...state,
+        ...res
+      });
+
+    default:
+      return state;
+  };
+};

@@ -1,4 +1,3 @@
-export const FETCH_PLAYERS = "FETCH_PLAYERS";
 import { requestGet, recieveGetSuccess } from "./get";
 
 // Fetches a specific player

@@ -1,7 +1,6 @@
-export const FETCH_PLAYERS = "FETCH_TOPBOARD";
 import { requestGet, recieveGetSuccess } from "./get";
 
-// Fetches a specific 
+// Fetches a specific topboard
 export const fetchTopboard = () => {
   return (dispatch) => {
     dispatch(requestGet());
@@ -12,8 +11,10 @@ export const fetchTopboard = () => {
       )
       .then(data => dispatch(
         recieveGetSuccess({
-          "kills": {
-            ...data
+          "topboards": {
+            "kills": {
+              ...data
+            }
           }
         })
       )
