@@ -7,8 +7,9 @@ const MongoClient = require('mongodb').MongoClient;
 
 const url = 'mongodb://heroku_4n9lqqvk:gpr0d89kotgaqj4tbko9pm66fd@ds221435.mlab.com:21435/heroku_4n9lqqvk';
 const dbName = 'heroku_4n9lqqvk';
-let db;
+let db; // creates db variable in order to make database calls outside the function
 
+// connecting to database and starting server on port
 MongoClient.connect(url,{ useNewUrlParser: true }, (err, client) => {
   if (err) {
     console.log("unable to connect to mongo server", err);
@@ -16,7 +17,7 @@ MongoClient.connect(url,{ useNewUrlParser: true }, (err, client) => {
     console.log('Connection established to', url);
     db = client.db(dbName);
     
-    app.listen(port, () => {
+    app.listen(port, () => {                        //starting server
       console.log(`Server is up on Port: ${port}`);
     });
   }
@@ -24,22 +25,33 @@ MongoClient.connect(url,{ useNewUrlParser: true }, (err, client) => {
 
 app.use(express.static(publicPath));
 
-app.get('/api/player/:player', (req,res) => {
-  const playerName = req.params.player;
-  db.collection('players').find({_id: playerName}).toArray().then((docs) => {
-    res.status(200).send(docs);
-    console.log(docs);
+// API GET request which sends player data in JSON format
+app.get('/api/getPlayers', (req,res) => {
+  db.collection('players').find({}).toArray().then((docs) => {
+    let returnedValue = {};     // creates new object
+    // interates through the array making the indexes into objects
+    for (let i = 0; i < docs.length -1; i++){
+      returnedValue[docs[i]._id] = docs[i];
+      delete returnedValue[docs[i]._id]._id; // deletes the _id key to reduce redundency 
+    }
+    res.send(returnedValue);
+    console.log(returnedValue);
   }); 
 });
 
-app.get('/api/topBoardKills', (req,res) => {
+// API GET request which sends the players names for each top stat
+app.get('/api/topBoards', (req,res) => {
   db.collection('TopBoards').find({_id: 'topBoardKills'}).toArray().then((docs) => {
-    db.collection('players').find({_id: {$in: [docs[0].players[0], docs[0].players[1], docs[0].players[2], docs[0].players[3], docs[0].players[4]]}}).toArray().then((docs2) => {
-      console.log(docs2);
-      res.send(docs2);
-    });
+    // create new variable object which will store the top 5 players for each stat
+    let returnedValue = {
+      'topBoards': {
+        'kills': docs[0].players
+      }
+    };
+    res.send(returnedValue);
+    console.log(returnedValue);
   });
-}); 
+});
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(publicPath, 'index.html'));
