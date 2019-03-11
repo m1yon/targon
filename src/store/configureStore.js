@@ -4,11 +4,15 @@ import thunkMiddleware from "redux-thunk";
 
 // __default state__
 const defaultState = {
-  "isFetching": true,
   "players": {
+    "isFetching": true,
+    "data": {
+      
+    }
   },
-  "topboards": {
-    "kills": {
+  "topBoards": {
+    "isFetching": true,
+    "data": {
     
     }
   }
@@ -23,6 +27,7 @@ export default () => {
       applyMiddleware(thunkMiddleware)
     )
   );
+  
   return store;
 };
 

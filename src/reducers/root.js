@@ -5,10 +5,9 @@ export default (state = {}, action) => {
   switch(action.type) {
     case REQUEST_GET:
     case RECIEVE_GET_SUCCESS:
-      const res = getReducer(state, action);
       return ({
         ...state,
-        ...res
+        ...action.result
       });
 
     default:

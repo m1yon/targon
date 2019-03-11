@@ -55,13 +55,9 @@ class PlayerDashboard extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    isFetching: state.isFetching,
+    isFetching: state.players.isFetching,
     players: state.players
   };
 };
 
-const mapDispatchToProps = ( dispatch ) => ({
-  fetchPlayer: (player) => dispatch(fetchPlayer(player))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(PlayerDashboard);
+export default connect(mapStateToProps)(PlayerDashboard);

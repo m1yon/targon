@@ -17,18 +17,13 @@ MongoClient.connect(url,{ useNewUrlParser: true }, (err, client) => {
     console.log('Connection established to', url);
     db = client.db(dbName);
     
-<<<<<<< HEAD
     app.listen(port, () => {
       console.log(`Server is up on port: ${port}`);
-=======
-    app.listen(port, () => {                        //starting server
-      console.log(`Server is up on Port: ${port}`);
->>>>>>> master
     });
   }
 });
 
-//app.use(express.static(publicPath));
+app.use(express.static(publicPath));
 
 // API GET request which sends player data in JSON format
 app.get('/api/getPlayers', (req,res) => {
@@ -58,8 +53,8 @@ app.get('/api/topBoards', (req,res) => {
   });
 });
 
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(publicPath, 'index.html'));
-// });
+app.get('*', (req, res) => {
+  res.sendFile(path.join(publicPath, 'index.html'));
+});
 
 

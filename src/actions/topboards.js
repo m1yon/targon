@@ -1,21 +1,17 @@
 import { requestGet, recieveGetSuccess } from "./get";
 
-// Fetches a specific topboard
-export const fetchTopboard = () => {
+// Fetches all TopBoards
+export const fetchTopboards = () => {
   return (dispatch) => {
-    dispatch(requestGet());
-    return fetch("/api/topBoardKills")
+    dispatch(requestGet("topBoards"));
+    return fetch("/api/topBoards")
       .then(
         response => response.json(),
         error => console.log("An error occured.", error)
       )
       .then(data => dispatch(
-        recieveGetSuccess({
-          "topboards": {
-            "kills": {
-              ...data
-            }
-          }
+        recieveGetSuccess("topBoards", {
+          ...data.topBoards
         })
       )
     )
