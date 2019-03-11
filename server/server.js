@@ -5,6 +5,8 @@ const publicPath = path.join(__dirname, '..', 'public');
 const port = process.env.PORT || 3000;
 const MongoClient = require('mongodb').MongoClient;
 
+const {arrayToObjects} = require('./helperMethods/arrayToObjects');
+
 const url = 'mongodb://heroku_4n9lqqvk:gpr0d89kotgaqj4tbko9pm66fd@ds221435.mlab.com:21435/heroku_4n9lqqvk';
 const dbName = 'heroku_4n9lqqvk';
 let db; // creates db variable in order to make database calls outside the function
@@ -28,12 +30,7 @@ app.use(express.static(publicPath));
 // API GET request which sends player data in JSON format
 app.get('/api/getPlayers', (req,res) => {
   db.collection('players').find({}).toArray().then((docs) => {
-    let returnedValue = {};     // creates new object
-    // interates through the array making the indexes into objects
-    for (let i = 0; i < docs.length -1; i++){
-      returnedValue[docs[i]._id] = docs[i];
-      delete returnedValue[docs[i]._id]._id; // deletes the _id key to reduce redundency 
-    }
+    let returnedValue = arrayToObjects(docs);
     res.send(returnedValue);
     console.log(returnedValue);
   }); 
@@ -52,6 +49,13 @@ app.get('/api/topBoards', (req,res) => {
     console.log(returnedValue);
   });
 });
+
+app.get('/api/matchHistory', (req,res) => {
+  db.collection('RecentMatches').find({}).toArray().then((docs) =>{
+    let returnedValue = arrayToObjects(docs); 
+    res.send(returnedValue);
+  })
+})
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(publicPath, 'index.html'));
