@@ -7,20 +7,15 @@ const HomeDashboard = () => (
     <div>
       <h1>2019 Spring Split Leaders</h1>
       <div className="home-dashboard__grid">
-        <HomeTopBoard stat="kills"/>
-        <HomeTopBoard stat="wins"/>
-        <HomeTopBoard stat="kills"/>
-        <HomeTopBoard stat="wins"/>
+        <HomeTopBoard stat="totalKills"/>
+        <HomeTopBoard stat="totalAssists"/>
+        <HomeTopBoard stat="kda"/>
 
-        <HomeTopBoard stat="wins"/>
-        <HomeTopBoard stat="kills"/>
-        <HomeTopBoard stat="wins"/>
-        <HomeTopBoard stat="kills"/>
+        <HomeTopBoard stat="dpm"/>
+        <HomeTopBoard stat="dmgPercentage"/>
+        <HomeTopBoard stat="kp"/>
 
-        <HomeTopBoard stat="kills"/>
-        <HomeTopBoard stat="wins"/>
-        <HomeTopBoard stat="kills"/>
-        <HomeTopBoard stat="wins"/>
+        <HomeTopBoard stat="goldPercentage"/>
       </div>
     </div>
     <div>

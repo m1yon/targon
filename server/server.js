@@ -42,13 +42,13 @@ app.get('/api/topBoards', (req,res) => {
     // create new variable object which will store the top 5 players for each stat
     let returnedValue = {
       'topBoards': {
-        'Kills': docs[0].players,
-        'Assists': docs[1].players,
-        'KDA': docs[2].players,
-        'DPM': docs[3].players,
-        'DMGPercentage': docs[4].players,
-        'KP': docs[5].players,
-        'GoldPercentage': docs[6].players,}
+        'totalKills': docs[0].players,
+        'totalAssists': docs[1].players,
+        'kda': docs[2].players,
+        'dpm': docs[3].players,
+        'dmgPercentage': docs[4].players,
+        'kp': docs[5].players,
+        'goldPercentage': docs[6].players,}
     };
     res.send(returnedValue);
     console.log(returnedValue);

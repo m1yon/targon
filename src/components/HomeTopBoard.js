@@ -25,11 +25,11 @@ const HomeTopBoard = ( { topBoards, isFetching, stat, players = {} } ) => (
     {/* Top 5 List */}
     {(!isFetching) ? 
       <div>
-        <Entry rank={1} playerName={topBoards["kills"][0]} player={players[topBoards["kills"][0]]} />
-        <Entry rank={2} playerName={topBoards["kills"][1]} player={players[topBoards["kills"][1]]} />
-        <Entry rank={3} playerName={topBoards["kills"][2]} player={players[topBoards["kills"][2]]} />
-        <Entry rank={4} playerName={topBoards["kills"][3]} player={players[topBoards["kills"][3]]} />
-        <Entry rank={5} playerName={topBoards["kills"][4]} player={players[topBoards["kills"][4]]} />
+        <Entry rank={1} stat={stat} playerName={topBoards[stat][0]} player={players[topBoards[stat][0]]} />
+        <Entry rank={2} stat={stat} playerName={topBoards[stat][1]} player={players[topBoards[stat][1]]} />
+        <Entry rank={3} stat={stat} playerName={topBoards[stat][2]} player={players[topBoards[stat][2]]} />
+        <Entry rank={4} stat={stat} playerName={topBoards[stat][3]} player={players[topBoards[stat][3]]} />
+        <Entry rank={5} stat={stat} playerName={topBoards[stat][4]} player={players[topBoards[stat][4]]} />
       </div>
       : console.log("fetching...")
     };
@@ -37,7 +37,7 @@ const HomeTopBoard = ( { topBoards, isFetching, stat, players = {} } ) => (
   </div>
 );
 
-const Entry = ( { rank, playerName, player } ) => (
+const Entry = ( { stat, rank, playerName, player } ) => (
   <div className="top-board__entry">
     <div className="top-board__entry-info">
       <p>{rank}.</p>
@@ -52,7 +52,7 @@ const Entry = ( { rank, playerName, player } ) => (
       {/* <p className="top-board__team-sfx">{DB.players[props.rank - 1].team}</p> */}
     </div>
     <p className={`top-board__stat-${rank}`}>
-      { player["totalKills"] }
+      { player[stat] }
     </p>
   </div>
 )
