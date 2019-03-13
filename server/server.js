@@ -30,15 +30,7 @@ app.use(express.static(publicPath));
 // API GET request which sends player data in JSON format
 app.get('/api/getPlayers', (req,res) => {
   db.collection('players').find({}).toArray().then((docs) => {
-<<<<<<< HEAD
-    let returnedValue = {};     // creates new object
-    // interates through the array making the indexes into objects
-    for (let i = 0; i < docs.length -1; i++){
-      returnedValue[docs[i]._id] = docs[i];
-    }
-=======
     let returnedValue = arrayToObjects(docs);
->>>>>>> database
     res.send(returnedValue);
     console.log(returnedValue);
   }); 
