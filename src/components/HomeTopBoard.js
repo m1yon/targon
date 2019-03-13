@@ -49,7 +49,7 @@ const Entry = ( { stat, rank, playerName, player } ) => (
         { playerName }
       </NavLink>
       
-      {/* <p className="top-board__team-sfx">{DB.players[props.rank - 1].team}</p> */}
+      <p className="top-board__team-sfx">{player.team}</p>
     </div>
     <p className={`top-board__stat-${rank}`}>
       { player[stat] }

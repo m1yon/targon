@@ -7,3 +7,10 @@
   color: white;
   font-family: $header-font;
 }
+
+.rt-th {
+  background-color: $highlight;
+  div {
+    font-family: $header-font;
+  }
+}

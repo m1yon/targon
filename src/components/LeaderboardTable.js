@@ -7,6 +7,7 @@ import "react-table/react-table.css";
 const columns = [{
   Header: "Name",
   accessor: "_id",
+  width: 150
 }, {
   Header: "Kills",
   accessor: "totalKills"
@@ -68,12 +69,15 @@ const LeaderboardTable = ({ isFetching, players }) => {
   return(
     <div>
       {!isFetching && <ReactTable
-        data={Object.values(players)}
+        data={players}
         columns={columns}
         column={{
           ...ReactTableDefaults.column,
           minWidth: 25
         }}
+        defaultPageSize={players.length}
+        showPagination={false}
+        resizable={false}
       />}
     </div>
   );
@@ -82,7 +86,7 @@ const LeaderboardTable = ({ isFetching, players }) => {
 const mapStateToProps = (state) => {
   return {
     isFetching: state.players.isFetching,
-    players: state.players.data
+    players: Object.values(state.players.data)
   };
 };
 
