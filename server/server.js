@@ -38,18 +38,24 @@ app.get('/api/getPlayers', (req,res) => {
 
 // API GET request which sends the players names for each top stat
 app.get('/api/topBoards', (req,res) => {
-  db.collection('TopBoards').find({_id: 'topBoardKills'}).toArray().then((docs) => {
+  db.collection('TopBoards').find({}).toArray().then((docs) => {
     // create new variable object which will store the top 5 players for each stat
     let returnedValue = {
       'topBoards': {
-        'kills': docs[0].players
-      }
+        'Kills': docs[0].players,
+        'Assists': docs[1].players,
+        'KDA': docs[2].players,
+        'DPM': docs[3].players,
+        'DMGPercentage': docs[4].players,
+        'KP': docs[5].players,
+        'GoldPercentage': docs[6].players,}
     };
     res.send(returnedValue);
     console.log(returnedValue);
   });
 });
 
+// API GET request sends the wins and loses for the teams for every game
 app.get('/api/matchHistory', (req,res) => {
   db.collection('RecentMatches').find({}).toArray().then((docs) =>{
     let returnedValue = arrayToObjects(docs); 
