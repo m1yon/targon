@@ -5,6 +5,7 @@ import PlayerStats from "./PlayerStats";
 
 const PlayerDashboard = ({ isFetching, players, location }) => {
   const playerName = location.pathname.slice(8);
+
   return (
     <div className="player-dashboard">
       { !isFetching ? 
@@ -19,11 +20,11 @@ const PlayerDashboard = ({ isFetching, players, location }) => {
               <div className="team-banner__player-info">
                 <h1>{ playerName }</h1>
                 <h2>TYLER STEINKAMP</h2>
-                <NavLink to="/team/cloud9">ADC - Cloud9</NavLink>
+                <NavLink to={"/team/" + players[playerName].team}>{players[playerName].position} - {players[playerName].team}</NavLink>
               </div>
             </div>
           </div>
-          <PlayerStats player={players[playerName]} />
+          <PlayerStats player={ players[playerName] } />
         </div>
       :
       console.log("fetching...")}

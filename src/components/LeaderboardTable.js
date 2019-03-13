@@ -1,67 +1,89 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import ReactTable from "react-table";
+import { ReactTableDefaults } from "react-table";
+import { connect } from "react-redux";
+import "react-table/react-table.css";
 
-const header = [
-  "Name",
-  "Team",
-  "Kills",
-  "Wins"
+const columns = [{
+  Header: "Name",
+  accessor: "_id",
+}, {
+  Header: "Kills",
+  accessor: "totalKills"
+}, {
+  Header: "Deaths",
+  accessor: "totalDeaths"
+}, {
+  Header: "Assists",
+  accessor: "totalAssists"
+}, {
+  Header: "KDA",
+  accessor: "kda"
+}, {
+  Header: "KP",
+  accessor: "kp"
+}, {
+  Header: "DTH%",
+  accessor: "dthPercentage"
+}, {
+  Header: "FB%",
+  accessor: "fbPercentage"
+}, {
+  Header: "GD10",
+  accessor: "gd10"
+}, {
+  Header: "XPD10",
+  accessor: "xpd10"
+}, {
+  Header: "CSD10",
+  accessor: "csd10"
+}, {
+  Header: "CSPM",
+  accessor: "cspm"
+}, {
+  Header: "CS%P15",
+  accessor: "csPercent15"
+}, {
+  Header: "DPM",
+  accessor: "dpm"
+}, {
+  Header: "DMG%",
+  accessor: "dmgPercentage"
+}, {
+  Header: "EGPM",
+  accessor: "earnedGoldPerMinute"
+}, {
+  Header: "GOLD%",
+  accessor: "goldPercentage"
+}, {
+  Header: "WPM",
+  accessor: "wpm"
+}, {
+  Header: "WCPM",
+  accessor: "wcpm"
+}
 ];
 
-const LeaderboardTable = ({ data }) => {
-  const entries = data.map((obj, index) => <TableEntry key={obj["name"]} data={obj} number={index + 1}/>);
-
+const LeaderboardTable = ({ isFetching, players }) => {
   return(
-    <div className="leaderboard-dashboard__table">
-      <TableHeader />
-      {entries}
+    <div>
+      {!isFetching && <ReactTable
+        data={Object.values(players)}
+        columns={columns}
+        column={{
+          ...ReactTableDefaults.column,
+          minWidth: 25
+        }}
+      />}
     </div>
   );
 };
 
-const TableHeader = () => {
-  const entries = [<p key={"#"}>#</p>];
-  for(let i = 0; i < 4; i++) {
-    entries.push(<p key={i}>{header[i][0].toUpperCase() + header[i].slice(1)}</p>);
-  }
-
-  return(
-    <div className="leaderboard-dashboard__entry">
-      {entries}
-    </div>
-  );
-}
-
-const TableEntry = ({ data, number }) => {
-  const entries = [""];
-  entries.push(<p key={"number" + number}>{number}.</p>)
-  entries.push(
-    <NavLink 
-      key={0} 
-      to={"/player/" + data[header[0].toLowerCase()]}
-    >
-      {data[header[0].toLowerCase()]}
-    </NavLink>
-  );
-
-  for(let i = 1; i < 4; i++) {
-    entries.push(<p key={i}>{data[header[i].toLowerCase()]}</p>);
-  }
-
-  if(number % 2 == 0) {
-    return(
-      <div className="leaderboard-dashboard__entry">
-        {entries}
-      </div>
-    );
-  } else {
-    return(
-      <div className="leaderboard-dashboard__entry leaderboard-dashboard__entry-alt">
-        {entries}
-      </div>
-    );
-  }
+const mapStateToProps = (state) => {
+  return {
+    isFetching: state.players.isFetching,
+    players: state.players.data
+  };
 };
 
-
-export default LeaderboardTable;
+export default connect(mapStateToProps)(LeaderboardTable);

@@ -32,7 +32,6 @@ app.get('/api/getPlayers', (req,res) => {
     // interates through the array making the indexes into objects
     for (let i = 0; i < docs.length -1; i++){
       returnedValue[docs[i]._id] = docs[i];
-      delete returnedValue[docs[i]._id]._id; // deletes the _id key to reduce redundency 
     }
     res.send(returnedValue);
     console.log(returnedValue);

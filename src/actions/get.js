@@ -8,7 +8,10 @@ export const requestGet = (parent) => {
     type: "REQUEST_GET",
     result: {
       [parent]: {
-        "isFetching": true
+        "isFetching": true,
+        "data": {
+
+        }
       }
     }
   }

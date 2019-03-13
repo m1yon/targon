@@ -43,7 +43,7 @@ const Entry = ( { rank, playerName, player } ) => (
       <p>{rank}.</p>
 
       <NavLink 
-        className="top-board__entry-name" 
+        className="top-board__entry-name"
         to={`/player/${playerName}`}
       >
         { playerName }
