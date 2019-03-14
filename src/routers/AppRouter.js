@@ -15,6 +15,7 @@ const AppRouter = () => (
         <Route path='/' component={HomeDashboard} exact={true}/>
         <Route path='/player/' component={PlayerProfile}/>
         <Route path='/team/' component={TeamDashboard}/>
+        <Route path='/leaderboard/' component={LeaderboardDashboard} exact={true}/>
         <Route path='/leaderboard/:dsort' component={LeaderboardDashboard}/>
       </Switch>
       <Footer />

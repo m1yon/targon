@@ -30,7 +30,7 @@ const HomeDashboard = ({ isFetching }) => (
   </div>
 );
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   return {
     isFetching: state.topBoards.isFetching,
   };

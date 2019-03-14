@@ -14,15 +14,15 @@ const Header = () => (
           </div>
         </NavLink>
         
-        <NavLink className="navbutton" to="/player/tyler1" activeClassName="is-active">
+        {/* <NavLink className="navbutton" to="/player/tyler1" activeClassName="is-active">
             Players
-        </NavLink>
+        </NavLink> */}
 
-        <NavLink className="navbutton" to="/team/cloud9" activeClassName="is-active">
+        {/* <NavLink className="navbutton" to="/team/cloud9" activeClassName="is-active">
             Teams
-        </NavLink>
+        </NavLink> */}
 
-        <NavLink className="navbutton" to="/leaderboard/kills" activeClassName="is-active">
+        <NavLink className="navbutton" to="/leaderboard/" activeClassName="is-active">
             Leaderboards
         </NavLink>
       </div>

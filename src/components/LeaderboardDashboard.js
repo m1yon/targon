@@ -7,7 +7,7 @@ const LeaderboardDashboard = ({ isFetching, match }) => {
     <div className="leaderboard-dashboard">
       <h1>Leaderboard</h1>
       {!isFetching ?
-        <LeaderboardTable dsort={match.params.dsort} />
+        <LeaderboardTable dsort={match.params.dsort ? match.params.dsort : 'totalKills'} />
       :
         <p>loading...</p>
       }
