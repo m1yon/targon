@@ -39,7 +39,7 @@ const PlayerStatsTable = ({ totalKills, totalDeaths, totalAssists, kda, kp, dthP
 
 const StatsheetEntry = (props) => (
   <div className={props.alt == "1" ? "stat-sheet__entry" : "stat-sheet__entry stat-sheet__entry--alt"}>
-  <NavLink to={"/leaderboard/" + props.statname}>{props.statname.charAt(0).toUpperCase() + props.statname.slice(1)}</NavLink>
+  <NavLink to={`/leaderboard/totalKills`}>{props.statname.charAt(0).toUpperCase() + props.statname.slice(1)}</NavLink>
     <p>{props.avg}</p>
     <p>{props.placement} <span className="placement-outof">/ 241</span></p>
   </div>

@@ -1,6 +1,10 @@
+// header cell
+.rt-th {
+  background-color: $highlight;
+}
+
 .rt-td {
-  color: white;
-  font-family: $body-font;
+  align-self: center;
 }
 
 .rt-tr {
@@ -8,9 +12,34 @@
   font-family: $header-font;
 }
 
-.rt-th {
-  background-color: $highlight;
-  div {
-    font-family: $header-font;
+.table--header {
+  font-family: $header-font;
+  font-weight: 700;
+}
+
+.table--cell {
+  margin: 13% 0%;
+  padding: 0%;
+  text-align: center;
+}
+
+.-even {
+  background-color: $gray;
+}
+
+.-highlight {
+  background-color: $off-black;
+}
+
+.cell--name {
+  text-align: left;
+  color: $highlight;
+  text-decoration: none;
+  font-family: $body-font;
+  font-weight: 400;
+  font-size: 1rem;
+
+  &:hover {
+    color: lighten($color: $highlight, $amount: 10);
   }
 }

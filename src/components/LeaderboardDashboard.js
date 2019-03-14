@@ -1,13 +1,10 @@
 import React from "react";
 import LeaderboardTable from "./LeaderboardTable";
-import Database from "../database";
 
-const LeaderboardDashboard = (props) => {
-  const statname = props.location.pathname[13].toUpperCase() + props.location.pathname.slice(14);
-  
+const LeaderboardDashboard = ({ match }) => {
   return(<div className="leaderboard-dashboard">
-    <h1>{statname} Leaderboard</h1>
-    <LeaderboardTable data={Database["players"]} />
+    <h1>Leaderboard</h1>
+    <LeaderboardTable dsort={match.params.dsort} />
   </div>);
 };
 

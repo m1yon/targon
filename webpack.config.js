@@ -46,17 +46,12 @@ module.exports = (env) => {
       }]
     },
     plugins: [
-      CSSExtract,
-      new webpack.HotModuleReplacementPlugin({
-        multiStep: true
-      })
+      CSSExtract
     ],
     devtool: isProduction ? 'source-map' : 'inline-source-map',
     devServer: {
       contentBase: path.join(__dirname, 'public'),
       historyApiFallback: true,
-      hot: true,
-      inline: true,
       publicPath: '/dist/',
 
       proxy: {

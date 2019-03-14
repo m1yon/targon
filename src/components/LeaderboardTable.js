@@ -2,80 +2,92 @@ import React from "react";
 import ReactTable from "react-table";
 import { ReactTableDefaults } from "react-table";
 import { connect } from "react-redux";
+import { NavLink } from "react-router-dom";
 import "react-table/react-table.css";
 
 const columns = [{
-  Header: "Name",
+  Header: <p className='table--header'>Name</p>,
+  Cell: (props) => <NavLink to={`/player/${props.value}`} className="cell--name">{props.value}</NavLink>,
   accessor: "_id",
   width: 150
 }, {
-  Header: "Kills",
-  accessor: "totalKills"
+  Header: <p className='table--header'>K</p>,
+  accessor: "totalKills",
+  width: 30
 }, {
-  Header: "Deaths",
-  accessor: "totalDeaths"
+  Header: <p className='table--header'>D</p>,
+  accessor: "totalDeaths",
+  width: 30
 }, {
-  Header: "Assists",
-  accessor: "totalAssists"
+  Header: <p className='table--header'>A</p>,
+  accessor: "totalAssists",
+  width: 30
 }, {
-  Header: "KDA",
+  Header: <p className='table--header'>KDA</p>,
   accessor: "kda"
 }, {
-  Header: "KP",
+  Header: <p className='table--header'>KP</p>,
   accessor: "kp"
 }, {
-  Header: "DTH%",
+  Header: <p className='table--header'>DTH%</p>,
   accessor: "dthPercentage"
 }, {
-  Header: "FB%",
+  Header: <p className='table--header'>FB%</p>,
   accessor: "fbPercentage"
 }, {
-  Header: "GD10",
+  Header: <p className='table--header'>GD10</p>,
   accessor: "gd10"
 }, {
-  Header: "XPD10",
+  Header: <p className='table--header'>XPD10</p>,
   accessor: "xpd10"
 }, {
-  Header: "CSD10",
+  Header: <p className='table--header'>CSD10</p>,
   accessor: "csd10"
 }, {
-  Header: "CSPM",
+  Header: <p className='table--header'>CSPM</p>,
   accessor: "cspm"
 }, {
-  Header: "CS%P15",
+  Header: <p className='table--header'>CS%P15</p>,
   accessor: "csPercent15"
 }, {
-  Header: "DPM",
+  Header: <p className='table--header'>DPM</p>,
   accessor: "dpm"
 }, {
-  Header: "DMG%",
+  Header: <p className='table--header'>DMG%</p>,
   accessor: "dmgPercentage"
 }, {
-  Header: "EGPM",
+  Header: <p className='table--header'>EGPM</p>,
   accessor: "earnedGoldPerMinute"
 }, {
-  Header: "GOLD%",
+  Header: <p className='table--header'>GOLD%</p>,
   accessor: "goldPercentage"
 }, {
-  Header: "WPM",
+  Header: <p className='table--header'>WPM</p>,
   accessor: "wpm"
 }, {
-  Header: "WCPM",
+  Header: <p className='table--header'>WCPM</p>,
   accessor: "wcpm"
 }
 ];
 
-const LeaderboardTable = ({ isFetching, players }) => {
+const LeaderboardTable = ({ isFetching, players, dsort }) => {
   return(
     <div>
       {!isFetching && <ReactTable
         data={players}
         columns={columns}
+        className="-striped"
         column={{
           ...ReactTableDefaults.column,
-          minWidth: 25
+          minWidth: 25,
+          Cell: (props) => <p className="table--cell">{props.value}</p>,
         }}
         defaultPageSize={players.length}
+        defaultSorted={[{
+          id: dsort,
+          desc: true
+        }]}
+        defaultSortDesc={true}
         showPagination={false}
         resizable={false}
       />}
