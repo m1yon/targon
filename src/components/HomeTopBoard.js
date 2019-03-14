@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShare } from '@fortawesome/free-solid-svg-icons';
+import { statToPretty } from "./PlayerStats";
 
 library.add(faShare)
 
@@ -12,7 +13,7 @@ const HomeTopBoard = ( { topBoards, stat, players = {} } ) => (
     {/* title */}
     <div className="top-board__stat-title">
       <NavLink to={"/leaderboard/" + stat}>
-        {stat.charAt(0).toUpperCase() + stat.slice(1)}
+        {statToPretty[stat]}
       </NavLink>
       <NavLink className="top-board__more-icon" to={"/leaderboard/" + stat}>
         <FontAwesomeIcon icon="share" />
@@ -30,8 +31,6 @@ const HomeTopBoard = ( { topBoards, stat, players = {} } ) => (
       <Entry rank={4} stat={stat} playerName={topBoards[stat][3]} player={players[topBoards[stat][3]]} />
       <Entry rank={5} stat={stat} playerName={topBoards[stat][4]} player={players[topBoards[stat][4]]} />
     </div>
-  
-    
   </div>
 );
 

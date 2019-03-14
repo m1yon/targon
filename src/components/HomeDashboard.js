@@ -22,8 +22,8 @@ const HomeDashboard = ({ isFetching }) => (
       </div>
       :
     <p>loading...</p>}
-    
-    <div>
+
+    <div> 
       <h1>Match History</h1>
       <HomeMatchHistory />
     </div>
