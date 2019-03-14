@@ -2,11 +2,6 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { statToPretty } from "./PlayerStats";
 
-const numeral = require('numeral');
-
-let percentageFormat = "0.00%";
-let decimalFormat = "0,0.00";
-
 const PlayerStatsTable = ({ totalKills, totalDeaths, totalAssists, kda, kp, dthPercentage, fbPercentage, gd10,
   xpd10, csd10, cspm, dpm, csPercent15, dmgPercentage, earnedGoldPerMinute, goldPercentage, 
   wpm, wcpm }) => (
@@ -22,21 +17,21 @@ const PlayerStatsTable = ({ totalKills, totalDeaths, totalAssists, kda, kp, dthP
     <StatsheetEntry statname={"totalKills"} avg={ totalKills } placement="-" alt="0"/>
     <StatsheetEntry statname={"totalDeaths"} avg={ totalDeaths } placement="-" alt="1"/>
     <StatsheetEntry statname={"totalAssists"} avg={ totalAssists } placement="-" alt="0"/>
-    <StatsheetEntry statname={"kda"} avg={ numeral(kda).format(decimalFormat) } placement="-" alt="1"/>
-    <StatsheetEntry statname={"kp"} avg={ numeral(kp/100 ).format(percentageFormat) } placement="-" alt="0"/>
-    <StatsheetEntry statname={"dthPercentage"} avg={ numeral(dthPercentage/100 ).format(percentageFormat) } placement="-" alt="1"/>
-    <StatsheetEntry statname={"fbPercentage"} avg={ numeral(fbPercentage/100).format(percentageFormat) } placement="-" alt="0"/>
-    <StatsheetEntry statname={"gd10"} avg={ numeral(gd10).format(decimalFormat) } placement="-" alt="1"/>
-    <StatsheetEntry statname={"xpd10"} avg={ numeral(xpd10).format(decimalFormat) } placement="-" alt="0"/>
-    <StatsheetEntry statname={"csd10"} avg={ numeral(csd10).format(decimalFormat) } placement="-" alt="1"/>
-    <StatsheetEntry statname={"cspm"} avg={ numeral(cspm).format(decimalFormat) } placement="-" alt="0"/>
-    <StatsheetEntry statname={"csPercent15"} avg={ numeral(csPercent15/100).format(percentageFormat) } placement="-" alt="1"/>
-    <StatsheetEntry statname={"dpm"} avg={ numeral(dpm).format(decimalFormat) } placement="-" alt="0"/>
-    <StatsheetEntry statname={"dmgPercentage"} avg={ numeral(dmgPercentage/100).format(percentageFormat) } placement="-" alt="1"/>
-    <StatsheetEntry statname={"earnedGoldPerMinute"} avg={ numeral(earnedGoldPerMinute).format(decimalFormat) } placement="-" alt="0"/>
-    <StatsheetEntry statname={"goldPercentage"} avg={ numeral(goldPercentage/100).format(percentageFormat) } placement="-" alt="1"/>
-    <StatsheetEntry statname={"wpm"} avg={ numeral(wpm).format(decimalFormat) } placement="-" alt="0"/>
-    <StatsheetEntry statname={"wcpm"} avg={ numeral(wcpm).format(decimalFormat) } placement="-" alt="1"/>
+    <StatsheetEntry statname={"kda"} avg={ kda } placement="-" alt="1"/>
+    <StatsheetEntry statname={"kp"} avg={ kp } placement="-" alt="0"/>
+    <StatsheetEntry statname={"dthPercentage"} avg={ dthPercentage } placement="-" alt="1"/>
+    <StatsheetEntry statname={"fbPercentage"} avg={ fbPercentage } placement="-" alt="0"/>
+    <StatsheetEntry statname={"gd10"} avg={ gd10 } placement="-" alt="1"/>
+    <StatsheetEntry statname={"xpd10"} avg={ xpd10 } placement="-" alt="0"/>
+    <StatsheetEntry statname={"csd10"} avg={ csd10 } placement="-" alt="1"/>
+    <StatsheetEntry statname={"cspm"} avg={ cspm } placement="-" alt="0"/>
+    <StatsheetEntry statname={"csPercent15"} avg={ csPercent15 } placement="-" alt="1"/>
+    <StatsheetEntry statname={"dpm"} avg={ dpm } placement="-" alt="0"/>
+    <StatsheetEntry statname={"dmgPercentage"} avg={ dmgPercentage } placement="-" alt="1"/>
+    <StatsheetEntry statname={"earnedGoldPerMinute"} avg={ earnedGoldPerMinute } placement="-" alt="0"/>
+    <StatsheetEntry statname={"goldPercentage"} avg={ goldPercentage } placement="-" alt="1"/>
+    <StatsheetEntry statname={"wpm"} avg={ wpm } placement="-" alt="0"/>
+    <StatsheetEntry statname={"wcpm"} avg={ wcpm } placement="-" alt="1"/>
   </div>
 );
 
