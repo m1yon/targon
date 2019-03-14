@@ -27,7 +27,7 @@ const PlayerDashboard = ({ isFetching, players, location }) => {
           <PlayerStats player={ players[playerName] } />
         </div>
       :
-      console.log("fetching...")}
+      <p>loading...</p> }
     </div>
   );
 };

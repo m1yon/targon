@@ -70,34 +70,31 @@ const columns = [{
 }
 ];
 
-const LeaderboardTable = ({ isFetching, players, dsort }) => {
+const LeaderboardTable = ({ dsort, players }) => {
   return(
-    <div>
-      {!isFetching && <ReactTable
-        data={players}
-        columns={columns}
-        className="-striped"
-        column={{
-          ...ReactTableDefaults.column,
-          minWidth: 25,
-          Cell: (props) => <p className="table--cell">{props.value}</p>,
-        }}
-        defaultPageSize={players.length}
-        defaultSorted={[{
-          id: dsort,
-          desc: true
-        }]}
-        defaultSortDesc={true}
-        showPagination={false}
-        resizable={false}
-      />}
-    </div>
+    <ReactTable
+      data={players}
+      columns={columns}
+      className="-striped"
+      column={{
+        ...ReactTableDefaults.column,
+        minWidth: 25,
+        Cell: (props) => <p className="table--cell">{props.value}</p>,
+      }}
+      defaultPageSize={players.length}
+      defaultSorted={[{
+        id: dsort,
+        desc: true
+      }]}
+      defaultSortDesc={true}
+      showPagination={false}
+      resizable={false}
+    />
   );
 };
 
 const mapStateToProps = (state) => {
   return {
-    isFetching: state.players.isFetching,
     players: Object.values(state.players.data)
   };
 };
