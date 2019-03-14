@@ -13,17 +13,9 @@ const Header = () => (
             Home
           </div>
         </NavLink>
-        
-        {/* <NavLink className="navbutton" to="/player/tyler1" activeClassName="is-active">
-            Players
-        </NavLink> */}
-
-        {/* <NavLink className="navbutton" to="/team/cloud9" activeClassName="is-active">
-            Teams
-        </NavLink> */}
 
         <NavLink className="navbutton" to="/leaderboard/" activeClassName="is-active">
-            Leaderboards
+            Leaderboard
         </NavLink>
       </div>
     </div>
