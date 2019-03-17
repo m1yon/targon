@@ -2,32 +2,32 @@ import React from "react";
 import { connect } from "react-redux";
 import HomeTopBoard from "./HomeTopBoard"; 
 import HomeMatchHistory from "./HomeMatchHistory";
+import Loading from "./Loading";
 
-const HomeDashboard = ({ isFetching }) => (
-  <div className="home-dashboard">
-    {!isFetching ? 
-      <div>
-        <h1>2019 Spring Split Leaders</h1>
-        <div className="home-dashboard__grid">
-          <HomeTopBoard stat="totalKills"/>
-          <HomeTopBoard stat="totalAssists"/>
-          <HomeTopBoard stat="kda"/>
+const HomeDashboard = () => (
+    <Loading component = {
+      <div className="home-dashboard">
+        <div>
+          <h1>2019 Spring Split Leaders</h1>
+          <div className="home-dashboard__grid">
+            <HomeTopBoard stat="totalKills"/>
+            <HomeTopBoard stat="totalAssists"/>
+            <HomeTopBoard stat="kda"/>
 
-          <HomeTopBoard stat="dpm"/>
-          <HomeTopBoard stat="dmgPercentage"/>
-          <HomeTopBoard stat="kp"/>
+            <HomeTopBoard stat="dpm"/>
+            <HomeTopBoard stat="dmgPercentage"/>
+            <HomeTopBoard stat="kp"/>
 
-          <HomeTopBoard stat="goldPercentage"/>
+            <HomeTopBoard stat="goldPercentage"/>
+          </div>
+        </div>
+
+        <div> 
+          <h1>Match History</h1>
+          <HomeMatchHistory />
         </div>
       </div>
-      :
-    <p>loading...</p>}
-
-    <div> 
-      <h1>Match History</h1>
-      <HomeMatchHistory />
-    </div>
-  </div>
+    } quickLoad={true} />
 );
 
 const mapStateToProps = (state) => {

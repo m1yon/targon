@@ -1,23 +1,13 @@
 import React from "react";
-import { connect } from "react-redux"
 import LeaderboardTable from "./LeaderboardTable";
+import Loading from "./Loading";
 
-const LeaderboardDashboard = ({ isFetching, match }) => {
+const LeaderboardDashboard = ({ match }) => {  
   return(
     <div className="leaderboard-dashboard">
-      {!isFetching ?
-        <LeaderboardTable dsort={match.params.dsort ? match.params.dsort : 'totalKills'} />
-      :
-        <p>loading...</p>
-      }
+      <Loading component={<LeaderboardTable dsort={match.params.dsort ? match.params.dsort : 'totalKills'} quickLoad={false} />} />
     </div>
   );
 };
 
-const mapStateToProps = (state) => {
-  return ({
-    isFetching: state.players.isFetching
-  })
-};
-
-export default connect(mapStateToProps)(LeaderboardDashboard);
+export default LeaderboardDashboard;
