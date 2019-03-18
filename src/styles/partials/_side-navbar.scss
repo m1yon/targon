@@ -1,0 +1,34 @@
+.side-navbar {
+  background-color: $light-1;
+}
+
+.side-navbar__logo {
+  background-color: $highlight;
+  display: flex;
+  margin: 0;
+  padding: 5%;
+  justify-content: center;
+
+  h1 {
+    margin: 0;
+  }
+}
+
+.navbar-button__container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 25%;
+  a { 
+    text-decoration: none;
+    color: $white;
+  }
+}
+
+.navbutton {
+  padding: 8%;
+}
+
+.is-active {
+  background-color: $light-3;
+  font-weight: 700;
+}

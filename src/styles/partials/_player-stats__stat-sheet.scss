@@ -8,7 +8,7 @@
 
 .stat-sheet__header {
   align-items: center;
-  background-color: $black;
+  background-color: $base;
   display: grid;
   font-weight: 700;
   grid-template-columns: 40% 30% 30%;
@@ -19,7 +19,7 @@
 }
 
 .stat-sheet__entry {
-  background-color: $black;
+  background-color: $base;
   display: grid;
   grid-template-columns: 40% 30% 30%;
   padding: 0% 2%;
@@ -45,7 +45,7 @@
 }
 
 .stat-sheet__entry--alt {
-  background-color: $off-black;
+  background-color: $light-1;
 }
 
 .placement-outof {

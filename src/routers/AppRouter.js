@@ -1,16 +1,16 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Footer from "../components/Footer";
-import Header from "../components/Header";
 import HomeDashboard from "../components/HomeDashboard";
 import PlayerProfile from "../components/PlayerDashboard";
 import LeaderboardDashboard from "../components/LeaderboardDashboard";
 import TeamDashboard from "../components/TeamDashboard";
+import SideNavbar from "../components/SideNavbar";
 
 const AppRouter = () => (
   <BrowserRouter>
-    <div>
-      <Header />
+    <div className="app-dashboard">
+      <SideNavbar />
       <Switch>
         <Route path='/' component={HomeDashboard} exact={true}/>
         <Route path='/player/' component={PlayerProfile}/>
@@ -18,7 +18,7 @@ const AppRouter = () => (
         <Route path='/leaderboard/' component={LeaderboardDashboard} exact={true}/>
         <Route path='/leaderboard/:dsort' component={LeaderboardDashboard}/>
       </Switch>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   </BrowserRouter>
 );

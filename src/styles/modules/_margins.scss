@@ -1,7 +1,8 @@
 @mixin dashboard-container {
-  background-color: $off-black;
+  background-color: $light-1;
   margin: 0% 5%;
   padding: 1% 1% 5% 1%;
+  min-height: 40rem;
   h1 {
     margin: 1rem 0% 2rem 0%;
   }

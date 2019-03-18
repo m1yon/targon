@@ -4,9 +4,10 @@ import HomeTopBoard from "./HomeTopBoard";
 import HomeMatchHistory from "./HomeMatchHistory";
 import Loading from "./Loading";
 
-const HomeDashboard = () => (
+const HomeDashboard = () => (  
+  <div className="home-dashboard">
     <Loading component = {
-      <div className="home-dashboard">
+      <div className="home-dashboard__flex">
         <div>
           <h1>2019 Spring Split Leaders</h1>
           <div className="home-dashboard__grid">
@@ -18,7 +19,7 @@ const HomeDashboard = () => (
             <HomeTopBoard stat="dmgPercentage"/>
             <HomeTopBoard stat="kp"/>
 
-            <HomeTopBoard stat="goldPercentage"/>
+            {/* <HomeTopBoard stat="goldPercentage"/> */}
           </div>
         </div>
 
@@ -27,7 +28,9 @@ const HomeDashboard = () => (
           <HomeMatchHistory />
         </div>
       </div>
-    } quickLoad={true} />
+      } quickLoad={true} />
+    </div>
+    
 );
 
 const mapStateToProps = (state) => {

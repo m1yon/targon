@@ -2,16 +2,16 @@
 @import "./modules/_margins";
 @import "./modules/_typography";
 
+@import "./partials/_app-dashboard";
 @import "./partials/_base";
 @import "./partials/_footer";
-@import "./partials/_header";
 @import "./partials/_home-dashboard";
 @import "./partials/_home-dashboard__match-history";
 @import "./partials/_home-dashboard__top-board";
 @import "./partials/_hr";
 @import "./partials/_leaderboard-dashboard";
 @import "./partials/_leaderboard-dashboard__table";
-@import "./partials/_navbar";
+@import "./partials/_side-navbar";
 @import "./partials/_player-dashboard__player-stats";
 @import "./partials/_player-dashboard";
 @import "./partials/_player-stats__area-chart";

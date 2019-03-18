@@ -3,7 +3,7 @@
 }
 
 .match-history__card {
-  background-color: $gray;
+  background-color: $light-2;
   display: grid;
   grid-template-columns: 32% 8% 20% 8% 32%;
   margin: 2% 0%;
@@ -19,7 +19,7 @@
   justify-content: center;
   justify-self: center;
   display: flex;
-  background-color: $off-black;
+  background-color: $light-1;
   height: 80%;
   width: 85%;
 }

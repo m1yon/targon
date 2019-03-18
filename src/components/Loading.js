@@ -15,7 +15,7 @@ const Loading = ({ isFetchingPlayers, isFetchingTopBoards, component, quickLoad 
         (!isFetchingPlayers && !isFetchingTopBoards && quickLoad) ?
           component
         :
-        <div className="spinner"></div>
+        <div className="spinner__container"><div className="spinner"></div></div>
       }
     </div>
   );
