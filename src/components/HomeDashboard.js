@@ -19,7 +19,7 @@ const HomeDashboard = () => (
             <HomeTopBoard stat="dmgPercentage"/>
             <HomeTopBoard stat="kp"/>
 
-            {/* <HomeTopBoard stat="goldPercentage"/> */}
+            <HomeTopBoard stat="goldPercentage"/>
           </div>
         </div>
 

@@ -37,7 +37,7 @@ const HomeTopBoard = ( { topBoards, stat, players = {} } ) => (
 const Entry = ( { stat, rank, playerName, player } ) => (
   <div className="top-board__entry">
     <div className="top-board__entry-info">
-      <p>{rank}.</p>
+      <p className="top-board__rank">{rank}.</p>
 
       <NavLink 
         className="top-board__entry-name"

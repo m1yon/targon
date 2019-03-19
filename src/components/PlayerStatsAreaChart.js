@@ -26,8 +26,8 @@ const PlayerStatsAreaChart = () => (
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip content={CustomToolTip} />
-          <Area type="monotone" dataKey="kills" stroke="#3b95f7" fill="#3b95f7" />
-          <Area type="monotone" dataKey="avgkills" stroke="#848484" fill="#848484" />
+          <Area type="monotone" dataKey="kills" stroke="#4c61ee" fill="#4c61ee" />
+          <Area type="monotone" dataKey="avgkills" stroke="#2b2d42" fill="#2b2d42" />
         </AreaChart>
     </ResponsiveContainer>
   </div>

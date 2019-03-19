@@ -4,6 +4,8 @@
   h1 {
     margin-left: 2%;
   }
+  
+  box-shadow: 0 37.125px 70px -12.125px rgba(0,0,0,0.3);
 }
 
 .stat-sheet__header {
@@ -16,13 +18,14 @@
   p {
     margin: 4% 0%;
   }
+
 }
 
 .stat-sheet__entry {
   background-color: $base;
   display: grid;
   grid-template-columns: 40% 30% 30%;
-  padding: 0% 2%;
+  padding: 1% 2%;
   font-weight: 700;
   font-size: 1rem;
 

@@ -48,7 +48,7 @@ app.get('/api/topBoards', (req,res) => {
         'dpm': docs[3].players,
         'dmgPercentage': docs[4].players,
         'kp': docs[5].players,
-        // 'goldPercentage': docs[6].players,
+        'goldPercentage': docs[6].players,
       }
     };
     res.send(returnedValue);

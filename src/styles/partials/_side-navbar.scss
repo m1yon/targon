@@ -4,10 +4,12 @@
 
 .side-navbar__logo {
   background-color: $highlight;
+  height: 3rem;
   display: flex;
   margin: 0;
-  padding: 5%;
   justify-content: center;
+  align-items: center;
+  padding: 1rem;
 
   h1 {
     margin: 0;
@@ -20,7 +22,7 @@
   margin-top: 25%;
   a { 
     text-decoration: none;
-    color: $white;
+    color: $light-4;
   }
 }
 
@@ -30,5 +32,5 @@
 
 .is-active {
   background-color: $light-3;
-  font-weight: 700;
+  color: $white !important;
 }

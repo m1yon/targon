@@ -1,6 +1,6 @@
 // header cell
 .rt-th {
-  background-color: $highlight;
+  background-color: $base;
 }
 
 .rt-td {
@@ -24,11 +24,11 @@
 }
 
 .-even {
-  background-color: $light-2;
+  background-color: $light-1;
 }
 
 .-highlight {
-  background-color: $light-1;
+  background-color: $light-2;
 }
 
 .cell--name {
@@ -42,4 +42,9 @@
   &:hover {
     color: lighten($color: $highlight, $amount: 10);
   }
+}
+
+.ReactTable {
+  border-style: none;
+  box-shadow: 0 37.125px 70px -12.125px rgba(0,0,0,0.3);
 }
