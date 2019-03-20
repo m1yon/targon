@@ -30,10 +30,25 @@
 }
 
 .navbutton {
-  padding: 8%;
+  display: grid;
+  padding: 8% 8%;
+  grid-template-columns: 15% 85%;
+  justify-items: center;
+  font-size: .9rem;
+  p {
+    font-family: $logo-font;
+    font-weight: 700;
+    margin: 0 0 0 20%;
+    color: $light-4;
+    justify-self: start;
+  }
+  
 }
 
 .is-active {
   background-color: $light-3;
   color: $white !important;
+  p {
+    color: $white !important;
+  }
 }
