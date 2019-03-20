@@ -4,6 +4,9 @@ const app = express();
 const publicPath = path.join(__dirname, '..', 'public');
 const port = process.env.PORT || 3000;
 const MongoClient = require('mongodb').MongoClient;
+const calculate = require('./helperMethods/calculation');
+const placement = require('./helperMethods/placement');
+var CronJob = require('cron').CronJob;
 
 const {arrayToObjects} = require('./helperMethods/arrayToObjects');
 
@@ -14,11 +17,25 @@ let db; // creates db variable in order to make database calls outside the funct
 // connecting to database and starting server on port
 MongoClient.connect(url,{ useNewUrlParser: true }, (err, client) => {
   if (err) {
-    console.log("unable to connect to mongo server", err);
+    console.log("unable to connect to mongo server", err);S
   } else {
     console.log('Connection established to', url);
     db = client.db(dbName);
+
+    //console.log('Before job instantiation');
+    const job = new CronJob('00 00 00 * * *', function() {
+      console.log('At Midnight executing query calculations:');
+      calculate(db);
     
+      placement(db, "Support");
+      placement(db, "Middle");
+      placement(db, "ADC");
+      placement(db, "Jungle");
+      placement(db, "Top");
+    });
+    //console.log('After job instantiation');
+    job.start();
+
     app.listen(port, () => {                        //starting server
       console.log(`Server is up on Port: ${port}`);
     });
