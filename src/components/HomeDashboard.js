@@ -15,7 +15,7 @@ const HomeDashboard = () => (
             <HomeTopBoard stat="totalAssists"/>
             <HomeTopBoard stat="kda"/>
 
-            <HomeTopBoard stat="dpm"/>
+            {/* <HomeTopBoard stat="dpm"/> */}
             <HomeTopBoard stat="dmgPercentage"/>
             <HomeTopBoard stat="kp"/>
 

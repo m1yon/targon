@@ -12,6 +12,8 @@
   padding: 1rem;
 
   h1 {
+    font-family: $logo-font !important;
+    font-weight: 700;
     margin: 0;
   }
 }
@@ -21,6 +23,7 @@
   flex-direction: column;
   margin-top: 25%;
   a { 
+    font-family: $logo-font !important;
     text-decoration: none;
     color: $light-4;
   }
