@@ -1,5 +1,6 @@
 .side-navbar {
   background-color: $light-1;
+  width: 15rem;
 }
 
 .side-navbar__logo {
@@ -9,7 +10,8 @@
   margin: 0;
   justify-content: center;
   align-items: center;
-  padding: 1rem;
+  padding: 1rem 0;
+  width: 15rem;
 
   h1 {
     font-family: $logo-font !important;

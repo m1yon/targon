@@ -44,7 +44,10 @@ const StatsheetEntry = ({ alt, avg, placement, statname, placementTotal }) => (
   <div className={alt == "1" ? "stat-sheet__entry" : "stat-sheet__entry stat-sheet__entry--alt"}>
   <NavLink to={`/leaderboard/${statname}`}>{statToPretty[statname]}</NavLink>
     <p>{avg}</p>
-    <p>{placement} <span className="placement-outof">/ {placementTotal}</span></p>
+    { (placement/placementTotal) <= 0.5 ? 
+      <p className="placement-positive">{placement} <span className="placement-outof">/ {placementTotal}</span></p>
+    : <p className="placement-negative">{placement} <span className="placement-outof">/ {placementTotal}</span></p>
+    }
   </div>
 );
 

@@ -1,23 +1,28 @@
 // Topboard
 .home-dashboard__top-board {
+  @include drop-shadow;
+  
+  background-color: $light-1;
   display: flex;
   flex-direction: column; 
   line-height: .2rem;
   margin-bottom: 3%;
+  padding: 15% 10%;
 }
 
 // Title of board (Wins, kills, etc.)
 .top-board__stat-title {
   display: flex;
   color: $highlight;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  margin-bottom: 0%;
+  margin-bottom: 10%;
 
   a {
     color: $highlight;
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-family: $body-font;
+    font-size: 2rem;
+    font-weight: 900;
     text-decoration: none;
   }
 
@@ -36,6 +41,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding: 4% 0%;
 }
 
 // Info on left-hand side (Number, entry, team sfx)
@@ -48,10 +54,10 @@
 .top-board__entry-name {
   align-self: center;
   font-family: $body-font;
-  font-size: 1rem;
-  margin-left: 2%;
+  font-size: 1.2rem;
+  margin-left: 4%;
   text-decoration: none;
-  //font-weight: 700;
+  font-weight: 700;
 
   &:hover {
     color: lighten($color: $highlight, $amount: 10);
@@ -70,7 +76,7 @@
   align-self: center;
   font-size: 1.75rem;
   font-weight: 700;
-  margin: 0%;
+  margin: 1rem 0 1rem 0;
 }
 
 .top-board__rank {

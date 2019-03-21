@@ -1,7 +1,11 @@
 .app-dashboard {
   display: grid;
-  grid-template-columns: 12.5% 87.5%;
+  grid-template-columns: 15rem auto;
   height: 100%;
+}
+
+.app-flex {
+  display: flex;
 }
 
 #app {

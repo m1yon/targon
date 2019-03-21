@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import HomeTopBoard from "./HomeTopBoard"; 
 import Loading from "./Loading";
 
-const HomeDashboard = () => (  
-  <div className="home-dashboard">
+const PlayersDashboard = () => (  
+  <div className="players-dashboard">
     <Loading component = {
       <div className="home-dashboard__flex">
         <div>
@@ -28,4 +28,4 @@ const mapStateToProps = (state) => {
   };
 }
 
-export default connect(mapStateToProps)(HomeDashboard);
+export default connect(mapStateToProps)(PlayersDashboard);

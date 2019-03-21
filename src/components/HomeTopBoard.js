@@ -15,13 +15,10 @@ const HomeTopBoard = ( { topBoards, stat, players = {} } ) => (
       <NavLink to={"/leaderboard/" + stat}>
         {statToPretty[stat]}
       </NavLink>
-      <NavLink className="top-board__more-icon" to={"/leaderboard/" + stat}>
+      {/* <NavLink className="top-board__more-icon" to={"/leaderboard/" + stat}>
         <FontAwesomeIcon icon="share" />
-      </NavLink>
+      </NavLink> */}
     </div>
-    
-    {/* Linebreak */}
-    <hr />
 
     {/* Top 5 List */}
     <div>

@@ -1,11 +1,11 @@
 .player-stats__stat-sheet {
+  @include drop-shadow;
+
   display: flex;
   flex-direction: column;
   h1 {
     margin-left: 2%;
   }
-  
-  box-shadow: 0 37.125px 70px -12.125px rgba(0,0,0,0.3);
 }
 
 .stat-sheet__header {
@@ -51,7 +51,16 @@
   background-color: $light-1;
 }
 
+.placement-positive {
+  color: $positive;
+}
+
+.placement-negative {
+  color: $negative;
+}
+
 .placement-outof {
+  color: $white;
   font-size: .8rem;
   opacity: 0.5;
 }
