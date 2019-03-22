@@ -4,8 +4,7 @@ const app = express();
 const publicPath = path.join(__dirname, '..', 'public');
 const port = process.env.PORT || 3000;
 const MongoClient = require('mongodb').MongoClient;
-const calculate = require('./helperMethods/calculation');
-const placement = require('./helperMethods/placement');
+const grabData = require('./helperMethods/grabMatchData');
 var CronJob = require('cron').CronJob;
 
 const {arrayToObjects} = require('./helperMethods/arrayToObjects');
@@ -21,17 +20,13 @@ MongoClient.connect(url,{ useNewUrlParser: true }, (err, client) => {
   } else {
     console.log('Connection established to', url);
     db = client.db(dbName);
+    
+    grabData(db);
 
     //console.log('Before job instantiation');
     const job = new CronJob('00 00 00 * * *', function() {
       console.log('At Midnight executing query calculations:');
-      calculate(db);
-    
-      placement(db, "Support");
-      placement(db, "Middle");
-      placement(db, "ADC");
-      placement(db, "Jungle");
-      placement(db, "Top");
+      grabData(db);
     });
     //console.log('After job instantiation');
     job.start();
