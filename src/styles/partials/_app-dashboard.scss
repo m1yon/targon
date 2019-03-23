@@ -1,7 +1,11 @@
 .app-dashboard {
   display: grid;
-  grid-template-columns: 15rem auto;
+  grid-template-columns: 15vw auto;
   height: 100%;
+
+  @media (max-width: 1000px) {
+    grid-template-columns: 100vw;
+  }
 }
 
 .app-flex {

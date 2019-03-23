@@ -6,13 +6,6 @@ import { faHome, faUser, faUsers, faListOl, faCalendar, faQuestionCircle } from 
 
 library.add(faHome, faUser, faUsers, faListOl, faCalendar, faQuestionCircle);
 
-// Dashboard
-// Players
-// Teams
-// Leaderboards
-// Schedule
-// About
-
 const SideNavbar = () => (
   <div className="side-navbar">
     <div className="side-navbar__logo">

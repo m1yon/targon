@@ -13,7 +13,7 @@ const AppRouter = () => (
   <BrowserRouter>
     <div className="app-dashboard">
       <SideNavbar />
-      <div classname="app-flex">
+      <div>
         <TopNavbar />
         <Switch>
           <Route path='/' component={HomeDashboard} exact={true}/>

@@ -2,14 +2,27 @@
   @include dashboard-container;
 }
 
-.home-dashboard__flex {
-
-}
-
 .home-dashboard__grid {
   display: grid;
   grid-template-columns: 23% 23% 23% 23%;
   grid-gap: 2%;
   justify-content: start;
   margin-top: 3%;
+
+  @media(max-width: 1475px) {
+    display: grid;
+    grid-template-columns: 32% 32% 32%;
+    grid-gap: 2%;
+    justify-content: start;
+    margin-top: 3%;
+  }
+
+  @media(max-width: 1050px) {
+    display: grid;
+    grid-template-columns: 48% 48% ;
+    grid-gap: 2%;
+    justify-content: start;
+    margin-top: 3%;
+  }
 }
+

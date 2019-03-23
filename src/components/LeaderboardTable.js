@@ -9,7 +9,7 @@ const columns = [{
   Header: <p className='table--header'>Name</p>,
   Cell: (props) => <NavLink to={`/player/${props.value}`} className="cell--name">{props.value}</NavLink>,
   accessor: "_id",
-  width: 150
+  width: 150,
 }, {
   Header: <p className='table--header'>K</p>,
   accessor: "totalKills",
@@ -71,7 +71,7 @@ const columns = [{
 ];
 
 const LeaderboardTable = ({ dsort, players }) => {
-  return(
+  return (
     <ReactTable
       data={players}
       columns={columns}

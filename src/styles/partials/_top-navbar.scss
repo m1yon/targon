@@ -1,7 +1,38 @@
 .top-navbar {
   background-color: $light-1;
-  height: 3rem;
+  height: 3vw;
   margin: 0;
   padding: 1rem 0;
   width: 100%;
+
+  @media (max-width: 1000px) {
+    background-color: $highlight;
+    height: 3vw;
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    width: 100%;
+  }
+}
+
+.top-navbar__mobile-logo {
+  display: none;
+  @media (max-width: 1000px) {
+    display: block;
+    font-family: $logo-font !important;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+  }
+}
+
+.top-navbar__mobile-nav-button {
+  display: none;
+  @media (max-width: 1000px) {
+    display: flex;
+    justify-self: flex-start;
+  }
 }

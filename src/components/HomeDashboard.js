@@ -8,13 +8,13 @@ const HomeDashboard = () => (
     <Loading component = {
       <div className="home-dashboard__flex">
         <div>
-          <h1>Player Overview</h1>
-          <div className="home-dashboard__grid">
+          <h1>Home</h1>
+          {/* <div className="home-dashboard__grid">
             <HomeTopBoard stat="totalKills"/>
             <HomeTopBoard stat="kda"/>
             <HomeTopBoard stat="dmgPercentage"/>
             <HomeTopBoard stat="kp"/>
-          </div>
+          </div> */}
         </div>
       </div>
       } quickLoad={true} />

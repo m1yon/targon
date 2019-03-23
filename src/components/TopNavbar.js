@@ -1,9 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
+import MobileNavBar from './MobileNavBar';
 
-const TopNavbar = () => (
-  <div className="top-navbar">
+const TopNavbar = () => {
+  const [navMenuDisplayed, setNavMenuDisplayed] = useState(true);
+  return(
+    <div>
+      {navMenuDisplayed && <MobileNavBar setNavMenuDisplayed={setNavMenuDisplayed}/>}
+      <div className="top-navbar">
+        <button 
+          className="top-navbar__mobile-nav-button" 
+          onClick={() => setNavMenuDisplayed(true)} 
+        >
+          nav
+        </button>  
 
-  </div>
-)
+        <p className="top-navbar__mobile-logo">
+          Targon
+        </p>
+        <div></div>
+      </div>
+    </div>
+  );
+}
 
 export default TopNavbar;
