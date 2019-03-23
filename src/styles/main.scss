@@ -1,6 +1,7 @@
 @import "./modules/_colors";
 @import "./modules/_effects";
 @import "./modules/_margins";
+@import "./modules/_responsive";
 @import "./modules/_typography";
 
 @import "./partials/_app-dashboard";
@@ -8,20 +9,21 @@
 @import "./partials/_footer";
 @import "./partials/_home-dashboard";
 @import "./partials/_home-dashboard__match-history";
-@import "./partials/_home-dashboard__top-board";
 @import "./partials/_hr";
 @import "./partials/_leaderboard-dashboard";
 @import "./partials/_leaderboard-dashboard__table";
+
 @import "./partials/_side-navbar";
-@import "./partials/_mobile-navbar";
-@import "./partials/_player-dashboard__player-stats";
+@import "./partials/_mobile-sidebar";
+@import "./partials/_top-navbar";
+
 @import "./partials/_player-dashboard";
 @import "./partials/_player-stats__area-chart";
+@import "./partials/_player-dashboard__player-profile";
+@import "./partials/_player-dashboard__player-stats";
 @import "./partials/_player-stats__stat-sheet";
+
+@import "./partials/_players-dashboard__top-board";
 @import "./partials/_players-dashboard";
-@import "./partials/_stat-header";
-@import "./partials/_team-dashboard";
-@import "./partials/_team-banner";
-@import "./partials/_top-navbar";
 
 @import "./vendor/_spinner";

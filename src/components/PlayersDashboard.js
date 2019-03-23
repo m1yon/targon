@@ -1,25 +1,23 @@
 import React from "react";
 import { connect } from "react-redux";
-import HomeTopBoard from "./HomeTopBoard"; 
+import PlayersTopBoard from "./PlayersTopBoard";
 import Loading from "./Loading";
 
-const PlayersDashboard = () => (  
+const PlayersDashboard = () => (
   <div className="players-dashboard">
-    <Loading component = {
-      <div className="home-dashboard__flex">
-        <div>
-          <h1>Player Overview</h1>
-          <div className="home-dashboard__grid">
-            <HomeTopBoard stat="totalKills"/>
-            <HomeTopBoard stat="kda"/>
-            <HomeTopBoard stat="dmgPercentage"/>
-            <HomeTopBoard stat="kp"/>
-          </div>
+    <Loading component={
+      <div>
+        <h1>Player Overview</h1>
+        <div className="players-dashboard__grid">
+          <PlayersTopBoard stat="totalKills" />
+          <PlayersTopBoard stat="kda" />
+          <PlayersTopBoard stat="dmgPercentage" />
+          <PlayersTopBoard stat="kp" />
         </div>
       </div>
-      } quickLoad={true} />
-    </div>
-    
+    } quickLoad={true} />
+  </div>
+
 );
 
 const mapStateToProps = (state) => {

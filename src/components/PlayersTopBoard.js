@@ -8,8 +8,8 @@ import { statToPretty } from "./PlayerStats";
 
 library.add(faShare)
 
-const HomeTopBoard = ( { topBoards, stat, players = {} } ) => (
-  <div className="home-dashboard__top-board">
+const PlayersTopBoard = ( { topBoards, stat, players = {} } ) => (
+  <div className="players-dashboard__top-board">
     {/* title */}
     <div className="top-board__stat-title">
       <NavLink to={"/leaderboard/" + stat}>
@@ -59,4 +59,4 @@ const mapStateToProps = (state, props) => {
   }
 };
 
-export default connect(mapStateToProps)(HomeTopBoard);
+export default connect(mapStateToProps)(PlayersTopBoard);

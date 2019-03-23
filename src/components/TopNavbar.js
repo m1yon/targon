@@ -1,22 +1,27 @@
 import React, { useState } from 'react';
-import MobileNavBar from './MobileNavBar';
+import MobileSidebar from './MobileSidebar';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { NavLink } from 'react-router-dom';
+
+library.add(faBars);
 
 const TopNavbar = () => {
-  const [navMenuDisplayed, setNavMenuDisplayed] = useState(true);
+  const [navMenuDisplayed, setNavMenuDisplayed] = useState(false);
   return(
     <div>
-      {navMenuDisplayed && <MobileNavBar setNavMenuDisplayed={setNavMenuDisplayed}/>}
-      <div className="top-navbar">
-        <button 
+      {navMenuDisplayed && <MobileSidebar setNavMenuDisplayed={setNavMenuDisplayed}/>}
+      <div className="top-navbar">  
+        <FontAwesomeIcon 
           className="top-navbar__mobile-nav-button" 
-          onClick={() => setNavMenuDisplayed(true)} 
-        >
-          nav
-        </button>  
+          icon="bars" 
+          onClick={() => setNavMenuDisplayed(true)}  
+        />
 
-        <p className="top-navbar__mobile-logo">
+        <NavLink to="/" className="top-navbar__mobile-logo">
           Targon
-        </p>
+        </NavLink>
         <div></div>
       </div>
     </div>

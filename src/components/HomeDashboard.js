@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import HomeTopBoard from "./HomeTopBoard"; 
 import Loading from "./Loading";
 
 const HomeDashboard = () => (  

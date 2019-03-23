@@ -53,6 +53,8 @@ module.exports = (env) => {
       contentBase: path.join(__dirname, 'public'),
       historyApiFallback: true,
       publicPath: '/dist/',
+      host: '0.0.0.0',
+      disableHostCheck: true,
 
       proxy: {
         "/api": {

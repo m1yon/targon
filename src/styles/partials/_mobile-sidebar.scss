@@ -1,0 +1,46 @@
+.mobile-sidebar {
+  background: $base;
+  height: 100%;
+  width: 70%;
+  position: absolute;
+  z-index: 999;
+  opacity: 1;
+}
+
+.mobile-sidebar__unfocus {
+  background: $base;
+  opacity: 0.5;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 50
+}
+
+.mobile-sidebar-button__container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10%;
+  a { 
+    font-family: $logo-font !important;
+    font-size: 1.25rem;
+    text-decoration: none;
+    color: $light-4;
+  }
+}
+
+.mobile-sidebar__button {
+  display: grid;
+  padding: 10%;
+  grid-template-columns: 5% 85%;
+  justify-items: center;
+  font-size: .9rem;
+
+  p {
+    font-family: $logo-font;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0 0 0 10%;
+    color: $light-4;
+    justify-self: start;
+  }
+}
