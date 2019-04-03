@@ -4,6 +4,7 @@ import { ReactTableDefaults } from "react-table";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import "react-table/react-table.css";
+import numeral from 'numeral';
 
 const columns = [{
   Header: <p className='table--header'>Name</p>,
@@ -13,7 +14,7 @@ const columns = [{
 }, {
   Header: <p className='table--header'>K</p>,
   accessor: "totalKills",
-  width: 35
+  width: 35,
 }, {
   Header: <p className='table--header'>D</p>,
   accessor: "totalDeaths",
@@ -30,58 +31,184 @@ const columns = [{
   Header: <p className='table--header'>KP</p>,
   accessor: "kp",
   width: 65,
+  sortMethod: (a, b, desc) => {
+    a = numeral(a).value();
+    b = numeral(b).value();
+    if(a > b)
+      return 1;
+    else if (a < b)
+      return -1;
+    return 0;
+  } 
 }, {
   Header: <p className='table--header'>DTH%</p>,
   accessor: "dthPercentage",
   width: 65,
+  sortMethod: (a, b, desc) => {
+    a = numeral(a).value();
+    b = numeral(b).value();
+    if(a > b)
+      return 1;
+    else if (a < b)
+      return -1;
+    return 0;
+  } 
 }, {
   Header: <p className='table--header'>FB%</p>,
   accessor: "fbPercentage",
   width: 65,
+  sortMethod: (a, b, desc) => {
+    a = numeral(a).value();
+    b = numeral(b).value();
+    if(a > b)
+      return 1;
+    else if (a < b)
+      return -1;
+    return 0;
+  } 
 }, {
   Header: <p className='table--header'>GD10</p>,
   accessor: "gd10",
   width: 65,
+  sortMethod: (a, b, desc) => {
+    a = numeral(a).value();
+    b = numeral(b).value();
+    if(a > b)
+      return 1;
+    else if (a < b)
+      return -1;
+    return 0;
+  } 
 }, {
   Header: <p className='table--header'>XPD10</p>,
   accessor: "xpd10",
   width: 65,
+  sortMethod: (a, b, desc) => {
+    a = numeral(a).value();
+    b = numeral(b).value();
+    if(a > b)
+      return 1;
+    else if (a < b)
+      return -1;
+    return 0;
+  } 
 }, {
   Header: <p className='table--header'>CSD10</p>,
   accessor: "csd10",
   width: 65,
+  sortMethod: (a, b, desc) => {
+    a = numeral(a).value();
+    b = numeral(b).value();
+    if(a > b)
+      return 1;
+    else if (a < b)
+      return -1;
+    return 0;
+  } 
 }, {
   Header: <p className='table--header'>CSPM</p>,
   accessor: "cspm",
   width: 65,
+  sortMethod: (a, b, desc) => {
+    a = numeral(a).value();
+    b = numeral(b).value();
+    if(a > b)
+      return 1;
+    else if (a < b)
+      return -1;
+    return 0;
+  } 
 }, {
   Header: <p className='table--header'>CS%P15</p>,
   accessor: "csPercent15",
   width: 70,
+  sortMethod: (a, b, desc) => {
+    a = numeral(a).value();
+    b = numeral(b).value();
+    if(a > b)
+      return 1;
+    else if (a < b)
+      return -1;
+    return 0;
+  } 
 }, {
   Header: <p className='table--header'>DPM</p>,
   accessor: "dpm",
   width: 65,
+  sortMethod: (a, b, desc) => {
+    a = numeral(a).value();
+    b = numeral(b).value();
+    if(a > b)
+      return 1;
+    else if (a < b)
+      return -1;
+    return 0;
+  } 
 }, {
   Header: <p className='table--header'>DMG%</p>,
   accessor: "dmgPercentage",
   width: 65,
+  sortMethod: (a, b, desc) => {
+    a = numeral(a).value();
+    b = numeral(b).value();
+    if(a > b)
+      return 1;
+    else if (a < b)
+      return -1;
+    return 0;
+  } 
 }, {
   Header: <p className='table--header'>EGPM</p>,
   accessor: "earnedGoldPerMinute",
   width: 65,
+  sortMethod: (a, b, desc) => {
+    a = numeral(a).value();
+    b = numeral(b).value();
+    if(a > b)
+      return 1;
+    else if (a < b)
+      return -1;
+    return 0;
+  } 
 }, {
   Header: <p className='table--header'>GOLD%</p>,
   accessor: "goldPercentage",
   width: 65,
+  sortMethod: (a, b, desc) => {
+    a = numeral(a).value();
+    b = numeral(b).value();
+    if(a > b)
+      return 1;
+    else if (a < b)
+      return -1;
+    return 0;
+  } 
 }, {
   Header: <p className='table--header'>WPM</p>,
   accessor: "wpm",
   width: 65,
+  sortMethod: (a, b, desc) => {
+    a = numeral(a).value();
+    b = numeral(b).value();
+    if(a > b)
+      return 1;
+    else if (a < b)
+      return -1;
+    return 0;
+  } 
 }, {
   Header: <p className='table--header'>WCPM</p>,
   accessor: "wcpm",
   width: 65,
+  sortMethod: (a, b, desc) => {
+    a = numeral(a).value();
+    b = numeral(b).value();
+    if(a > b)
+      return 1;
+    else if (a < b)
+      return -1;
+    return 0;
+  } 
 }
 ];
 
