@@ -17,4 +17,7 @@ hr {
   height: 100%;
   width: 2px;
   margin: 0%;
+  @media (max-width: 1050px) {
+    display: none;
+  }
 }

@@ -12,6 +12,12 @@
   font-family: $header-font;
 }
 
+.ReactTable .rt-tbody {
+  height: 73vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
 .-sort-asc {
   box-shadow: inset 0 3px 0 0 $highlight !important;
 }
