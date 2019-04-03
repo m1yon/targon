@@ -57,7 +57,7 @@ const columns = [{
 }, {
   Header: <p className='table--header'>CS%P15</p>,
   accessor: "csPercent15",
-  width: 65,
+  width: 70,
 }, {
   Header: <p className='table--header'>DPM</p>,
   accessor: "dpm",

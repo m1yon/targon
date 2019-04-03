@@ -62,3 +62,14 @@
   @include drop-shadow;
   border-style: none;
 }
+
+@media(min-width: 1050px) {
+  .rt-tbody::-webkit-scrollbar {
+    width: 1em;
+  }
+  
+  .rt-tbody::-webkit-scrollbar-thumb {
+  background-color: $light-2;
+  outline: 1px solid slategrey;
+  }
+}
