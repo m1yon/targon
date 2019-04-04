@@ -20,13 +20,11 @@ MongoClient.connect(url,{ useNewUrlParser: true }, (err, client) => {
   } else {
     console.log('Connection established to', url);
     db = client.db(dbName);
-    
-    grabParseCalculateData(db);
 
     //console.log('Before job instantiation');
     const job = new CronJob('00 00 00 * * *', function() {
       console.log('At Midnight executing query calculations:');
-      grabData(db);
+      grabParseCalculateData(db);
     });
     //console.log('After job instantiation');
     job.start();
