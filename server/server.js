@@ -4,7 +4,7 @@ const app = express();
 const publicPath = path.join(__dirname, '..', 'public');
 const port = process.env.PORT || 3000;
 const MongoClient = require('mongodb').MongoClient;
-const grabData = require('./helperMethods/grabMatchData');
+const grabParseCalculateData = require('./helperMethods/grabParseCalculateData');
 var CronJob = require('cron').CronJob;
 
 const {arrayToObjects} = require('./helperMethods/arrayToObjects');
@@ -21,7 +21,7 @@ MongoClient.connect(url,{ useNewUrlParser: true }, (err, client) => {
     console.log('Connection established to', url);
     db = client.db(dbName);
     
-    grabData(db);
+    grabParseCalculateData(db);
 
     //console.log('Before job instantiation');
     const job = new CronJob('00 00 00 * * *', function() {
