@@ -16,6 +16,9 @@
   height: 73vh;
   overflow-x: hidden;
   overflow-y: scroll;
+  @media (max-width: 1050px) {
+    height: 80vh;
+  }
 }
 
 .-sort-asc {
@@ -63,13 +66,13 @@
   border-style: none;
 }
 
-@media(min-width: 1050px) {
+@media(min-width: 1051px) {
   .rt-tbody::-webkit-scrollbar {
     width: 1em;
   }
   
   .rt-tbody::-webkit-scrollbar-thumb {
-  background-color: $light-2;
-  outline: 1px solid slategrey;
+    background-color: $light-2;
+    outline: 1px solid slategrey;
   }
 }
