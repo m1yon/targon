@@ -44,11 +44,11 @@ async function recentMatches(db) {
             }
         }, 
         {
-            "$out": "RecentMatchesTest"
+            "$out": "RecentMatches"
         }
     ];
 
-    var cursor = await db.collection("NALCSTest").aggregate(pipeline, options).toArray();
+    var cursor = await db.collection("NALCS").aggregate(pipeline, options).toArray();
 
 }
 

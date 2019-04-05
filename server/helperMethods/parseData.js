@@ -3,7 +3,7 @@ var fs = require('fs');
 async function parseData(db) {
 
     // clear collection
-    await db.collection("NALCSTest").remove({});
+    await db.collection("NALCS").remove({});
     
     //parse through json file and store data into the database
     await fs.readFile('server/data/data.json', 'utf8', function (err, data) {
@@ -112,7 +112,7 @@ async function parseData(db) {
             data.csat15 = parseInt(data.csat15);
             data.oppcsat15 = parseInt(data.oppcsat15);
             data.csdat15 = parseInt(data.csdat15);
-            await db.collection("NALCSTest").save(data);
+            await db.collection("NALCS").save(data);
             await sleep(150);
           }
         });

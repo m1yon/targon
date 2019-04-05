@@ -13,15 +13,15 @@ async function calculateOtherRawData(db) {
         "_id": 0
     };
 
-    var cursor = await db.collection("NALCSTest").find({});
+    var cursor = await db.collection("NALCS").find({});
 
     cursor.forEach(
         async function(doc) {
-            var cursor2 = await db.collection("NALCSTest").find({ "player": "Team", "team": doc.team, "gameid": doc.gameid }).project(projection);
+            var cursor2 = await db.collection("NALCS").find({ "player": "Team", "team": doc.team, "gameid": doc.gameid }).project(projection);
             cursor2.forEach(
                 async function(doc2) {
                     var csPer15 = (doc.csat15 / doc2.csat15) * 100;
-                    await db.collection("NALCSTest").updateOne({ "_id": doc._id }, { "$set": { "csPercent15": csPer15} }, { "upsert": true } );
+                    await db.collection("NALCS").updateOne({ "_id": doc._id }, { "$set": { "csPercent15": csPer15} }, { "upsert": true } );
                 }, 
             );
         }, 
@@ -30,16 +30,16 @@ async function calculateOtherRawData(db) {
     // give mongodb time to insert
     await sleep(15000);
 
-    var cursor = await db.collection("NALCSTest").find({});
+    var cursor = await db.collection("NALCS").find({});
 
     cursor.forEach(
         async function(doc) {
             if (doc.d != 0) {
                 var deathPer = (doc.d / doc.teamdeaths) * 100;
-                await db.collection("NALCSTest").updateOne({ "_id": doc._id }, { "$set": { "deathPercent": deathPer} }, { "upsert": true } );
+                await db.collection("NALCS").updateOne({ "_id": doc._id }, { "$set": { "deathPercent": deathPer} }, { "upsert": true } );
             }
             else {
-                await db.collection("NALCSTest").updateOne({ "_id": doc._id }, { "$set": { "deathPercent": 0} }, { "upsert": true } );
+                await db.collection("NALCS").updateOne({ "_id": doc._id }, { "$set": { "deathPercent": 0} }, { "upsert": true } );
             }
         }, 
     );

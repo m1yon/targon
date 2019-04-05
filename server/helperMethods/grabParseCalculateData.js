@@ -18,15 +18,12 @@ async function grabParseCalculateData(db) {
   await sleep(25000);
   await playersStatsCalculation(db);
   await sleep(20000);
-  // calculate RecentMatches
   await recentMatches(db);
-  // calculate PlayersTopBoards Collection
   await playersTopBoardCalculation(db);
-  //store placements for each player
   await playersPlacementCalculation(db);
-
   await teamsStatsCalculation(db);
   await teamsTopBoardsCalculation(db);
+  console.log("done");
 
   return;
 

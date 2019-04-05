@@ -161,11 +161,11 @@ async function playersStatsCalculation(db) {
             }
         }, 
         {
-            "$out": "playerstest"
+            "$out": "players"
         }
     ];
     
-    var cursor = await db.collection("NALCSTest").aggregate(pipeline, options).toArray();
+    var cursor = await db.collection("NALCS").aggregate(pipeline, options).toArray();
 
 }
 
