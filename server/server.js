@@ -17,27 +17,27 @@ let db; // creates db variable in order to make database calls outside the funct
 // connecting to database and starting server on port
 MongoClient.connect(url,{ useNewUrlParser: true }, (err, client) => {
   if (err) {
-    console.log("unable to connect to mongo server", err);S
+    console.log("unable to connect to mongo server", err);
   } else {
     console.log('Connection established to', url);
     db = client.db(dbName);
-
-    //console.log('Before job instantiation');
-    const job = new CronJob('00 00 00 * * *', function() {
-      console.log('At Midnight executing query calculations:');
-      calculate(db);
     
-      placement(db, "Support");
-      placement(db, "Middle");
-      placement(db, "ADC");
-      placement(db, "Jungle");
-      placement(db, "Top");
-    });
-    //console.log('After job instantiation');
-    job.start();
+        //console.log('Before job instantiation');
+        const job = new CronJob('00 00 00 * * *', function() {
+          console.log('At Midnight executing query calculations:');
+          calculate(db);
+        
+          placement(db, "Support");
+          placement(db, "Middle");
+          placement(db, "ADC");
+          placement(db, "Jungle");
+          placement(db, "Top");
+        });
+        //console.log('After job instantiation');
+        job.start();
 
-    app.listen(port, () => {                        //starting server
-      console.log(`Server is up on Port: ${port}`);
+    app.listen(port, () => {
+      console.log(`Server is up on port: ${port}`);
     });
   }
 });
@@ -50,7 +50,9 @@ app.get('/api/getPlayers', (req,res) => {
     let returnedValue = arrayToObjects(docs);
     res.send(returnedValue);
     console.log(returnedValue);
-  }); 
+  }).catch((e) =>{
+    res.status(500).send();
+  });; 
 });
 
 // API GET request which sends the players names for each top stat
@@ -69,6 +71,8 @@ app.get('/api/topBoards', (req,res) => {
     };
     res.send(returnedValue);
     console.log(returnedValue);
+  }).catch((e) => {
+    res.status(500).send();
   });
 });
 
@@ -77,11 +81,22 @@ app.get('/api/matchHistory', (req,res) => {
   db.collection('RecentMatches').find({}).toArray().then((docs) =>{
     let returnedValue = arrayToObjects(docs); 
     res.send(returnedValue);
-  })
-})
+  }).catch((e) =>{
+    res.status(500).send();
+  });
+});
+
+app.get('/api/getTeams' , (req,res) => {
+  db.collection('Teams').find({}).toArray().then((docs) =>{
+    let returnedValue = arrayToObjects(docs); 
+    res.send(returnedValue);
+  }).catch((e) =>{
+    res.status(500).send();
+  });
+});
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(publicPath, 'index.html'));
+  res.status(418).sendFile(path.join(publicPath, 'index.html'));
 });
 
 
