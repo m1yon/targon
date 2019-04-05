@@ -4,8 +4,7 @@ const app = express();
 const publicPath = path.join(__dirname, '..', 'public');
 const port = process.env.PORT || 3000;
 const MongoClient = require('mongodb').MongoClient;
-const calculate = require('./helperMethods/calculation');
-const placement = require('./helperMethods/placement');
+const grabParseCalculateData = require('./helperMethods/grabParseCalculateData');
 var CronJob = require('cron').CronJob;
 
 const {arrayToObjects} = require('./helperMethods/arrayToObjects');
@@ -21,20 +20,14 @@ MongoClient.connect(url,{ useNewUrlParser: true }, (err, client) => {
   } else {
     console.log('Connection established to', url);
     db = client.db(dbName);
-    
-        //console.log('Before job instantiation');
-        const job = new CronJob('00 00 00 * * *', function() {
-          console.log('At Midnight executing query calculations:');
-          calculate(db);
-        
-          placement(db, "Support");
-          placement(db, "Middle");
-          placement(db, "ADC");
-          placement(db, "Jungle");
-          placement(db, "Top");
-        });
-        //console.log('After job instantiation');
-        job.start();
+
+    //console.log('Before job instantiation');
+    const job = new CronJob('00 00 00 * * *', function() {
+      console.log('At Midnight executing query calculations:');
+      grabParseCalculateData(db);
+    });
+    //console.log('After job instantiation');
+    job.start();
 
     app.listen(port, () => {
       console.log(`Server is up on port: ${port}`);
