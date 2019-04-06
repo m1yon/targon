@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { statToPretty } from "./PlayerStats";
+import { statToPretty } from "./PlayerDashboard";
 
 const PlayerStatsTable = ({ totalKills, totalDeaths, totalAssists, kda, kp, dthPercentage, fbPercentage, gd10,
   xpd10, csd10, cspm, dpm, csPercent15, dmgPercentage, earnedGoldPerMinute, goldPercentage, 

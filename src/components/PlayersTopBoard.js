@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShare } from '@fortawesome/free-solid-svg-icons';
-import { statToPretty } from "./PlayerStats";
+import { statToPretty } from "./PlayerDashboard";
 
 library.add(faShare)
 

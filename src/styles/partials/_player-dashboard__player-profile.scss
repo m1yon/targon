@@ -8,13 +8,12 @@
 
 .team-banner__content {
   background-color: rgba($base, 0.7);
-  display: grid;
-  grid-template-columns: 25% 35% 20%;
+  display: flex;
   width: 100%;
   height: 100%;
   overflow: hidden;
   @media (max-width: 1050px) {
-    grid-template-columns: 50% 50%;
+    flex-direction: row;
   }
 }
 
@@ -24,10 +23,13 @@
 
 // Player's profile picture
 .team-banner__profile-picture {
-  justify-self: end;
-  height: 100%;
+  align-self: center;
+  justify-self: start;
+  height: 80%;
   top: 0;
+  margin-left: 2%;
   width: auto;
+  border-radius: 50%;
 
   @media (max-width: 1050px) {
     align-self: center;
@@ -44,7 +46,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 0% 0% 0% 5%;
+  margin: 0% 0% 0% 2%;
   h1 {
     font-size: 4vw;
     margin: 0%;
@@ -56,12 +58,8 @@
     opacity: 0.5;
   }
 
-  p {
-    margin: 8% 0% 0% 2%;
-  }
-
   a {
-    margin: 8% 0% 0% 2%;
+    margin: 0% 0% 0% 2%;
     text-decoration: none;
   }
 

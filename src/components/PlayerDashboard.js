@@ -1,8 +1,30 @@
 import React from "react";
 import { connect } from "react-redux";
 import { NavLink } from 'react-router-dom';
-import PlayerStats from './PlayerStats';
+import PlayerStatsTable from './PlayerStatsTable';
+import { PlayerStatsAreaChart, WinratePieChart} from './PlayerProfileCharts';
 import Loading from "./Loading";
+
+export const statToPretty =  {
+  totalKills: 'Kills',
+  totalDeaths: 'Deaths',
+  totalAssists: 'Assists',
+  kda: 'KDA',
+  kp: 'KP',
+  dthPercentage: 'DTH%',
+  fbPercentage: 'FB%',
+  gd10: 'GD10',
+  xpd10: 'XPD10',
+  csd10: 'CSD10',
+  cspm: 'CSPM',
+  csPercent15: 'CS%P15',
+  dpm: 'DPM',
+  dmgPercentage: 'DMG%',
+  earnedGoldPerMinute: 'EGPM',
+  goldPercentage: 'GOLD%',
+  wpm: 'WPM',
+  wcpm: 'WCPM'
+};
 
 const PlayerDashboard = ({ players, location }) => {
   return (
@@ -33,7 +55,24 @@ const PlayerProfile = ({ players, location }) => {
       <PlayerStats player={players[playerName]} />
     </div>
   );
-}
+};
+
+const PlayerStats = ({ player }) => (
+  <div className="player-dashboard__player-stats">
+    <PlayerStatsTable { ...player } />
+    <div className="player-stats__charts">
+      <hr className="hr-vert" />
+      <WinratePieChart />
+      <hr className="hr-vert" />
+      <PlayerStatsAreaChart />
+      <hr className="hr-vert" />
+      <PlayerStatsAreaChart />
+      <hr className="hr-vert" />
+      <PlayerStatsAreaChart />
+      <hr className="hr-vert" />
+    </div>
+  </div>
+);
 
 const mapStateToProps = (state) => {
   return {
