@@ -11,7 +11,7 @@ const PlayerStatsTable = ({ totalKills, totalDeaths, totalAssists, kda, kp, dthP
   <div>
     <h1>Statistics</h1>
     
-    <div className="player-stats__stat-sheet">
+    <div className="player-profile__stat-sheet">
       <div className="stat-sheet__header">
         <p>Stat</p>
         <p>Average</p>

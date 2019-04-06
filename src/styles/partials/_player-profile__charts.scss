@@ -12,4 +12,7 @@
   font-family: $body-font;
   font-weight: 700;
   font-size: 2vw;
+  @media (max-width: 1050px) {
+    font-size: 7vh;
+  }
 }
