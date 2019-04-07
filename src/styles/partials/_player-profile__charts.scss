@@ -15,6 +15,11 @@
   }
 }
 
+.pie-chart-yaxis__label {
+  fill: white;
+  font-family: $body-font;
+}
+
 .winrate-pie-chart__label {
   fill: white !important;
   font-family: $body-font;

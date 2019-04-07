@@ -87,14 +87,22 @@ export const ChampionsPlayedPieChart = () => {
   );
 };
 
+const ChampionsPlayedTooltip = ({ active, payload, label }) => { 
+  if (active) {
+    return (
+      <div className="champions-played-chart__tooltip">
+        <p>{payload[0].name}: {payload[0].value} games</p>
+      </div>);
+  }
+};
 
 export const PlayerStatsAreaChart = () => {
   const data = [
-    { name: 'Game 1', kills: 2, avgkills: 5 },
-    { name: 'Game 2', kills: 3, avgkills: 5 },
-    { name: 'Game 3', kills: 2, avgkills: 5 },
-    { name: 'Game 4', kills: 6, avgkills: 5 },
-    { name: 'Game 5', kills: 12, avgkills: 5 },
+    { name: '3/25', kills: 2, avgkills: 5 },
+    { name: '3/25', kills: 3, avgkills: 5 },
+    { name: '3/25', kills: 2, avgkills: 5 },
+    { name: '3/26', kills: 6, avgkills: 5 },
+    { name: '3/26', kills: 12, avgkills: 5 },
   ]
 
   return (
@@ -109,25 +117,36 @@ export const PlayerStatsAreaChart = () => {
             top: 10, right: 60, left: 0, bottom: 0,
           }}
         >
-          <XAxis dataKey="name" />
-          <YAxis />
+          <XAxis axisLine={false} tickLine={false} dataKey="name" tick={<XAxisLabel />} />
+          <YAxis axisLine={false} tickLine={false} padding={{ bottom: 0 }} tick={<YAxisLabel />} />
+
           <Tooltip content={CustomToolTip} />
-          <Area type="monotone" dataKey="kills" stroke="#4c61ee" fill="#4c61ee" />
-          <Area type="monotone" dataKey="avgkills" stroke="#2b2d42" fill="#2b2d42" />
+          <Area type="monotone" dataKey="kills" strokeWidth={0} fill="#4c61ee" />
+          <Area type="monotone" dataKey="avgkills" strokeWidth={0} fill="rgba(255, 255, 255, .2)" />
         </AreaChart>
       </ResponsiveContainer>
     </div>
   );
 };
 
-const ChampionsPlayedTooltip = ({ active, payload, label }) => { 
-  if (active) {
-    console.log(payload);
-    return (
-      <div className="champions-played-chart__tooltip">
-        <p>{payload[0].name}: {payload[0].value} games</p>
-      </div>);
-  }
+const XAxisLabel = ({x, y, stroke, payload}) => {
+  return(
+    <g transform={`translate(${x},${y})`}>
+      <text x={15} y={0} dy={12} textAnchor="end" className='pie-chart-yaxis__label'>
+        {payload.value}
+      </text>
+    </g>
+  );
+};
+
+const YAxisLabel = ({x, y, stroke, payload}) => {
+  return(
+    <g transform={`translate(${x},${y})`}>
+      <text x={0} y={-15} dy={15} textAnchor="end" className='pie-chart-yaxis__label'>
+        {payload.value}
+      </text>
+    </g>
+  );
 };
 
 const CustomToolTip = ({ active, payload, label }) => {
