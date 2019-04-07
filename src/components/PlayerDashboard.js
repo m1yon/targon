@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { NavLink } from 'react-router-dom';
 import PlayerStatsTable from './PlayerStatsTable';
-import { PlayerStatsAreaChart, WinratePieChart} from './PlayerProfileCharts';
+import { ChampionsPlayedPieChart, PlayerStatsAreaChart, WinratePieChart} from './PlayerProfileCharts';
 import Loading from "./Loading";
 
 export const statToPretty =  {
@@ -64,7 +64,7 @@ const PlayerStats = ({ player }) => (
       <hr className="hr-vert" />
       <WinratePieChart />
       <hr className="hr-vert" />
-      <PlayerStatsAreaChart />
+      <ChampionsPlayedPieChart />
       <hr className="hr-vert" />
       <PlayerStatsAreaChart />
       <hr className="hr-vert" />

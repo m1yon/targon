@@ -13,13 +13,12 @@ export const WinratePieChart = () => {
   return (
     <div>
       <h1>Winrate</h1>
-      <ResponsiveContainer height="70%" isAnimationActive={false}>
+      <ResponsiveContainer height="75%" isAnimationActive={false}>
         <PieChart width={600} height={500}>
           <Pie
             data={data}
             innerRadius={70}
             outerRadius={90}
-            fill="#8884d8"
             paddingAngle={5}
             dataKey="value"
             isAnimationActive={false}
@@ -45,7 +44,49 @@ export const WinratePieChart = () => {
       </ResponsiveContainer>
     </div>
   );
-}
+};
+
+export const ChampionsPlayedPieChart = () => {
+  const data = [
+    { name: "Morgana", value: 4},
+    { name: "Kayle", value: 3},
+    { name: "Tristana", value: 2},
+    { name: "Dr. Mundo", value: 1},
+    { name: "Teemo", value: 1},
+  ];
+
+  const COLORS = ['#4C61EE', '#8C43F7', '#4F3AD6', '#3A78D6', '#43BAF7'];
+
+  return (
+    <div>
+      <h1>Champions Played</h1>
+      <ResponsiveContainer height="75%" isAnimationActive={false}>
+        <PieChart width={600} height={600}>
+          <Pie
+            data={data}
+            labelLine={false}
+            stroke={'#1c1e2e'}
+            outerRadius={90}
+            strokeWidth={0}
+            dataKey='value'
+            isAnimationActive={false}
+          >
+            {
+              data.map((obj, index) => (
+                <Cell 
+                  key={`win-cell${index}`} 
+                  fill={COLORS[index]}
+                />
+              ))
+            } 
+          </Pie>
+          <Tooltip content={ChampionsPlayedTooltip} />
+        </PieChart>
+      </ResponsiveContainer>
+    </div>
+  );
+};
+
 
 export const PlayerStatsAreaChart = () => {
   const data = [
@@ -77,6 +118,16 @@ export const PlayerStatsAreaChart = () => {
       </ResponsiveContainer>
     </div>
   );
+};
+
+const ChampionsPlayedTooltip = ({ active, payload, label }) => { 
+  if (active) {
+    console.log(payload);
+    return (
+      <div className="champions-played-chart__tooltip">
+        <p>{payload[0].name}: {payload[0].value} games</p>
+      </div>);
+  }
 };
 
 const CustomToolTip = ({ active, payload, label }) => {

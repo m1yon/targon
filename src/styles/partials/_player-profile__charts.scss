@@ -3,8 +3,16 @@
   font-size: 0.8rem;
 }
 
-.player-profile__tooltip {
+.champions-played-chart__tooltip{
   background-color: $light-1;
+  padding: 15% 20%;
+  width: 10vh;
+  p {
+    margin: 0;
+  }
+  @media (max-width: 1050px) {
+    width: 11vh;
+  }
 }
 
 .winrate-pie-chart__label {
