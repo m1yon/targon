@@ -3,10 +3,11 @@
   font-size: 0.8rem;
 }
 
-.champions-played-chart__tooltip{
+.champions-played-chart__tooltip {
   background-color: $light-1;
   padding: 15% 20%;
   width: 10vh;
+  font-size: 0.8rem;
   p {
     margin: 0;
   }
@@ -15,9 +16,29 @@
   }
 }
 
+.player-profile__tooltip {
+  background-color: $light-1;
+  padding: 15% 20%;
+  width: 8vh;
+  p {
+    margin: 0;
+  }
+  @media (max-width: 1050px) {
+    width: 9vh;
+  }
+}
+
+.player-profile__tooltip-title {
+  font-weight: 700;
+}
+
 .pie-chart-yaxis__label {
   fill: white;
   font-family: $body-font;
+}
+
+.recharts-area-area {
+  fill-opacity: 1;
 }
 
 .winrate-pie-chart__label {

@@ -91,12 +91,12 @@ const ChampionsPlayedTooltip = ({ active, payload, label }) => {
   if (active) {
     return (
       <div className="champions-played-chart__tooltip">
-        <p>{payload[0].name}: {payload[0].value} games</p>
+        <p>{payload[0].name}: {payload[0].value}</p>
       </div>);
   }
 };
 
-export const PlayerStatsAreaChart = () => {
+export const PlayerStatsAreaChart = ({title, color}) => {
   const data = [
     { name: '3/25', kills: 2, avgkills: 5 },
     { name: '3/25', kills: 3, avgkills: 5 },
@@ -107,8 +107,8 @@ export const PlayerStatsAreaChart = () => {
 
   return (
     <div>
-      <h1>Kills vs Deaths</h1>
-      <ResponsiveContainer height="70%" className="player-profile__area-chart">
+      <h1>{title}</h1>
+      <ResponsiveContainer height="70%" className="player-profile__area-chart" >
         <AreaChart
           width={500}
           height={400}
@@ -121,8 +121,8 @@ export const PlayerStatsAreaChart = () => {
           <YAxis axisLine={false} tickLine={false} padding={{ bottom: 0 }} tick={<YAxisLabel />} />
 
           <Tooltip content={CustomToolTip} />
-          <Area type="monotone" dataKey="kills" strokeWidth={0} fill="#4c61ee" />
-          <Area type="monotone" dataKey="avgkills" strokeWidth={0} fill="rgba(255, 255, 255, .2)" />
+          <Area isAnimationActive={false} type="monotone" dataKey="kills" strokeWidth={0} fill={color} />
+          <Area isAnimationActive={false} type="monotone" dataKey="avgkills" strokeWidth={0} fill="rgba(255, 255, 255, .1)" />
         </AreaChart>
       </ResponsiveContainer>
     </div>
@@ -153,8 +153,9 @@ const CustomToolTip = ({ active, payload, label }) => {
   if (active) {
     return (
       <div className="player-profile__tooltip">
-        <p>First Value {payload[0].value}</p>
-        <p>Second Value {payload[1].value}</p>
+        <p className='player-profile__tooltip-title'>{label}</p>
+        <p>Value: {payload[0].value}</p>
+        <p>Average: {payload[1].value}</p>
       </div>);
   }
 };
