@@ -9,7 +9,7 @@ const PlayerStatsTable = ({ totalKills, totalDeaths, totalAssists, kda, kp, dthP
   csd10Placement, cspmPlacement, csPercent15Placement, dpmPlacement, dmgPercentagePlacement, 
   earnedGoldPerMinutePlacement, goldPercentagePlacement, wpmPlacement, wcpmPlacement }) => (
   <div>
-    <h1>Statistics</h1>
+    <h1 className="player-stats__statistics-title">Statistics</h1>
     
     <div className="player-profile__stat-sheet">
       <div className="stat-sheet__header">
