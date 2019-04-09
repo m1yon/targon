@@ -12,7 +12,8 @@
 .player-stats__charts {
   display: grid;
   grid-template-columns: 1% 49% 1% 49%;
-  grid-template-rows: repeat(3, 30vh);
+  grid-template-rows: repeat(3, 33.33%);
+  height: 100%;
 
   @media (max-width: 1050px) {
     grid-template-columns: 100%; 

@@ -10,27 +10,27 @@ const columns = [{
   Header: <p className='table--header'>Name</p>,
   Cell: (props) => <NavLink to={`/player/${props.value}`} className="cell--name">{props.value}</NavLink>,
   accessor: "_id",
-  width: 150,
+  minWidth: 150,
 }, {
   Header: <p className='table--header'>K</p>,
   accessor: "totalKills",
-  width: 35,
+  minWidth: 35,
 }, {
   Header: <p className='table--header'>D</p>,
   accessor: "totalDeaths",
-  width: 35
+  minWidth: 35
 }, {
   Header: <p className='table--header'>A</p>,
   accessor: "totalAssists",
-  width: 35
+  minWidth: 35
 }, {
   Header: <p className='table--header'>KDA</p>,
   accessor: "kda",
-  width: 65,
+  minWidth: 65,
 }, {
   Header: <p className='table--header'>KP</p>,
   accessor: "kp",
-  width: 65,
+  minWidth: 65,
   sortMethod: (a, b, desc) => {
     a = numeral(a).value();
     b = numeral(b).value();
@@ -43,7 +43,7 @@ const columns = [{
 }, {
   Header: <p className='table--header'>DTH%</p>,
   accessor: "dthPercentage",
-  width: 65,
+  minWidth: 65,
   sortMethod: (a, b, desc) => {
     a = numeral(a).value();
     b = numeral(b).value();
@@ -56,7 +56,7 @@ const columns = [{
 }, {
   Header: <p className='table--header'>FB%</p>,
   accessor: "fbPercentage",
-  width: 65,
+  minWidth: 65,
   sortMethod: (a, b, desc) => {
     a = numeral(a).value();
     b = numeral(b).value();
@@ -69,7 +69,7 @@ const columns = [{
 }, {
   Header: <p className='table--header'>GD10</p>,
   accessor: "gd10",
-  width: 65,
+  minWidth: 65,
   sortMethod: (a, b, desc) => {
     a = numeral(a).value();
     b = numeral(b).value();
@@ -82,7 +82,7 @@ const columns = [{
 }, {
   Header: <p className='table--header'>XPD10</p>,
   accessor: "xpd10",
-  width: 65,
+  minWidth: 65,
   sortMethod: (a, b, desc) => {
     a = numeral(a).value();
     b = numeral(b).value();
@@ -95,7 +95,7 @@ const columns = [{
 }, {
   Header: <p className='table--header'>CSD10</p>,
   accessor: "csd10",
-  width: 65,
+  minWidth: 65,
   sortMethod: (a, b, desc) => {
     a = numeral(a).value();
     b = numeral(b).value();
@@ -108,7 +108,7 @@ const columns = [{
 }, {
   Header: <p className='table--header'>CSPM</p>,
   accessor: "cspm",
-  width: 65,
+  minWidth: 65,
   sortMethod: (a, b, desc) => {
     a = numeral(a).value();
     b = numeral(b).value();
@@ -121,7 +121,7 @@ const columns = [{
 }, {
   Header: <p className='table--header'>CS%P15</p>,
   accessor: "csPercent15",
-  width: 70,
+  minWidth: 70,
   sortMethod: (a, b, desc) => {
     a = numeral(a).value();
     b = numeral(b).value();
@@ -134,7 +134,7 @@ const columns = [{
 }, {
   Header: <p className='table--header'>DPM</p>,
   accessor: "dpm",
-  width: 65,
+  minWidth: 65,
   sortMethod: (a, b, desc) => {
     a = numeral(a).value();
     b = numeral(b).value();
@@ -147,7 +147,7 @@ const columns = [{
 }, {
   Header: <p className='table--header'>DMG%</p>,
   accessor: "dmgPercentage",
-  width: 65,
+  minWidth: 65,
   sortMethod: (a, b, desc) => {
     a = numeral(a).value();
     b = numeral(b).value();
@@ -160,7 +160,7 @@ const columns = [{
 }, {
   Header: <p className='table--header'>EGPM</p>,
   accessor: "earnedGoldPerMinute",
-  width: 65,
+  minWidth: 65,
   sortMethod: (a, b, desc) => {
     a = numeral(a).value();
     b = numeral(b).value();
@@ -173,7 +173,7 @@ const columns = [{
 }, {
   Header: <p className='table--header'>GOLD%</p>,
   accessor: "goldPercentage",
-  width: 65,
+  minWidth: 65,
   sortMethod: (a, b, desc) => {
     a = numeral(a).value();
     b = numeral(b).value();
@@ -186,7 +186,7 @@ const columns = [{
 }, {
   Header: <p className='table--header'>WPM</p>,
   accessor: "wpm",
-  width: 65,
+  minWidth: 65,
   sortMethod: (a, b, desc) => {
     a = numeral(a).value();
     b = numeral(b).value();
@@ -199,7 +199,7 @@ const columns = [{
 }, {
   Header: <p className='table--header'>WCPM</p>,
   accessor: "wcpm",
-  width: 65,
+  minWidth: 65,
   sortMethod: (a, b, desc) => {
     a = numeral(a).value();
     b = numeral(b).value();
@@ -214,7 +214,7 @@ const columns = [{
 
 const LeaderboardTable = ({ dsort, players }) => {
   return (
-    <div className="React-Table__container">
+    <div id='leaderboard-table' className="React-Table__container">
       <ReactTable
         data={players}
         columns={columns}
