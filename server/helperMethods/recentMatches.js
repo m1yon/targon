@@ -16,12 +16,14 @@ async function recentMatches(db) {
                 "_id": "$gameid",
                 "result": 1.0,
                 "team": 1.0,
-                "week": 1.0
+                "week": 1.0,
+                "date": 1.0,
+                "game": 1.0
             }
         }, 
         {
             "$sort": {
-                "week": -1.0
+                "date": -1.0
             }
         }, 
         {
@@ -35,20 +37,26 @@ async function recentMatches(db) {
                 },
                 "Week": {
                     "$first": "$week"
+                },
+                "Date": {
+                    "$first": "$date"
+                },
+                "Game": {
+                    "$first": "$game"
                 }
             }
         }, 
         {
             "$sort": {
-                "Week": -1.0
+                "Date": -1.0
             }
         }, 
         {
-            "$out": "RecentMatchesTest"
+            "$out": "RecentMatches"
         }
     ];
 
-    var cursor = await db.collection("NALCSTest").aggregate(pipeline, options).toArray();
+    var cursor = await db.collection("NALCS").aggregate(pipeline, options).toArray();
 
 }
 

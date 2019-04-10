@@ -9,7 +9,7 @@ async function playersTopBoardCalculation(db) {
     var pipeline = [
         {
             "$project": {
-                "_id": "topBoardKills",
+                "_id": "totalKills",
                 "player": "$_id",
                 "totalKills": 1.0
             }
@@ -31,17 +31,17 @@ async function playersTopBoardCalculation(db) {
             }
         }, 
         {
-            "$out": "TopBoardsTest"
+            "$out": "TopBoards"
         }
     ];
     
-    var cursor = await db.collection("playerstest").aggregate(pipeline, options).toArray();
+    var cursor = await db.collection("players").aggregate(pipeline, options).toArray();
 
     // calculate topBoardAssists
     var pipeline = [
         {
             "$project": {
-                "_id": "topBoardAssists",
+                "_id": "totalAssists",
                 "player": "$_id",
                 "totalAssists": 1.0
             }
@@ -65,12 +65,12 @@ async function playersTopBoardCalculation(db) {
     ];
     
     // get aggregate result document
-    var cursor = await db.collection("playerstest").aggregate(pipeline, options);
+    var cursor = await db.collection("players").aggregate(pipeline, options);
 
     // update the document in TopBoards collection with the result document
     cursor.forEach(
         async function(doc) {
-            await db.collection("TopBoardsTest").updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
+            await db.collection("TopBoards").updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
         }, 
     );
 
@@ -78,7 +78,7 @@ async function playersTopBoardCalculation(db) {
     var pipeline = [
         {
             "$project": {
-                "_id": "topBoardKDA",
+                "_id": "kda",
                 "player": "$_id",
                 "kda": 1.0
             }
@@ -102,12 +102,12 @@ async function playersTopBoardCalculation(db) {
     ];
 
     // get aggregate result document
-    var cursor = await db.collection("playerstest").aggregate(pipeline, options);
+    var cursor = await db.collection("players").aggregate(pipeline, options);
 
     // update the document in TopBoards collection with the result document
     cursor.forEach(
         async function(doc) {
-            await db.collection("TopBoardsTest").updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
+            await db.collection("TopBoards").updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
         }, 
     );
 
@@ -115,7 +115,7 @@ async function playersTopBoardCalculation(db) {
     var pipeline = [
         {
             "$project": {
-                "_id": "topBoardDMGPercentage",
+                "_id": "dmgPercentage",
                 "player": "$_id",
                 "dmgPercentage": 1.0
             }
@@ -139,19 +139,19 @@ async function playersTopBoardCalculation(db) {
     ];
     
     // get aggregate result document
-    var cursor = await db.collection("playerstest").aggregate(pipeline, options);
+    var cursor = await db.collection("players").aggregate(pipeline, options);
 
     // update the document in TopBoards collection with the result document
     cursor.forEach(
         async function(doc) {
-            await db.collection("TopBoardsTest").updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
+            await db.collection("TopBoards").updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
         }, 
     );
 
     var pipeline = [
         {
             "$project": {
-                "_id": "topBoardDPM",
+                "_id": "dpm",
                 "player": "$_id",
                 "dpm": 1.0
             }
@@ -175,19 +175,19 @@ async function playersTopBoardCalculation(db) {
     ];
 
     // get aggregate result document
-    var cursor = await db.collection("playerstest").aggregate(pipeline, options);
+    var cursor = await db.collection("players").aggregate(pipeline, options);
 
     // update the document in TopBoards collection with the result document
     cursor.forEach(
         async function(doc) {
-            await db.collection("TopBoardsTest").updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
+            await db.collection("TopBoards").updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
         }, 
     );
 
     var pipeline = [
         {
             "$project": {
-                "_id": "topBoardKP",
+                "_id": "kp",
                 "player": "$_id",
                 "kp": 1.0
             }
@@ -211,19 +211,19 @@ async function playersTopBoardCalculation(db) {
     ];
 
     // get aggregate result document
-    var cursor = await db.collection("playerstest").aggregate(pipeline, options);
+    var cursor = await db.collection("players").aggregate(pipeline, options);
 
     // update the document in TopBoards collection with the result document
     cursor.forEach(
         async function(doc) {
-            db.collection("TopBoardsTest").updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
+            db.collection("TopBoards").updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
         }, 
     );
 
     var pipeline = [
         {
             "$project": {
-                "_id": "topBoardGoldPercentage",
+                "_id": "goldPercentage",
                 "player": "$_id",
                 "goldPercentage": 1.0
             }
@@ -247,12 +247,12 @@ async function playersTopBoardCalculation(db) {
     ];
 
     // get aggregate result document
-    var cursor = await db.collection("playerstest").aggregate(pipeline, options);
+    var cursor = await db.collection("players").aggregate(pipeline, options);
 
     // update the document in TopBoards collection with the result document
     cursor.forEach(
         async function(doc) {
-            await db.collection("TopBoardsTest").updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
+            await db.collection("TopBoards").updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
         }, 
     );
 

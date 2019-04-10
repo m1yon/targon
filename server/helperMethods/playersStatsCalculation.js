@@ -32,6 +32,12 @@ async function playersStatsCalculation(db) {
                 "totalAssists": {
                     "$sum": "$a"
                 },
+                "totalWins": {
+                    "$sum": "$result"
+                },
+                "totalLosses": {
+                    "$sum": 1.0
+                },
                 "kp": {
                     "$sum": "$teamkills"
                 },
@@ -79,9 +85,6 @@ async function playersStatsCalculation(db) {
                 },
                 "wcpm": {
                     "$avg": "$wcpm"
-                },
-                "games": {
-                    "$push": "$gameid"
                 }
             }
         }, 
@@ -161,11 +164,11 @@ async function playersStatsCalculation(db) {
             }
         }, 
         {
-            "$out": "playerstest"
+            "$out": "players"
         }
     ];
     
-    var cursor = await db.collection("NALCSTest").aggregate(pipeline, options).toArray();
+    var cursor = await db.collection("NALCS").aggregate(pipeline, options).toArray();
 
 }
 

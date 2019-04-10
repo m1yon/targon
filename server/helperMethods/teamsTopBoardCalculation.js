@@ -9,7 +9,7 @@ async function teamsTopBoardsCalculation (db) {
     var pipeline = [
         {
             "$project": {
-                "_id": "topBoardWinPercentage",
+                "_id": "winPercentage",
                 "team": "$_id",
                 "winPercentage": 1.0
             }
@@ -41,7 +41,7 @@ async function teamsTopBoardsCalculation (db) {
     var pipeline = [
         {
             "$project": {
-                "_id": "topBoardHeraldTime",
+                "_id": "heraldTime",
                 "team": "$_id",
                 "heraldTime": 1.0
             }
@@ -78,7 +78,7 @@ async function teamsTopBoardsCalculation (db) {
     var pipeline = [
         {
             "$project": {
-                "_id": "topBoardFirstTowerTime",
+                "_id": "firstTowerTime",
                 "team": "$_id",
                 "firstTowerTime": 1.0
             }
@@ -115,7 +115,7 @@ async function teamsTopBoardsCalculation (db) {
     var pipeline = [
         {
             "$project": {
-                "_id": "topBoardFirstBaronTime",
+                "_id": "firstBaronTime",
                 "team": "$_id",
                 "firstBaronTime": 1.0
             }
@@ -152,7 +152,7 @@ async function teamsTopBoardsCalculation (db) {
     var pipeline = [
         {
             "$project": {
-                "_id": "topBoardVisibleWardClearRate",
+                "_id": "visibleWardClearRate",
                 "team": "$_id",
                 "visibleWardClearRate": 1.0
             }
@@ -189,7 +189,7 @@ async function teamsTopBoardsCalculation (db) {
     var pipeline = [
         {
             "$project": {
-                "_id": "topBoardInvisiblewardclearrate",
+                "_id": "invisiblewardclearrate",
                 "team": "$_id",
                 "invisiblewardclearrate": 1.0
             }

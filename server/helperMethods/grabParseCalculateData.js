@@ -7,26 +7,28 @@ const playersTopBoardCalculation = require('./playersTopBoardCalculation');
 const playersPlacementCalculation = require('./playersPlacementCalculation');
 const teamsStatsCalculation = require('./teamsStatsCalculation');
 const teamsTopBoardsCalculation = require('./teamsTopBoardCalculation');
+const playerGraphs = require('./playerGraphs');
+const playerMatches = require('./playerMatches');
 
 async function grabParseCalculateData(db) {
-    
+
   await downloadMatchData();
   await parseData(db);
   await sleep(25000);
-  // calculates other raw data to make aggregation easiser
+  //calculates other raw data to make aggregation easiser
   await calculateOtherRawData(db);
   await sleep(25000);
   await playersStatsCalculation(db);
-  await sleep(20000);
-  // calculate RecentMatches
+  await sleep(25000);
   await recentMatches(db);
-  // calculate PlayersTopBoards Collection
   await playersTopBoardCalculation(db);
-  //store placements for each player
   await playersPlacementCalculation(db);
-
+  await sleep(10000);
+  await playerGraphs(db);
+  await playerMatches(db);
   await teamsStatsCalculation(db);
   await teamsTopBoardsCalculation(db);
+  console.log("done");
 
   return;
 

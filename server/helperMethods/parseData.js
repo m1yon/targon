@@ -1,9 +1,11 @@
 var fs = require('fs');
+const moment = require('moment-msdate');
+
 // parses data.json file and stores the raw data into the database
 async function parseData(db) {
 
     // clear collection
-    await db.collection("NALCSTest").remove({});
+    await db.collection("NALCS").remove({});
     
     //parse through json file and store data into the database
     await fs.readFile('server/data/data.json', 'utf8', function (err, data) {
@@ -13,10 +15,14 @@ async function parseData(db) {
             data.k = parseInt(data.k);
             data.gameid = parseInt(data.gameid);
             data.date = parseFloat(data.date);
+            data.date = moment.fromOADate(data.date);
+            //data.date = new Date(data.date);
+            data.date = data.date._d
             /*if (data.week != 'T')
                 data.week = parseInt(data.week);
             if (data.game != 'T')
                 data.game = parseInt(data.game);*/
+            
             data.patchno = parseFloat(data.patchno);
             data.playerid = parseInt(data.playerid);
             data.gamelength = parseFloat(data.gamelength);
@@ -112,7 +118,7 @@ async function parseData(db) {
             data.csat15 = parseInt(data.csat15);
             data.oppcsat15 = parseInt(data.oppcsat15);
             data.csdat15 = parseInt(data.csdat15);
-            await db.collection("NALCSTest").save(data);
+            await db.collection("NALCS").save(data);
             await sleep(150);
           }
         });
