@@ -123,9 +123,14 @@ async function teamsStatsCalculation(db) {
                     ]
                 },
                 "winPercentage": {
-                    "$divide": [
-                        "$totalWins",
-                        "$totalLosses"
+                    "$multiply": [
+                        {
+                            "$divide": [
+                                "$totalWins",
+                                "$totalLosses"
+                            ]
+                        },
+                        100.0
                     ]
                 },
                 "totalLosses": {

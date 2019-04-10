@@ -13,6 +13,7 @@ async function calculateOtherRawData(db) {
         "_id": 0
     };
 
+    // calculate csPercent15
     var cursor = await db.collection("NALCS").find({});
 
     cursor.forEach(
@@ -30,8 +31,8 @@ async function calculateOtherRawData(db) {
     // give mongodb time to insert
     await sleep(15000);
 
+    // calculate deathPercentage
     var cursor = await db.collection("NALCS").find({});
-
     cursor.forEach(
         async function(doc) {
             if (doc.d != 0) {
@@ -44,6 +45,33 @@ async function calculateOtherRawData(db) {
         }, 
     );
 
+    // calculate opponents
+    var cursor = await db.collection("NALCS").find({}).toArray();
+    cursor.forEach(
+        async function(doc) {
+            var pipeline = [
+                {
+                    "$match": {
+                        "player": {
+                            "$eq": "Team"
+                        },
+                        "gameid": {
+                            "$eq": doc.gameid
+                        },
+                        "team": {
+                            "$ne": doc.team
+                        }
+                    }
+                },
+            ];
+            var cursor2 = await db.collection("NALCS").aggregate(pipeline, options).toArray();;
+            cursor2.forEach(
+                async function(doc2) {
+                    await db.collection("NALCS").updateOne({ "_id": doc._id }, { "$set": { "opponentTeam": doc2.team} }, { "upsert": true } );
+                },
+            );
+        },
+    );
 }
 
 function sleep(ms) {

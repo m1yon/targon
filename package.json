@@ -29,6 +29,7 @@
     "firebase": "4.2.0",
     "history": "4.7.2",
     "moment": "^2.24.0",
+    "moment-msdate": "^2.0.4",
     "mongodb": "^3.1.13",
     "mongonaut": "^3.0.0",
     "mongoose": "^5.4.16",

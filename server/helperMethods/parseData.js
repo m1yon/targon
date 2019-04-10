@@ -1,4 +1,6 @@
 var fs = require('fs');
+const moment = require('moment-msdate');
+
 // parses data.json file and stores the raw data into the database
 async function parseData(db) {
 
@@ -13,10 +15,14 @@ async function parseData(db) {
             data.k = parseInt(data.k);
             data.gameid = parseInt(data.gameid);
             data.date = parseFloat(data.date);
+            data.date = moment.fromOADate(data.date);
+            //data.date = new Date(data.date);
+            data.date = data.date._d
             /*if (data.week != 'T')
                 data.week = parseInt(data.week);
             if (data.game != 'T')
                 data.game = parseInt(data.game);*/
+            
             data.patchno = parseFloat(data.patchno);
             data.playerid = parseInt(data.playerid);
             data.gamelength = parseFloat(data.gamelength);

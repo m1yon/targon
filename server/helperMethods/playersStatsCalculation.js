@@ -32,6 +32,12 @@ async function playersStatsCalculation(db) {
                 "totalAssists": {
                     "$sum": "$a"
                 },
+                "totalWins": {
+                    "$sum": "$result"
+                },
+                "totalLosses": {
+                    "$sum": 1.0
+                },
                 "kp": {
                     "$sum": "$teamkills"
                 },
@@ -79,9 +85,6 @@ async function playersStatsCalculation(db) {
                 },
                 "wcpm": {
                     "$avg": "$wcpm"
-                },
-                "games": {
-                    "$push": "$gameid"
                 }
             }
         }, 
