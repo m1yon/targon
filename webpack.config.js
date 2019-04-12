@@ -55,6 +55,7 @@ module.exports = (env) => {
       publicPath: '/dist/',
       host: '0.0.0.0',
       disableHostCheck: true,
+      watchContentBase: true,
 
       proxy: {
         "/api": {

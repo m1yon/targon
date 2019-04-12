@@ -43,7 +43,9 @@ const PlayerProfile = ({ players, location }) => {
   return (
     <div>
       <div className="team-banner">
-        <div className="team-banner__content" style={{backgroundImage: `url('/assets/teams/logos/${players[playerName].team.replace(/ /g,"_")}.png')`}}>
+        <img className='team-banner__team-logo' src={`/assets/teams/logos/${players[playerName].team.replace(/ /g,"_")}.png`} onError={(e)=>{e.target.onerror = null; e.target.src="/assets/players/avi/default.jpg"}} />
+
+        <div className="team-banner__content" >
           <img src={`/assets/players/avi/${playerName}.png`} onError={(e)=>{e.target.onerror = null; e.target.src="/assets/players/avi/default.jpg"}} className="team-banner__profile-picture" />
           <div className="team-banner__player-info">
             <h1>{playerName}</h1>
@@ -67,15 +69,15 @@ const PlayerStats = ({ player }) => (
         <hr className="hr-vert" />
         <WinratePieChart />
         <hr className="hr-vert" />
-        <ChampionsPlayedPieChart />
+        <ChampionsPlayedPieChart player={player} />
         <hr className="hr-vert" />
-        <PlayerStatsAreaChart title="Kills Per Match" color={COLORS[0]} />
+        <PlayerStatsAreaChart stat="totalKills" player={player} color={COLORS[0]} />
         <hr className="hr-vert" />
-        <PlayerStatsAreaChart title="KDA Per Match" color={COLORS[0]} />
+        <PlayerStatsAreaChart stat="kda" player={player} color={COLORS[0]} />
         <hr className="hr-vert"/>
-        <PlayerStatsAreaChart title="KP Per Match" color={COLORS[3]} />
+        <PlayerStatsAreaChart stat="dpm" player={player} color={COLORS[3]} />
         <hr className="hr-vert"/>
-        <PlayerStatsAreaChart title="DMG% Per Match" color={COLORS[3]} />
+        <PlayerStatsAreaChart stat="totalAssists" player={player} color={COLORS[3]} />
         <hr className="hr-vert"/>
       </div>
     </div>

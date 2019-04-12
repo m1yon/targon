@@ -3,6 +3,8 @@ import {
   AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer,
   PieChart, Pie, Cell, Label
 } from 'recharts';
+import moment from 'moment';
+import { statToPretty } from './PlayerDashboard';
 
 export const WinratePieChart = () => {
   const data = [
@@ -46,16 +48,24 @@ export const WinratePieChart = () => {
   );
 };
 
-export const ChampionsPlayedPieChart = () => {
-  const data = [
-    { name: "Morgana", value: 4},
-    { name: "Kayle", value: 3},
-    { name: "Tristana", value: 2},
-    { name: "Dr. Mundo", value: 1},
-    { name: "Teemo", value: 1},
-  ];
+export const ChampionsPlayedPieChart = ({ player }) => {
+  const temp = {};
+  player.graphs.championsPlayedPieChart.championsPlayed.forEach((champ) => {
+    if(!temp.hasOwnProperty(champ)) {
+      temp[champ] = 1;
+    } else {
+      temp[champ] = temp[champ] + 1;
+    }
+  });
 
-  const COLORS = ['#4C61EE', '#8C43F7', '#4F3AD6', '#3A78D6', '#43BAF7'];
+  console.log('temp', temp);
+  let data = [];
+  for(let i in temp) {
+    if(temp[i] != 0)
+      data.push({ 'name': i, 'value': temp[i] });
+  }
+
+  const COLORS = ['#4C61EE', '#8C43F7', '#FA95CA', '#43FAB6', '#3A78D6', '#43BAF7', '#FA52D5', '#FC7C62', '#4F3AD6', '#FAC552', '#D94862', '#8AFFFF'];
 
   return (
     <div>
@@ -96,18 +106,20 @@ const ChampionsPlayedTooltip = ({ active, payload, label }) => {
   }
 };
 
-export const PlayerStatsAreaChart = ({title, color}) => {
-  const data = [
-    { name: '3/25', kills: 2, avgkills: 5 },
-    { name: '3/25', kills: 3, avgkills: 5 },
-    { name: '3/25', kills: 2, avgkills: 5 },
-    { name: '3/26', kills: 6, avgkills: 5 },
-    { name: '3/26', kills: 12, avgkills: 5 },
-  ]
+export const PlayerStatsAreaChart = ({ color, player, stat }) => {
+  let data = [];
+
+  player.graphs.statHistoryGraphs[stat].date.forEach((obj, index) => {
+    data.unshift({ 
+      name: moment(player.graphs.statHistoryGraphs[stat].date[index]).format('MM/DD'), 
+      value: player.graphs.statHistoryGraphs[stat].stat[index], 
+      avgValue: 5, 
+    });
+  });
 
   return (
     <div>
-      <h1>{title}</h1>
+      <h1>{statToPretty[stat]} Per Match</h1>
       <ResponsiveContainer height="70%" className="player-profile__area-chart" >
         <AreaChart
           width={500}
@@ -121,8 +133,8 @@ export const PlayerStatsAreaChart = ({title, color}) => {
           <YAxis axisLine={false} tickLine={false} padding={{ bottom: 0 }} tick={<YAxisLabel />} />
 
           <Tooltip content={CustomToolTip} />
-          <Area isAnimationActive={false} type="monotone" dataKey="kills" strokeWidth={0} fill={color} />
-          <Area isAnimationActive={false} type="monotone" dataKey="avgkills" strokeWidth={0} fill="rgba(255, 255, 255, .1)" />
+          <Area isAnimationActive={false} type="monotone" dataKey="value" strokeWidth={0} fill={color} />
+          <Area isAnimationActive={false} type="monotone" dataKey="avgValue" strokeWidth={0} fill="rgba(255, 255, 255, .1)" />
         </AreaChart>
       </ResponsiveContainer>
     </div>
