@@ -82,7 +82,7 @@ const PlayerStats = ({ player }) => (
       </div>
     </div>
     <h1 className="player-dashboard__match-history-title">Match History</h1>
-    <PlayerMatchHistory />
+    <PlayerMatchHistory player={player} />
   </div>
 );
 

@@ -113,7 +113,7 @@ export const PlayerStatsAreaChart = ({ color, player, stat }) => {
     data.unshift({ 
       name: moment(player.graphs.statHistoryGraphs[stat].date[index]).format('MM/DD'), 
       value: player.graphs.statHistoryGraphs[stat].stat[index], 
-      avgValue: 5, 
+      avgValue: player.graphs.statHistoryGraphs[stat].stat[0], 
     });
   });
 
