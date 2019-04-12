@@ -2,15 +2,15 @@ var fs = require('fs');
 const moment = require('moment-msdate');
 
 // parses data.json file and stores the raw data into the database
-async function parseData(db) {
+async function parseData(db, LCSCollection) {
 
     // clear collection
-    await db.collection("NALCS").remove({});
+    await LCSCollection.remove({});
     
     //parse through json file and store data into the database
-    await fs.readFile('server/data/data.json', 'utf8', function (err, data) {
+    await fs.readFile('data.json', 'utf8', async function (err, data) {
         if (err) throw err;
-        var obj = JSON.parse(data).forEach(async function(data) {
+        var obj = await JSON.parse(data).forEach(async function(data) {
           if (data.league == "LCS") {
             data.k = parseInt(data.k);
             data.gameid = parseInt(data.gameid);
@@ -118,7 +118,7 @@ async function parseData(db) {
             data.csat15 = parseInt(data.csat15);
             data.oppcsat15 = parseInt(data.oppcsat15);
             data.csdat15 = parseInt(data.csdat15);
-            await db.collection("NALCS").save(data);
+            await LCSCollection.save(data);
             await sleep(150);
           }
         });

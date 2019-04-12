@@ -31,7 +31,7 @@ async function playersTopBoardCalculation(db) {
             }
         }, 
         {
-            "$out": "TopBoards"
+            "$out": "TopBoardsTest"
         }
     ];
     
@@ -70,7 +70,7 @@ async function playersTopBoardCalculation(db) {
     // update the document in TopBoards collection with the result document
     cursor.forEach(
         async function(doc) {
-            await db.collection("TopBoards").updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
+            await db.collection("TopBoardsTest").updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
         }, 
     );
 
@@ -107,7 +107,7 @@ async function playersTopBoardCalculation(db) {
     // update the document in TopBoards collection with the result document
     cursor.forEach(
         async function(doc) {
-            await db.collection("TopBoards").updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
+            await db.collection("TopBoardsTest").updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
         }, 
     );
 
@@ -144,7 +144,7 @@ async function playersTopBoardCalculation(db) {
     // update the document in TopBoards collection with the result document
     cursor.forEach(
         async function(doc) {
-            await db.collection("TopBoards").updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
+            await db.collection("TopBoardsTest").updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
         }, 
     );
 
@@ -180,7 +180,7 @@ async function playersTopBoardCalculation(db) {
     // update the document in TopBoards collection with the result document
     cursor.forEach(
         async function(doc) {
-            await db.collection("TopBoards").updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
+            await db.collection("TopBoardsTest").updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
         }, 
     );
 
@@ -216,7 +216,7 @@ async function playersTopBoardCalculation(db) {
     // update the document in TopBoards collection with the result document
     cursor.forEach(
         async function(doc) {
-            db.collection("TopBoards").updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
+            db.collection("TopBoardsTest").updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
         }, 
     );
 
@@ -252,7 +252,7 @@ async function playersTopBoardCalculation(db) {
     // update the document in TopBoards collection with the result document
     cursor.forEach(
         async function(doc) {
-            await db.collection("TopBoards").updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
+            await db.collection("TopBoardsTest").updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
         }, 
     );
 

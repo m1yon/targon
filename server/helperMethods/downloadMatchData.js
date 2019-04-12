@@ -8,6 +8,7 @@ async function downloadMatchData() {
     // download .xlsx file containing match data for current split
     await downloadXLSXData();
     // convert matchdata.xlsx file to json
+    await sleep(15000);
     await convertXLSXToJSON();
 
 }
@@ -35,7 +36,7 @@ async function downloadXLSXData() {
         headers: {
           'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36'
         },
-        filename:"server/data/matchdata.xlsx"        
+        filename:"matchdata.xlsx"        
     });
 
 }
@@ -45,8 +46,8 @@ async function convertXLSXToJSON() {
 
     // convert .xlsx to json
     await xlsxj({
-        input: "server/data/matchdata.xlsx", 
-        output: "server/data/data.json"
+        input: "matchdata.xlsx", 
+        output: "data.json"
       }, function(err, result) {
         if(err) {
           console.error(err);

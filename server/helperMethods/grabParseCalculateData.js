@@ -10,10 +10,21 @@ const teamsTopBoardsCalculation = require('./teamsTopBoardCalculation');
 const playerGraphs = require('./playerGraphs');
 const playerMatches = require('./playerMatches');
 
+
 async function grabParseCalculateData(db) {
 
+  // Database collections
+  const LCSCollection =  db.collection("NALCS");
+  const PlayersCollection =  db.collection("players");
+  const PlayersTopBoardsCollection =  db.collection("TopBoards");
+  const TeamsCollection =  db.collection("Teams");
+  const TeamsTopBoardsCollection =  db.collection("TeamsTopBoards");
+  const RecentMatchesCollection =  db.collection("RecentMatches");
+
+
   await downloadMatchData();
-  await parseData(db);
+  await sleep(1000);
+  await parseData(db, LCSCollection);
   await sleep(25000);
   //calculates other raw data to make aggregation easiser
   await calculateOtherRawData(db);
