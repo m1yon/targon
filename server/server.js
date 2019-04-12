@@ -24,7 +24,7 @@ MongoClient.connect(url,{ useNewUrlParser: true }, (err, client) => {
     db = client.db(dbName);
 
     //for testing
-    grabParseCalculateData(db);
+    //grabParseCalculateData(db);
 
 
     //console.log('Before job instantiation');
