@@ -13,6 +13,10 @@ const PlayersDashboard = () => (
           <PlayersTopBoard stat="kda" />
           <PlayersTopBoard stat="dmgPercentage" />
           <PlayersTopBoard stat="kp" />
+
+          <PlayersTopBoard stat="goldPercentage" />
+          <PlayersTopBoard stat="totalAssists" />
+          <PlayersTopBoard stat="dpm" />
         </div>
       </div>
     } quickLoad={true} />

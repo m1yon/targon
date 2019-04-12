@@ -40,17 +40,25 @@ const PlayerDashboard = ({ players, location }) => {
 const PlayerProfile = ({ players, location }) => {
   const playerName = location.pathname.slice(8);
 
+  console.log("test", `/assets/teams/icons/${players[playerName].team}.png`);
+
   return (
     <div>
       <div className="team-banner">
         <img className='team-banner__team-logo' src={`/assets/teams/logos/${players[playerName].team.replace(/ /g,"_")}.png`} onError={(e)=>{e.target.onerror = null; e.target.src="/assets/players/avi/default.jpg"}} />
 
         <div className="team-banner__content" >
-          <img src={`/assets/players/avi/${playerName}.png`} onError={(e)=>{e.target.onerror = null; e.target.src="/assets/players/avi/default.jpg"}} className="team-banner__profile-picture" />
+          <img src={`/assets/players/avi/${playerName}.png`.replace(/ /g,"_")} onError={(e)=>{e.target.onerror = null; e.target.src="/assets/players/avi/default.jpg"}} className="team-banner__profile-picture" />
           <div className="team-banner__player-info">
             <h1>{playerName}</h1>
             <h2>TYLER STEINKAMP</h2>
-            <NavLink to={"/team/" + players[playerName].team}>{players[playerName].position} - {players[playerName].team}</NavLink>
+            <NavLink 
+              to={"/team/" + players[playerName].team}
+            >
+            {players[playerName].position} - {players[playerName].team} 
+              
+            <div style={{backgroundImage: `url(/assets/teams/icons/${players[playerName].team.replace(/ /g,"_")}.png)`}} onError={(e)=>{e.target.onerror = null; e.target.src="/assets/players/avi/default.jpg"}} className="team-banner__team-icon" />
+            </NavLink>
           </div>
         </div>
       </div>
@@ -67,7 +75,7 @@ const PlayerStats = ({ player }) => (
       <PlayerStatsTable { ...player } />
       <div className="player-stats__charts">
         <hr className="hr-vert" />
-        <WinratePieChart />
+        <WinratePieChart player={player} />
         <hr className="hr-vert" />
         <ChampionsPlayedPieChart player={player} />
         <hr className="hr-vert" />

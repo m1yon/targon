@@ -6,10 +6,12 @@ import {
 import moment from 'moment';
 import { statToPretty } from './PlayerDashboard';
 
-export const WinratePieChart = () => {
+export const WinratePieChart = ({ player }) => {
+  const winrate = player.graphs.winRatePieChart.winRate;
+
   const data = [
-    { name: "Win%", value: 80},
-    { name: "Lose%", value: 20},
+    { name: "Win%", value: winrate},
+    { name: "Lose%", value: 100 - winrate},
   ];
 
   return (
@@ -33,7 +35,7 @@ export const WinratePieChart = () => {
               strokeWidth={0} 
             />
 
-            <Label className='winrate-pie-chart__label' value={`${data[0].value}%`} offset={0} position="center" />
+            <Label className='winrate-pie-chart__label' value={`${data[0].value.toFixed(1)}%`} offset={0} position="center" />
 
             // Lose slice
             <Cell 

@@ -44,6 +44,14 @@
   }
 }
 
+.team-banner__team-icon {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto;
+  height: 40px;
+  width: 40px;
+}
+
 .team-banner__team-logo {
   position: absolute;
   top: 0;
@@ -64,6 +72,7 @@
   h1 {
     font-size: 4vw;
     margin: 0%;
+    margin-bottom: 3%;
   }
 
   h2 {
@@ -91,11 +100,39 @@
 }
 
 .player-match-history {
-  align-items: center;
   background-color: $light-1;
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 25% 50% 25%;
   padding: 1%;
+  margin-bottom: 1%;
+}
+
+.player-match-history__column-1 {
+  align-items: flex-start;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.player-match-history__column-2 {
+  align-items: center;
+  justify-content: flex-start;
+  display: flex;
+  flex-direction: column;
+
+  color:white;
+  
+  font-family: $logo-font;
+  font-weight: 700;
+  flex-direction: row;
+  font-size: 1.25vw;
+}
+
+.player-match-history__column-3 {
+  align-items: flex-end;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .player-match-history__result {
@@ -114,7 +151,6 @@
 }
 
 .player-match-history__date {
-  padding: 4% 0% 5% 3%;
   opacity: 0.5;
   margin: 0;
 }
@@ -127,31 +163,20 @@
   margin: 0;
 }
 
-.player-match-history__kda {
-  align-items: center;
-  color: white;
-  display: flex;
-  font-family: $logo-font;
-  font-weight: 700;
-  flex-direction: row;
-  font-size: 1.75vw;
-  padding-left: 1%;
-}
-
 .player-match-history__kills {
   color: $positive !important;
-  padding-left: 5%;
-  padding-right: 15%;
+  margin-left: 2.5%;
+  padding-right: 2.5%;
 }
 
 .player-match-history__deaths {
   color: $negative !important;
-  padding-left: 5%;
-  padding-right: 15%;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
 }
 
 .player-match-history__assists {
   color: $neutral !important;
-  padding-left: 5%;
-  padding-right: 15%;
+  padding-left: 2.5%;
+  margin-right: 2.5%;
 }
