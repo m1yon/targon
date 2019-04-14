@@ -3,7 +3,7 @@ const parseData = require('./parseData');
 const calculateOtherRawData = require('./calculateOtherRawData');
 const playersStatsCalculation = require('./playersStatsCalculation');
 const recentMatches = require('./recentMatches');
-const playersTopBoardCalculation = require('./playersTopBoardCalculation');
+const topBoardCalculation = require('./topBoardCalculation');
 const playersPlacementCalculation = require('./playersPlacementCalculation');
 const teamsStatsCalculation = require('./teamsStatsCalculation');
 const teamsTopBoardsCalculation = require('./teamsTopBoardCalculation');
@@ -16,7 +16,7 @@ async function grabParseCalculateData(db) {
   // Database collections
   const LCSCollection =  db.collection("NALCS");
   const PlayersCollection =  db.collection("players");
-  const PlayersTopBoardsCollection =  db.collection("TopBoards");
+  const topBoardsCollection =  db.collection("TopBoards");
   const TeamsCollection =  db.collection("Teams");
   const TeamsTopBoardsCollection =  db.collection("TeamsTopBoards");
   const RecentMatchesCollection =  db.collection("RecentMatches");
@@ -32,7 +32,7 @@ async function grabParseCalculateData(db) {
   await playersStatsCalculation(db);
   await sleep(25000);
   await recentMatches(db);
-  await playersTopBoardCalculation(db);
+  await topBoardCalculation(db);
   await playersPlacementCalculation(db);
   await sleep(10000);
   await playerGraphs(db);

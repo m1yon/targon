@@ -1,14 +1,4 @@
-// Container
-.player-dashboard {
-  @include dashboard-container;
-  h1 {
-    text-align: center;
-    font-size: 1.25vw;
-    margin: 0 0 1vh 0;
-  }
-}
-
-.player-dashboard__match-history-title {
+.player-profile__match-history-title {
   padding: 5% 0% 2% 0%;
 }
 
@@ -23,7 +13,7 @@
   align-items: center;
   display: flex;
   flex-direction: row;
-  @media (max-width: 1050px) {
+  @media (max-width: $tablet) {
     text-align: center;
   }
 }
@@ -36,7 +26,7 @@
   overflow: hidden;
   position: relative;
   z-index: 0;
-  @media (max-width: 1050px) {
+  @media (max-width: $tablet) {
     display: flex;
     flex-direction: column;
     height: 40vh;
@@ -51,7 +41,7 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
-  @media (max-width: 1050px) {
+  @media (max-width: $tablet) {
     flex-direction: column;
   }
 }
@@ -66,7 +56,7 @@
   width: auto;
   border-radius: 50%;
 
-  @media (max-width: 1050px) {
+  @media (max-width: $tablet) {
     align-self: center;
     justify-self: center;
     margin-top: 2.5%;
@@ -82,7 +72,7 @@
   height: 35px;
   width: 40px;
   display: block;
-  @media (max-width: 1050px) {
+  @media (max-width: $tablet) {
     display: none;
   }
 }
@@ -122,7 +112,7 @@
     text-decoration: none;
   }
 
-  @media (max-width: 1050px) {
+  @media (max-width: $tablet) {
     margin: 0;
     align-items: center;
     align-self: center;
@@ -143,7 +133,7 @@
   padding: 1%;
   margin-bottom: 1%;
   border-radius: 5px;
-  @media (max-width: 1050px) {
+  @media (max-width: $tablet) {
     grid-template-columns: 100%;
     margin-bottom: 2vh;
   }
@@ -151,7 +141,7 @@
 
 .player-match-history--week-1 {
   margin-bottom: 6vh;
-  @media (max-width: 1050px) {
+  @media (max-width: $tablet) {
     margin-bottom: 9vh;
   }
 }
@@ -159,7 +149,7 @@
 .player-match-history__champion-img {
   height: 3vw;
   width: auto;
-  @media (max-width: 1050px) {
+  @media (max-width: $tablet) {
     height: 7vh;
     padding: 1vh 0;
   }
@@ -169,7 +159,7 @@
   align-items: center;
   justify-content: flex-start;
   display: flex;
-  @media (max-width: 1050px) {
+  @media (max-width: $tablet) {
     flex-direction: column;
     justify-content: center;
   }
@@ -180,7 +170,7 @@
   border-radius: 5px;  
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  @media (max-width: 1050px) {
+  @media (max-width: $tablet) {
     margin-top: 2vh;
     grid-template-columns: 1fr;
     padding: 5%;
@@ -197,7 +187,7 @@
     margin: 0;
     font-size: .7vw;
     font-family: $mono-font;
-    @media (max-width: 1050px) {
+    @media (max-width: $tablet) {
       margin: .5vh 0;
       font-size: 2vh;
     }
@@ -221,7 +211,7 @@
     margin: 0;
   }
 
-  @media (max-width: 1050px) {
+  @media (max-width: $tablet) {
     margin: 0;
     justify-content: center;
     font-size: 3vh;
@@ -233,7 +223,7 @@
   justify-content: center;
   display: flex;
   flex-direction: column;
-  @media (max-width: 1050px) {
+  @media (max-width: $tablet) {
     align-items: center;
     padding: 1vh 0;
   }
@@ -248,7 +238,7 @@
   height: 65%;
   margin-left: 1vw;
   border-radius: 5px;
-  @media (max-width: 1050px) {
+  @media (max-width: $tablet) {
     height: 10vw;
     width: 40vw;    
   }
@@ -260,7 +250,7 @@
   font-family: $header-font;
   font-weight: 700;
   margin: 0;
-  @media (max-width: 1050px) {
+  @media (max-width: $tablet) {
     font-size: 3vh; 
   }
 }
@@ -277,7 +267,7 @@
   opacity: 0.5;
   margin: 0;
   padding-right: 1vw;
-  @media (max-width: 1050px) {
+  @media (max-width: $tablet) {
     padding-top: 1vh;
   }
 }
@@ -296,7 +286,7 @@
   font-family: $logo-font;
   padding-left: 1%;
   margin: 0;
-  @media (max-width: 1050px) {
+  @media (max-width: $tablet) {
     font-size: 2.5vh;
   }
   
@@ -330,10 +320,10 @@
   margin-right: 1vw;
 }
 
-.player-dashboard__match-history-title {
+.player-profile__match-history-title {
   padding: 6vh 0% 1.5vh 0%;
   font-size: 1.5vw !important;
-  @media (max-width: 1050px) {
+  @media (max-width: $tablet) {
     font-size: 3vh !important;
   }  
 }

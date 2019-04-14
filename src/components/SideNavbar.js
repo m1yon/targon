@@ -7,8 +7,8 @@ import { faHome, faUser, faUsers, faListOl, faCalendar, faQuestionCircle } from 
 library.add(faHome, faUser, faUsers, faListOl, faCalendar, faQuestionCircle);
 
 const SideNavbar = () => (
-  <div className="side-navbar">
-    <div className="side-navbar__logo">
+  <div className="navbar__side">
+    <div className="navbar__side__logo">
       <h1>Targon</h1>
     </div>
     <div className="navbar-button__container">

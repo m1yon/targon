@@ -1,22 +1,22 @@
 import React from "react";
 import { connect } from "react-redux";
-import PlayersTopBoard from "./PlayersTopBoard";
+import TopBoard from "./TopBoard";
 import Loading from "./Loading";
 
 const PlayerOverview = () => (
-  <div className="players-dashboard">
+  <div className="player-overview">
     <Loading component={
       <div>
         <h1>Player Overview</h1>
-        <div className="players-dashboard__grid">
-          <PlayersTopBoard stat="totalKills" />
-          <PlayersTopBoard stat="kda" />
-          <PlayersTopBoard stat="dmgPercentage" />
-          <PlayersTopBoard stat="kp" />
+        <div className="player-overview__grid">
+          <TopBoard stat="totalKills" />
+          <TopBoard stat="kda" />
+          <TopBoard stat="dmgPercentage" />
+          <TopBoard stat="kp" />
 
-          <PlayersTopBoard stat="goldPercentage" />
-          <PlayersTopBoard stat="totalAssists" />
-          <PlayersTopBoard stat="dpm" />
+          <TopBoard stat="goldPercentage" />
+          <TopBoard stat="totalAssists" />
+          <TopBoard stat="dpm" />
         </div>
       </div>
     } quickLoad={true} />

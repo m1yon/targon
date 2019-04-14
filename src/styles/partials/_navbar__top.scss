@@ -1,4 +1,4 @@
-.top-navbar {
+.navbar__top {
   background-color: $light-1;
   height: 3vw;
   margin: 0;
@@ -18,7 +18,7 @@
   }
 }
 
-.top-navbar__mobile-logo {
+.navbar__top__mobile-logo {
   display: none;
   text-decoration: none;
   @media (max-width: $mobile) {
@@ -30,7 +30,7 @@
   }
 }
 
-.top-navbar__mobile-nav-button {
+.navbar__top__mobile-nav-button {
   display: flex;
   align-self: center;
   font-size: 1.5rem;

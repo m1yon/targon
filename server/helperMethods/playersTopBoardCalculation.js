@@ -1,5 +1,5 @@
-// aggregrates thorugh the players collection and calculates the TopBoards, data will be stored in the PlayersTopBoards collection.
-async function playersTopBoardCalculation(db) {
+// aggregrates thorugh the players collection and calculates the TopBoards, data will be stored in the topBoards collection.
+async function topBoardCalculation(db) {
 
     var options = {
         allowDiskUse: false
@@ -262,4 +262,4 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-module.exports = playersTopBoardCalculation;
+module.exports = topBoardCalculation;

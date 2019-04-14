@@ -12,14 +12,14 @@ const TopNavbar = () => {
   return(
     <div>
       {navMenuDisplayed && <MobileSidebar setNavMenuDisplayed={setNavMenuDisplayed}/>}
-      <div className="top-navbar">  
+      <div className="navbar__top">  
         <FontAwesomeIcon 
-          className="top-navbar__mobile-nav-button" 
+          className="navbar__top__mobile-nav-button" 
           icon="bars" 
           onClick={() => setNavMenuDisplayed(true)}  
         />
 
-        <NavLink to="/" className="top-navbar__mobile-logo">
+        <NavLink to="/" className="navbar__top__mobile-logo">
           Targon
         </NavLink>
         <div></div>

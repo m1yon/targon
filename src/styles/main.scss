@@ -7,19 +7,20 @@
 @import "./partials/_app-dashboard";
 @import "./partials/_base";
 @import "./partials/_hr";
-@import "./partials/_leaderboard-dashboard";
-@import "./partials/_leaderboard-dashboard__table";
+@import "./partials/_leaderboards";
 
-@import "./partials/_side-navbar";
-@import "./partials/_mobile-sidebar";
-@import "./partials/_top-navbar";
+@import "./partials/_navbar__side";
+@import "./partials/_navbar__top";
 
+@import "./partials/_sidebar__mobile";
+
+@import "./partials/_player-overview";
 @import "./partials/_player-profile";
 @import "./partials/_player-profile__charts";
 @import "./partials/_player-profile__stat-sheet";
-@import "./partials/_player-dashboard__player-stats";
+@import "./partials/_player-profile__player-stats";
 
 @import "./partials/_top-boards";
-@import "./partials/_players-dashboard";
+
 
 @import "./vendor/_spinner";

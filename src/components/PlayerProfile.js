@@ -29,7 +29,7 @@ export const statToPretty =  {
 
 const PlayerProfile = ({ players, location }) => {
   return (
-    <div className="player-dashboard">
+    <div className="player-overview">
       <Loading component={
         <Profile players={players} location={location} />
       } quickLoad={true}/>
@@ -68,7 +68,7 @@ const COLORS = ['#4C61EE', '#8C43F7', '#4F3AD6', '#3A78D6', '#43BAF7'];
 
 const PlayerStats = ({ player }) => (
   <div>
-    <div className="player-dashboard__player-stats">
+    <div className="player-overview__player-stats">
       <PlayerStatsTable { ...player } />
       <div className="player-stats__charts">
         <hr className="hr-vert" />
@@ -86,7 +86,7 @@ const PlayerStats = ({ player }) => (
         <hr className="hr-vert"/>
       </div>
     </div>
-    <h1 className="player-dashboard__match-history-title">Match History</h1>
+    <h1 className="player-profile__match-history-title">Match History</h1>
     <PlayerMatchHistory player={player} />
   </div>
 );

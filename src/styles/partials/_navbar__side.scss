@@ -1,4 +1,4 @@
-.side-navbar {
+.navbar__side {
   background-color: $light-1;
   width: 100%;
 
@@ -7,7 +7,7 @@
   }
 }
 
-.side-navbar__logo {
+.navbar__side__logo {
   background-color: $highlight;
   height: 3vw;
   display: flex;

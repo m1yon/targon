@@ -1,5 +1,5 @@
 // Topboard
-.players-dashboard__top-board {
+.player-overview__top-board {
   // @include drop-shadow;
   
   background-color: $light-1;
@@ -10,7 +10,7 @@
   padding: 15% 5%;
 }
 
-.players-dashboard__grid {
+.player-overview__grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 
@@ -19,7 +19,7 @@
     grid-template-columns: 1fr 1fr 1fr;
   }
 
-  @media (max-width: 1050px) {
+  @media (max-width: $tablet) {
     display: grid;
     grid-template-columns: 1fr 1fr;
   }

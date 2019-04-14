@@ -7,25 +7,22 @@ import { statToPretty } from "./PlayerProfile";
 
 library.add(faShare)
 
-const PlayersTopBoard = ( { topBoards, stat, players = {} } ) => (
-  <div className="players-dashboard__top-board">
+const topBoard = ( { topBoards, stat, data = {} } ) => (
+  <div className="player-overview__top-board">
     {/* title */}
     <div className="top-board__stat-title">
-      <NavLink to={"/leaderboard/" + stat}>
+      <NavLink to={"/leaderboards/" + stat}>
         {statToPretty[stat]}
       </NavLink>
-      {/* <NavLink className="top-board__more-icon" to={"/leaderboard/" + stat}>
-        <FontAwesomeIcon icon="share" />
-      </NavLink> */}
     </div>
 
     {/* Top 5 List */}
     <div>
-      <Entry rank={1} stat={stat} playerName={topBoards[stat][0]} player={players[topBoards[stat][0]]} />
-      <Entry rank={2} stat={stat} playerName={topBoards[stat][1]} player={players[topBoards[stat][1]]} />
-      <Entry rank={3} stat={stat} playerName={topBoards[stat][2]} player={players[topBoards[stat][2]]} />
-      <Entry rank={4} stat={stat} playerName={topBoards[stat][3]} player={players[topBoards[stat][3]]} />
-      <Entry rank={5} stat={stat} playerName={topBoards[stat][4]} player={players[topBoards[stat][4]]} />
+      <Entry rank={1} stat={stat} playerName={topBoards[stat][0]} player={data[topBoards[stat][0]]} />
+      <Entry rank={2} stat={stat} playerName={topBoards[stat][1]} player={data[topBoards[stat][1]]} />
+      <Entry rank={3} stat={stat} playerName={topBoards[stat][2]} player={data[topBoards[stat][2]]} />
+      <Entry rank={4} stat={stat} playerName={topBoards[stat][3]} player={data[topBoards[stat][3]]} />
+      <Entry rank={5} stat={stat} playerName={topBoards[stat][4]} player={data[topBoards[stat][4]]} />
     </div>
   </div>
 );
@@ -52,10 +49,10 @@ const Entry = ( { stat, rank, playerName, player } ) => (
 
 const mapStateToProps = (state, props) => {
   return {
-    players: state.players.data,
+    data: state.players.data,
     topBoards: state.topBoards.data,
     stat: props.stat
   }
 };
 
-export default connect(mapStateToProps)(PlayersTopBoard);
+export default connect(mapStateToProps)(topBoard);

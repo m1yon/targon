@@ -1,3 +1,7 @@
+.leaderboard-dashboard {
+  @include dashboard-container;
+  padding: 2vw 2vw 0 2vw;
+}
 // header cell
 .rt-th {
   background-color: $base;
@@ -16,7 +20,7 @@
   height: 73vh;
   overflow-x: hidden;
   overflow-y: scroll;
-  @media (max-width: 1050px) {
+  @media (max-width: $tablet) {
     height: 80vh;
   }
 }
