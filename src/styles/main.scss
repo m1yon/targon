@@ -6,9 +6,6 @@
 
 @import "./partials/_app-dashboard";
 @import "./partials/_base";
-@import "./partials/_footer";
-@import "./partials/_home-dashboard";
-@import "./partials/_home-dashboard__match-history";
 @import "./partials/_hr";
 @import "./partials/_leaderboard-dashboard";
 @import "./partials/_leaderboard-dashboard__table";
@@ -17,13 +14,12 @@
 @import "./partials/_mobile-sidebar";
 @import "./partials/_top-navbar";
 
-@import "./partials/_player-dashboard";
+@import "./partials/_player-profile";
 @import "./partials/_player-profile__charts";
 @import "./partials/_player-profile__stat-sheet";
-@import "./partials/_player-dashboard__player-profile";
 @import "./partials/_player-dashboard__player-stats";
 
-@import "./partials/_players-dashboard__top-board";
+@import "./partials/_top-boards";
 @import "./partials/_players-dashboard";
 
 @import "./vendor/_spinner";

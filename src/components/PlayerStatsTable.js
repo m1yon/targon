@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { statToPretty } from "./PlayerDashboard";
+import { statToPretty } from "./PlayerProfile";
 
 const PlayerStatsTable = ({ totalKills, totalDeaths, totalAssists, kda, kp, dthPercentage, fbPercentage, gd10,
   xpd10, csd10, cspm, dpm, csPercent15, dmgPercentage, earnedGoldPerMinute, goldPercentage, 
@@ -42,8 +42,8 @@ const PlayerStatsTable = ({ totalKills, totalDeaths, totalAssists, kda, kp, dthP
 
 const StatsheetEntry = ({ alt, avg, placement, statname, placementTotal }) => (
   <div className={alt == "1" ? "stat-sheet__entry" : "stat-sheet__entry stat-sheet__entry--alt"}>
-  <NavLink to={`/leaderboard/${statname}`}>{statToPretty[statname]}</NavLink>
-    <p>{avg}</p>
+  <NavLink to={`/leaderboards/${statname}`}>{statToPretty[statname]}</NavLink>
+    <p className='stat-sheet__stat'>{avg}</p>
     { (placement/placementTotal) <= 0.5 ? 
       <p className="placement-positive">{placement} <span className="placement-outof">/ {placementTotal}</span></p>
     : <p className="placement-negative">{placement} <span className="placement-outof">/ {placementTotal}</span></p>

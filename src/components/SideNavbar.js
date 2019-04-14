@@ -17,30 +17,30 @@ const SideNavbar = () => (
         <p>Home</p>
       </NavLink>
 
-      <NavLink className="navbutton" to="/player/" activeClassName="is-active">
+      <NavLink className="navbutton" to="/players/" activeClassName="is-active">
         <FontAwesomeIcon icon="user" />
         <p>Players</p>
       </NavLink>
 
-      <NavLink className="navbutton" to="/teams/" activeClassName="is-active" exact={true}>
+      <NavLink className="navbutton" to="/teams/" activeClassName="is-active">
         <FontAwesomeIcon icon="users" />
         <p>Teams</p>
       </NavLink>
 
-      <NavLink className="navbutton" to="/leaderboard/" activeClassName="is-active">
+      <NavLink className="navbutton" to="/leaderboards/" activeClassName="is-active">
         <FontAwesomeIcon icon="list-ol" />
         <p>Leaderboards</p>
       </NavLink>
 
-      <NavLink className="navbutton" to="/schedule/" activeClassName="is-active" exact={true}>
+      {/* <NavLink className="navbutton" to="/schedule/" activeClassName="is-active" exact={true}>
         <FontAwesomeIcon icon="calendar" />
         <p>Schedule</p>
-      </NavLink>
+      </NavLink> */}
 
-      <NavLink className="navbutton" to="/about/" activeClassName="is-active" exact={true}>
+      {/* <NavLink className="navbutton" to="/about/" activeClassName="is-active" exact={true}>
         <FontAwesomeIcon icon="question-circle" />
         <p>About</p>
-      </NavLink>
+      </NavLink> */}
     </div>
   </div>
 );

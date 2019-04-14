@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import PlayersTopBoard from "./PlayersTopBoard";
 import Loading from "./Loading";
 
-const PlayersDashboard = () => (
+const PlayerOverview = () => (
   <div className="players-dashboard">
     <Loading component={
       <div>
@@ -30,4 +30,4 @@ const mapStateToProps = (state) => {
   };
 }
 
-export default connect(mapStateToProps)(PlayersDashboard);
+export default connect(mapStateToProps)(PlayerOverview);

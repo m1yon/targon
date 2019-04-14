@@ -27,20 +27,18 @@ export const statToPretty =  {
   wcpm: 'WCPM'
 };
 
-const PlayerDashboard = ({ players, location }) => {
+const PlayerProfile = ({ players, location }) => {
   return (
     <div className="player-dashboard">
       <Loading component={
-        <PlayerProfile players={players} location={location} />
+        <Profile players={players} location={location} />
       } quickLoad={true}/>
     </div>
   );
 };
 
-const PlayerProfile = ({ players, location }) => {
-  const playerName = location.pathname.slice(8);
-
-  console.log("test", `/assets/teams/icons/${players[playerName].team}.png`);
+const Profile = ({ players, location }) => {
+  const playerName = location.pathname.slice(9);
 
   return (
     <div>
@@ -51,14 +49,13 @@ const PlayerProfile = ({ players, location }) => {
           <img src={`/assets/players/avi/${playerName}.png`.replace(/ /g,"_")} onError={(e)=>{e.target.onerror = null; e.target.src="/assets/players/avi/default.jpg"}} className="team-banner__profile-picture" />
           <div className="team-banner__player-info">
             <h1>{playerName}</h1>
-            <h2>TYLER STEINKAMP</h2>
-            <NavLink 
-              to={"/team/" + players[playerName].team}
-            >
-            {players[playerName].position} - {players[playerName].team} 
-              
-            <div style={{backgroundImage: `url(/assets/teams/icons/${players[playerName].team.replace(/ /g,"_")}.png)`}} onError={(e)=>{e.target.onerror = null; e.target.src="/assets/players/avi/default.jpg"}} className="team-banner__team-icon" />
-            </NavLink>
+            {/* <h2>TYLER STEINKAMP</h2> */}
+              <NavLink className='player-profile__role-team'
+                to={"/teams/" + players[playerName].team}
+              >
+                {players[playerName].position} - {players[playerName].team}
+                <span style={{backgroundImage: `url(/assets/teams/icons/${players[playerName].team.replace(/ /g,"_")}.png)`}} onError={(e)=>{e.target.onerror = null; e.target.src="/assets/players/avi/default.jpg"}} className="team-banner__team-icon"></span>
+              </NavLink>
           </div>
         </div>
       </div>
@@ -101,4 +98,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(PlayerDashboard);
+export default connect(mapStateToProps)(PlayerProfile);

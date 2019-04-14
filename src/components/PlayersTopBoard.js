@@ -2,9 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShare } from '@fortawesome/free-solid-svg-icons';
-import { statToPretty } from "./PlayerDashboard";
+import { statToPretty } from "./PlayerProfile";
 
 library.add(faShare)
 
@@ -38,7 +37,7 @@ const Entry = ( { stat, rank, playerName, player } ) => (
 
       <NavLink 
         className="top-board__entry-name"
-        to={`/player/${playerName}`}
+        to={`/players/${playerName}`}
       >
         { playerName }
       </NavLink>

@@ -4,7 +4,7 @@ import {
   PieChart, Pie, Cell, Label
 } from 'recharts';
 import moment from 'moment';
-import { statToPretty } from './PlayerDashboard';
+import { statToPretty } from './PlayerProfile';
 
 export const WinratePieChart = ({ player }) => {
   const winrate = player.graphs.winRatePieChart.winRate;
@@ -114,10 +114,18 @@ export const PlayerStatsAreaChart = ({ color, player, stat }) => {
   player.graphs.statHistoryGraphs[stat].date.forEach((obj, index) => {
     data.unshift({ 
       name: moment(player.graphs.statHistoryGraphs[stat].date[index]).format('MM/DD'), 
-      value: player.graphs.statHistoryGraphs[stat].stat[index], 
-      avgValue: player.graphs.statHistoryGraphs[stat].stat[0], 
+      value: player.graphs.statHistoryGraphs[stat].stat[index].toFixed(2), 
+      avgValue: player.graphs.statHistoryGraphs[stat].stat[0].toFixed(2), 
     });
   });
+
+  if(data.length < 3)
+    return (
+      <div>
+        <h1>{statToPretty[stat]} Per Match</h1>
+        <p className='player-profile__not-enough-data'>Not enough data :(</p>
+      </div>
+    );
 
   return (
     <div>
@@ -134,7 +142,7 @@ export const PlayerStatsAreaChart = ({ color, player, stat }) => {
           <XAxis axisLine={false} tickLine={false} dataKey="name" tick={<XAxisLabel />} />
           <YAxis axisLine={false} tickLine={false} padding={{ bottom: 0 }} tick={<YAxisLabel />} />
 
-          <Tooltip content={CustomToolTip} />
+          <Tooltip content={CustomToolTip} stat={statToPretty[stat]}/>
           <Area isAnimationActive={false} type="monotone" dataKey="value" strokeWidth={0} fill={color} />
           <Area isAnimationActive={false} type="monotone" dataKey="avgValue" strokeWidth={0} fill="rgba(255, 255, 255, .1)" />
         </AreaChart>
@@ -163,12 +171,12 @@ const YAxisLabel = ({x, y, stroke, payload}) => {
   );
 };
 
-const CustomToolTip = ({ active, payload, label }) => {
+const CustomToolTip = ({ active, payload, label, stat }) => {
   if (active) {
     return (
       <div className="player-profile__tooltip">
         <p className='player-profile__tooltip-title'>{label}</p>
-        <p>Value: {payload[0].value}</p>
+        <p>{stat}: {payload[0].value}</p>
         <p>Average: {payload[1].value}</p>
       </div>);
   }

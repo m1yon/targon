@@ -5,10 +5,19 @@ import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import "react-table/react-table.css";
 import numeral from 'numeral';
+import Loading from './Loading';
+
+const Leaderboards = ({ match, players }) => {  
+  return(
+    <div className="leaderboard-dashboard">
+      <Loading component={<LeaderboardTable players={players} dsort={match.params.dsort ? match.params.dsort : 'totalKills'} quickLoad={false} />} />
+    </div>
+  );
+};
 
 const columns = [{
   Header: <p className='table--header'>Name</p>,
-  Cell: (props) => <NavLink to={`/player/${props.value}`} className="cell--name">{props.value}</NavLink>,
+  Cell: (props) => <NavLink to={`/players/${props.value}`} className="cell--name">{props.value}</NavLink>,
   accessor: "_id",
   minWidth: 150,
 }, {
@@ -243,4 +252,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(LeaderboardTable);
+export default connect(mapStateToProps)(Leaderboards);

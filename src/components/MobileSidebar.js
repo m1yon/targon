@@ -30,7 +30,7 @@ const MobileSidebarButtons = ({ setNavMenuDisplayed }) => (
 
     <NavLink 
       className="mobile-sidebar__button" 
-      to="/player/" 
+      to="/players/" 
       activeClassName="is-active"
       onClick={() => setNavMenuDisplayed(false)}
     >
@@ -59,7 +59,7 @@ const MobileSidebarButtons = ({ setNavMenuDisplayed }) => (
       <p>Leaderboards</p>
     </NavLink>
 
-    <NavLink 
+    {/* <NavLink 
       className="mobile-sidebar__button" 
       to="/schedule/" 
       activeClassName="is-active" 
@@ -68,9 +68,9 @@ const MobileSidebarButtons = ({ setNavMenuDisplayed }) => (
     >
       <FontAwesomeIcon icon="calendar" />
       <p>Schedule</p>
-    </NavLink>
+    </NavLink> */}
 
-    <NavLink 
+    {/* <NavLink 
       className="mobile-sidebar__button" 
       to="/about/" 
       activeClassName="is-active" 
@@ -79,7 +79,7 @@ const MobileSidebarButtons = ({ setNavMenuDisplayed }) => (
     >
       <FontAwesomeIcon icon="question-circle" />
       <p>About</p>
-    </NavLink>
+    </NavLink> */}
   </div>
 )
 

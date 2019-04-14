@@ -6,8 +6,29 @@
   display: flex;
   flex-direction: column; 
   line-height: .2rem;
-  margin-bottom: 3%;
+  margin: 5%;
   padding: 15% 5%;
+}
+
+.players-dashboard__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+
+  @media (max-width: 1475px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  @media (max-width: 1050px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: 550px) {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 0% 5%;
+  }
 }
 
 // Title of board (Wins, kills, etc.)
