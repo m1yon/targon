@@ -8,8 +8,6 @@ const grabParseCalculateData = require('./helperMethods/grabParseCalculateData')
 var CronJob = require('cron').CronJob;
 
 const {arrayToObjects} = require('./helperMethods/arrayToObjects');
-const {fillTopBoard} = require('./helperMethods/fillTopBoard');
-
 
 const url = 'mongodb://heroku_4n9lqqvk:gpr0d89kotgaqj4tbko9pm66fd@ds221435.mlab.com:21435/heroku_4n9lqqvk';
 const dbName = 'heroku_4n9lqqvk';
@@ -43,58 +41,38 @@ MongoClient.connect(url,{ useNewUrlParser: true }, (err, client) => {
 
 app.use(express.static(publicPath));
 
-// API GET request which sends player data in JSON format
-app.get('/api/getPlayers', (req,res) => {
+// API GET request which sends all the data
+app.get('/api/data', (req,res) => {
+  let returnedValue = {};
   db.collection('players').find({}).toArray().then((docs) => {
-    let returnedValue = arrayToObjects(docs);
-    res.send(returnedValue);
-    console.log(returnedValue);
-  }).catch((e) =>{
-    res.status(500).send();
-  });; 
-});
+    returnedValue.players = arrayToObjects(docs);
 
-// API GET request which sends the players names for each top stat
-app.get('/api/topBoards/:id', (req,res) => {
+    db.collection('Teams').find({}).toArray().then((docs2) =>{
+      returnedValue.teams = arrayToObjects(docs2);
+      
+      db.collection('TopBoards').find({}).toArray().then((docs3) => {
+        returnedValue.playerTopBoards = arrayToObjects(docs3);
 
-  if (req.params.id == 'players'){
-    db.collection('TopBoards').find({}).toArray().then((docs) => {
-      returnedValue = fillTopBoard(docs,'players');
-      res.send(returnedValue);
-      console.log(returnedValue);
-    }).catch((e) => {
+        db.collection('TeamsTopBoards').find({}).toArray().then((docs4) => {
+          returnedValue.teamTopBoards = arrayToObjects(docs4);
+          res.send(returnedValue);
+        }).catch((e) => {
+          res.status(500).send();
+        });
+
+        console.log(returnedValue);
+      }).catch((e) => {
+        res.status(500).send();
+      });
+
+    }).catch((e) =>{
       res.status(500).send();
     });
-  }else if (req.params.id == 'teams'){
-    db.collection('TeamsTopBoards').find({}).toArray().then((docs) => {
-      returnedValue = fillTopBoard(docs, 'teams');
-      res.send(returnedValue);
-      console.log(returnedValue);
-    }).catch((e) => {
-      res.status(500).send();
-    });
-  } else{
-    res.status(400).send("specify player or team topboards");
-  }
-});
 
-// API GET request sends the wins and loses for the teams for every game
-app.get('/api/matchHistory', (req,res) => {
-  db.collection('RecentMatches').find({}).toArray().then((docs) =>{
-    let returnedValue = arrayToObjects(docs); 
-    res.send(returnedValue);
   }).catch((e) =>{
     res.status(500).send();
   });
-});
 
-app.get('/api/getTeams' , (req,res) => {
-  db.collection('Teams').find({}).toArray().then((docs) =>{
-    let returnedValue = arrayToObjects(docs); 
-    res.send(returnedValue);
-  }).catch((e) =>{
-    res.status(500).send();
-  });
 });
 
 app.get('*', (req, res) => {
