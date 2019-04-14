@@ -3,29 +3,22 @@ export const RECIEVE_GET_SUCCESS = "RECIEVE_GET_SUCCESS";
 export const RECIEVE_GET_FAILED = "RECIEVE_GET_FAILED";
 
 // Request has began
-export const requestGet = (parent) => {
+export const requestGet = () => {
   return {
     type: "REQUEST_GET",
     result: {
-      [parent]: {
-        "isFetching": true,
-        "data": {
-
-        }
-      }
+      "isFetching": true,
     }
   }
 }
 
 // Request finished successfully
-export const recieveGetSuccess = (parent, data) => {
+export const recieveGetSuccess = (data) => {
   return {
     type: "RECIEVE_GET_SUCCESS",
     result: {
-      [parent]: {
-        "isFetching": false,
-        data
-      }
+      "isFetching": false,
+      ...data
     },
     receivedAt: Date.now()
   }

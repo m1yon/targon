@@ -9,14 +9,14 @@ const PlayerOverview = () => (
       <div>
         <h1>Player Overview</h1>
         <div className="player-overview__grid">
-          <TopBoard stat="totalKills" />
-          <TopBoard stat="kda" />
-          <TopBoard stat="dmgPercentage" />
-          <TopBoard stat="kp" />
+          <TopBoard type='players' stat="totalKills" />
+          <TopBoard type='players' stat="kda" />
+          <TopBoard type='players' stat="dmgPercentage" />
+          {/* <TopBoard stat="kp" /> */}
 
-          <TopBoard stat="goldPercentage" />
-          <TopBoard stat="totalAssists" />
-          <TopBoard stat="dpm" />
+          <TopBoard type='players' stat="goldPercentage" />
+          <TopBoard type='players' stat="totalAssists" /> 
+          <TopBoard type='players' stat="dpm" />
         </div>
       </div>
     } quickLoad={true} />
@@ -26,7 +26,7 @@ const PlayerOverview = () => (
 
 const mapStateToProps = (state) => {
   return {
-    isFetching: state.topBoards.isFetching,
+    isFetching: state.isFetching,
   };
 }
 

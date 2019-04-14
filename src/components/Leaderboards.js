@@ -248,7 +248,7 @@ const LeaderboardTable = ({ dsort, players }) => {
 
 const mapStateToProps = (state) => {
   return {
-    players: Object.values(state.players.data)
+    players: Object.values(state.players)
   };
 };
 

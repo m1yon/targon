@@ -51,10 +51,10 @@ app.get('/api/data', (req,res) => {
       returnedValue.teams = arrayToObjects(docs2);
       
       db.collection('TopBoards').find({}).toArray().then((docs3) => {
-        returnedValue.playerTopBoards = arrayToObjects(docs3);
+        returnedValue.playersTopBoards = arrayToObjects(docs3);
 
         db.collection('TeamsTopBoards').find({}).toArray().then((docs4) => {
-          returnedValue.teamTopBoards = arrayToObjects(docs4);
+          returnedValue.teamsTopBoards = arrayToObjects(docs4);
           res.send(returnedValue);
         }).catch((e) => {
           res.status(500).send();

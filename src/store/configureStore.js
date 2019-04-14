@@ -4,18 +4,11 @@ import thunkMiddleware from "redux-thunk";
 
 // __default state__
 const defaultState = {
-  "players": {
-    "isFetching": true,
-    "data": {
-      
-    }
-  },
-  "topBoards": {
-    "isFetching": true,
-    "data": {
-    
-    }
-  }
+  isFetching: true,
+  players: {},
+  playersTopBoards: {},
+  teams: {},
+  teamsTopBoards: {},
 }
 
 export default () => {

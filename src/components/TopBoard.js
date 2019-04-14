@@ -7,50 +7,54 @@ import { statToPretty } from "./PlayerProfile";
 
 library.add(faShare)
 
-const topBoard = ( { topBoards, stat, data = {} } ) => (
-  <div className="player-overview__top-board">
-    {/* title */}
-    <div className="top-board__stat-title">
-      <NavLink to={"/leaderboards/" + stat}>
-        {statToPretty[stat]}
-      </NavLink>
-    </div>
+const topBoard = ( { type, stat, data = {} } ) => {
+  let topBoards = data[type + 'TopBoards'];
+  data = data[type];
 
-    {/* Top 5 List */}
-    <div>
-      <Entry rank={1} stat={stat} playerName={topBoards[stat][0]} player={data[topBoards[stat][0]]} />
-      <Entry rank={2} stat={stat} playerName={topBoards[stat][1]} player={data[topBoards[stat][1]]} />
-      <Entry rank={3} stat={stat} playerName={topBoards[stat][2]} player={data[topBoards[stat][2]]} />
-      <Entry rank={4} stat={stat} playerName={topBoards[stat][3]} player={data[topBoards[stat][3]]} />
-      <Entry rank={5} stat={stat} playerName={topBoards[stat][4]} player={data[topBoards[stat][4]]} />
-    </div>
-  </div>
-);
+  return(
+    <div className="player-overview__top-board">
+      {/* title */}
+      <div className="top-board__stat-title">
+        <NavLink to={"/leaderboards/"}>
+          {statToPretty[stat]}
+        </NavLink>
+      </div>
 
-const Entry = ( { stat, rank, playerName, player } ) => (
+      {/* Top 5 List */}
+      <div>
+        <Entry rank={1} type={type} stat={stat} name={topBoards[stat][type][0]} data={data[topBoards[stat][type][0]]} />
+        <Entry rank={2} type={type} stat={stat} name={topBoards[stat][type][1]} data={data[topBoards[stat][type][1]]} />
+        <Entry rank={3} type={type} stat={stat} name={topBoards[stat][type][2]} data={data[topBoards[stat][type][2]]} />
+        <Entry rank={4} type={type} stat={stat} name={topBoards[stat][type][3]} data={data[topBoards[stat][type][3]]} />
+        <Entry rank={5} type={type}  stat={stat} name={topBoards[stat][type][4]} data={data[topBoards[stat][type][4]]} />
+      </div>
+    </div>
+  );
+};
+
+const Entry = ( { stat, type, rank, name, data } ) => (
   <div className="top-board__entry">
     <div className="top-board__entry-info">
       <p className="top-board__rank">{rank}.</p>
 
       <NavLink 
         className="top-board__entry-name"
-        to={`/players/${playerName}`}
+        to={`/${type}/${name}`}
       >
-        { playerName }
+        { name }
       </NavLink>
       
       {/* <p className="top-board__team-sfx">{player.team}</p> */}
     </div>
     <p className={`top-board__stat-${rank}`}>
-      { player[stat] }
+      { data[stat] }
     </p>
   </div>
 )
 
 const mapStateToProps = (state, props) => {
   return {
-    data: state.players.data,
-    topBoards: state.topBoards.data,
+    data: state,
     stat: props.stat
   }
 };

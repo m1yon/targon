@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux"
 
-const Loading = ({ isFetchingPlayers, isFetchingTopBoards, component, quickLoad }) => {
+const Loading = ({ isFetching, component, quickLoad }) => {
   const [ loading, setLoading ] = useState(true);
 
   useEffect(() => {
@@ -11,8 +11,8 @@ const Loading = ({ isFetchingPlayers, isFetchingTopBoards, component, quickLoad 
   return(
     <div>
       { 
-        (!isFetchingPlayers && !isFetchingTopBoards && !loading) ||
-        (!isFetchingPlayers && !isFetchingTopBoards && quickLoad) ?
+        (!isFetching && !loading) ||
+        (!isFetching && quickLoad) ?
           component
         :
         <div className="spinner__container"><div className="spinner"></div></div>
@@ -23,8 +23,7 @@ const Loading = ({ isFetchingPlayers, isFetchingTopBoards, component, quickLoad 
 
 const mapStateToProps = (state) => {
   return ({
-    isFetchingPlayers: state.players.isFetching,
-    isFetchingTopBoards: state.topBoards.isFetching
+    isFetching: state.isFetching,
   })
 };
 

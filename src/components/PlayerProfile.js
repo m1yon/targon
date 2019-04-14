@@ -24,7 +24,26 @@ export const statToPretty =  {
   earnedGoldPerMinute: 'EGPM',
   goldPercentage: 'GOLD%',
   wpm: 'WPM',
-  wcpm: 'WCPM'
+  wcpm: 'WCPM',
+
+  baronKills: 'Barons',
+  goldPerGame: 'GOLDPG',
+  firstBaronTime: 'First Baron Time',
+  firstTowerTime: 'First Tower Time',
+  heraldTime: 'Herald Time',
+  invisiblewardclearrate: 'IWCR',
+  visibleWardClearRate: 'VWCR',
+  winPercentage: 'Win Percentage',
+  firstTowerTime: 'FTT',
+  firstBaronTime: 'FBT',
+  firstDragonTime: 'FDT',
+  heraldTime: 'HT',
+  kpm: 'KPM',
+  teamdragkills: 'Dragons',
+  totalLosses: 'Loses',
+  totalTeamdragkills: 'Dragon Kills',
+  totalWins: 'Wins',
+
 };
 
 const PlayerProfile = ({ players, location }) => {
@@ -93,8 +112,8 @@ const PlayerStats = ({ player }) => (
 
 const mapStateToProps = (state) => {
   return {
-    isFetching: state.players.isFetching,
-    players: state.players.data
+    isFetching: state.isFetching,
+    players: state.players
   };
 };
 
