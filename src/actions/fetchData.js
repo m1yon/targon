@@ -65,7 +65,7 @@ const formatTeamData = (oldData) => {
     newData[key].earnedGoldPerMinute = numeral(oldData[key].earnedGoldPerMinute).format(decimalFormat);
     newData[key].wpm = numeral(oldData[key].wpm).format(decimalFormat);
     newData[key].wcpm = numeral(oldData[key].wcpm).format(decimalFormat);
-    newData[key].winPercentage = numeral(oldData[key].winPercentage/100).format(percentageFormat);
+    // newData[key].winPercentage = numeral(oldData[key].winPercentage/100).format(percentageFormat);
     newData[key].baronKills = numeral(oldData[key].baronKills).format(decimalFormat);
     newData[key].firstBaronTime = numeral(oldData[key].firstBaronTime).format(decimalFormat);
     newData[key].firstDragonTime = numeral(oldData[key].firstDragonTime).format(decimalFormat);

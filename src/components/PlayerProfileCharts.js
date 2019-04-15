@@ -1,13 +1,16 @@
 import React from "react";
 import {
   AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer,
-  PieChart, Pie, Cell, Label
+  PieChart, Pie, Cell, Label, BarChart, Legend, Bar
 } from 'recharts';
 import moment from 'moment';
 import { statToPretty } from './PlayerProfile';
+import numeral from 'numeral';
 
-export const WinratePieChart = ({ player }) => {
-  const winrate = player.graphs.winRatePieChart.winRate;
+const COLORS = ['#4C61EE', '#8C43F7', '#FA95CA', '#43FAB6', '#3A78D6', '#43BAF7', '#FA52D5', '#FC7C62', '#4F3AD6', '#FAC552', '#D94862', '#8AFFFF'];
+
+export const WinratePieChart = ({ winrate }) => {
+  // const winrate = player.graphs.winRatePieChart.winRate;
 
   const data = [
     { name: "Win%", value: winrate},
@@ -35,7 +38,7 @@ export const WinratePieChart = ({ player }) => {
               strokeWidth={0} 
             />
 
-            <Label className='winrate-pie-chart__label' value={`${data[0].value.toFixed(1)}%`} offset={0} position="center" />
+            <Label className='winrate-pie-chart__label' value={`${data[0].value.toFixed(2)}%`} offset={0} position="center" />
 
             // Lose slice
             <Cell 
@@ -66,8 +69,6 @@ export const ChampionsPlayedPieChart = ({ player }) => {
     if(temp[i] != 0)
       data.push({ 'name': i, 'value': temp[i] });
   }
-
-  const COLORS = ['#4C61EE', '#8C43F7', '#FA95CA', '#43FAB6', '#3A78D6', '#43BAF7', '#FA52D5', '#FC7C62', '#4F3AD6', '#FAC552', '#D94862', '#8AFFFF'];
 
   return (
     <div>
@@ -103,6 +104,11 @@ const ChampionsPlayedTooltip = ({ active, payload, label }) => {
   if (active) {
     return (
       <div className="champions-played-chart__tooltip">
+        <img 
+          className='champions-played-chart__icon' 
+          src={`http://ddragon.leagueoflegends.com/cdn/9.7.1/img/champion/${payload[0].name[0] + payload[0].name.replace(/[^A-Za-z0-9]/g, '').slice(1).toLowerCase()}.png`}
+        >
+        </img>
         <p>{payload[0].name}: {payload[0].value}</p>
       </div>);
   }
@@ -180,4 +186,68 @@ const CustomToolTip = ({ active, payload, label, stat }) => {
         <p>Average: {payload[1].value}</p>
       </div>);
   }
+};
+
+export const MonsterTimeBarChart = ({ firstBaronTime, firstDragonTime, firstTowerTime }) => {
+  const data = [
+    {
+      "name": "Dragon",
+      "time": firstDragonTime,
+      'fill': COLORS[2],
+    },
+    {
+      "name": "Tower",
+      "time": firstTowerTime,
+      'fill': COLORS[1],
+    },
+    {
+      "name": "Baron",
+      "time": firstBaronTime,
+      'fill': COLORS[3],
+    },
+  ];
+
+  return(
+    <div>
+      <h1>Average First Objective Times</h1>
+      <ResponsiveContainer height="80%" width='93%' className="player-profile__area-chart" >
+        <BarChart width={500} height={400} data={data}>
+          <XAxis axisLine={true} tickLine={false} dataKey="name" tick={<MonsterTimeXAxisLabel />} />
+          <YAxis axisLine={true} tickLine={true} tick={<MonsterTimeYAxisLabel />} />
+          <Tooltip content={MonsterTimeToolTip} stat={'test'} />
+          <Bar dataKey="time" fill="#8884d8" />
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
+  );
+};
+
+const MonsterTimeToolTip = ({ active, payload, label, stat }) => {
+  if (active) {
+    return (
+      <div className="player-profile__tooltip">
+        <p className='player-profile__tooltip-title'>{label}</p>
+        <p>Average: {numeral(payload[0].value * 100).format('0:0').slice(2)}</p>
+      </div>);
+  }
+};
+
+const MonsterTimeYAxisLabel = ({x, y, stroke, payload}) => {
+  return(
+    <g transform={`translate(${x},${y})`}>
+      <text x={-3} y={-12} dy={15} textAnchor="end" className='pie-chart-yaxis__label'>
+        {numeral(payload.value * 100).format('0:0').slice(2)}
+      </text>
+    </g>
+  );
+};
+
+const MonsterTimeXAxisLabel = ({x, y, stroke, payload}) => {
+  return(
+    <g transform={`translate(${x},${y})`}>
+      <text x={20} y={0} dy={12} textAnchor="end" className='pie-chart-yaxis__label'>
+        {payload.value}
+      </text>
+    </g>
+  );
 };

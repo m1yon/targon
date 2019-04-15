@@ -48,7 +48,7 @@ export const statToPretty =  {
 
 const PlayerProfile = ({ players, location }) => {
   return (
-    <div className="player-overview">
+    <div className="player-profile">
       <Loading component={
         <Profile players={players} location={location} />
       } quickLoad={true}/>
@@ -91,7 +91,7 @@ const PlayerStats = ({ player }) => (
       <PlayerStatsTable { ...player } />
       <div className="player-stats__charts">
         <hr className="hr-vert" />
-        <WinratePieChart player={player} />
+        <WinratePieChart winrate={player.graphs.winRatePieChart.winRate} />
         <hr className="hr-vert" />
         <ChampionsPlayedPieChart player={player} />
         <hr className="hr-vert" />

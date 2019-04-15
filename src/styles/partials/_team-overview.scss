@@ -3,7 +3,7 @@
   @include dashboard-container;
   h1 {
       font-size: 1.75vw;
-      margin: 0 0 1.5vh 1vw;
+      margin: 0 0 1.5vh 1vw !important;
       @media (max-width: $tablet) {
         font-size: 4vh;
         margin: 0;

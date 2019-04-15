@@ -2,10 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 import Loading from "./Loading";
 import TeamStatsTable from './TeamStatsTable';
+import { MonsterTimeBarChart, WinratePieChart } from './PlayerProfileCharts';
 
 const TeamProfile = ({ teams, location }) => {
   return (
-    <div className="team-overview">
+    <div className="team-profile">
       <Loading component={
         <Profile teams={teams} location={location} />
       } quickLoad={true}/>
@@ -35,21 +36,17 @@ const TeamStats = ({ team }) => (
   <div>
     <div className="player-overview__player-stats">
       <TeamStatsTable { ...team } />
-      {/* <div className="player-stats__charts">
+      <div className="player-stats__charts">
         <hr className="hr-vert" />
-        <WinratePieChart player={player} />
+        <WinratePieChart winrate={ team.winPercentage } />
         <hr className="hr-vert" />
-        <ChampionsPlayedPieChart player={player} />
+        <MonsterTimeBarChart { ...team } />
         <hr className="hr-vert" />
-        <teamstatsAreaChart stat="totalKills" player={player} color={COLORS[0]} />
+        <MonsterTimeBarChart { ...team } />
         <hr className="hr-vert" />
-        <teamstatsAreaChart stat="kda" player={player} color={COLORS[0]} />
-        <hr className="hr-vert"/>
-        <teamstatsAreaChart stat="dpm" player={player} color={COLORS[3]} />
-        <hr className="hr-vert"/>
-        <teamstatsAreaChart stat="totalAssists" player={player} color={COLORS[3]} />
-        <hr className="hr-vert"/>
-      </div> */}
+        <MonsterTimeBarChart { ...team } />
+        <hr className="hr-vert" />
+      </div>
     </div>
     {/* <h1 className="player-profile__match-history-title">Match History</h1> */}
     {/* <PlayerMatchHistory player={player} /> */}
