@@ -60,7 +60,6 @@ app.get('/api/data', (req,res) => {
           res.status(500).send();
         });
 
-        console.log(returnedValue);
       }).catch((e) => {
         res.status(500).send();
       });
