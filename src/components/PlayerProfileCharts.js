@@ -117,11 +117,17 @@ const ChampionsPlayedTooltip = ({ active, payload, label }) => {
 export const PlayerStatsAreaChart = ({ color, player, stat }) => {
   let data = [];
 
+  let total = 0;
+  player.graphs.statHistoryGraphs[stat].averages.forEach((obj) => {
+    total += obj;
+  });
+  const avgValue = (total / player.graphs.statHistoryGraphs[stat].averages.length).toFixed(2);
+
   player.graphs.statHistoryGraphs[stat].date.forEach((obj, index) => {
     data.unshift({ 
       name: moment(player.graphs.statHistoryGraphs[stat].date[index]).format('MM/DD'), 
       value: player.graphs.statHistoryGraphs[stat].stat[index].toFixed(2), 
-      avgValue: player.graphs.statHistoryGraphs[stat].stat[0].toFixed(2), 
+      avgValue, 
     });
   });
 
@@ -183,7 +189,7 @@ const CustomToolTip = ({ active, payload, label, stat }) => {
       <div className="player-profile__tooltip">
         <p className='player-profile__tooltip-title'>{label}</p>
         <p>{stat}: {payload[0].value}</p>
-        <p>Average: {payload[1].value}</p>
+        <p>Average for Role: {payload[1].value}</p>
       </div>);
   }
 };

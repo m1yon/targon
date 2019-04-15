@@ -3,18 +3,19 @@ import { connect } from "react-redux";
 import Loading from "./Loading";
 import TeamStatsTable from './TeamStatsTable';
 import { MonsterTimeBarChart, WinratePieChart } from './PlayerProfileCharts';
+import { NavLink } from 'react-router-dom';
 
-const TeamProfile = ({ teams, location }) => {
+const TeamProfile = ({ teams, players, location }) => {
   return (
     <div className="team-profile">
       <Loading component={
-        <Profile teams={teams} location={location} />
+        <Profile teams={teams} players={players} location={location} />
       } quickLoad={true}/>
     </div>
   );
 };
 
-const Profile = ({ teams, location }) => {
+const Profile = ({ teams, players, location }) => {
   const teamName = location.pathname.slice(7);
 
   console.log('teamName', teams[teamName]);
@@ -25,18 +26,19 @@ const Profile = ({ teams, location }) => {
         <img className='team-profile__team-banner-logo' src={`/assets/teams/logos/${teamName.replace(/ /g,"_")}.png`} onError={(e)=>{e.target.onerror = null; e.target.src="/assets/teams/avi/default.jpg"}} />
           <h1 className='team-profile__team-banner-text'>{teamName}</h1>
       </div>
-      <TeamStats team={teams[teamName]} />
+      <TeamStats team={teams[teamName]} players={players} />
     </div>
   );
 };
 
 const COLORS = ['#4C61EE', '#8C43F7', '#4F3AD6', '#3A78D6', '#43BAF7'];
 
-const TeamStats = ({ team }) => (
+const TeamStats = ({ team, players }) => (
   <div>
-    <div className="player-overview__player-stats">
+    <Roster players={players} />
+    <div className="team-profile__stats-container">
       <TeamStatsTable { ...team } />
-      <div className="player-stats__charts">
+      <div className="team-stats__charts">
         <hr className="hr-vert" />
         <WinratePieChart winrate={ team.winPercentage } />
         <hr className="hr-vert" />
@@ -53,10 +55,36 @@ const TeamStats = ({ team }) => (
   </div>
 );
 
+const Roster = ({ players }) => (
+  <div>
+    <h1 className='team-profile__roster-header'>Roster</h1>
+    <div className='team-profile__roster'>
+      <PlayerPortrait player={players.Sneaky} />
+      <PlayerPortrait player={players.Sneaky} />
+      <PlayerPortrait player={players.Sneaky} />
+      <PlayerPortrait player={players.Sneaky} />
+      <PlayerPortrait player={players.Sneaky} />
+    </div>
+  </div>
+);
+
+const PlayerPortrait = ({ player }) => (
+  <div className='team-profile__roster-player'>
+    <img 
+      src={`/assets/players/avi/${player._id}.png`.replace(/ /g,"_")} 
+      onError={(e)=>{e.target.onerror = null; e.target.src="/assets/players/avi/default.jpg"}} 
+      className="team-profile__roster-picture" 
+    />
+    <NavLink className='team-profile__player-name' to={`/players/${player._id}`}>{player._id}</NavLink>
+    <p>{player.position}</p>
+  </div>
+);
+
 const mapStateToProps = (state) => {
   return {
     isFetching: state.isFetching,
-    teams: state.teams
+    teams: state.teams,
+    players: state.players
   };
 };
 

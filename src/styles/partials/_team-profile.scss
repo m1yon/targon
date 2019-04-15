@@ -1,5 +1,6 @@
 .team-profile {
   @include dashboard-container;
+  
   h1 {
       text-align: center;
       font-size: 1.35vw;
@@ -40,3 +41,28 @@
   width: auto;
 }
 
+.team-stats__charts {
+  display: grid;
+  grid-template-columns: 1% 49% 1% 49%;
+  grid-template-rows: repeat(3, 33.33%);
+
+  @media (max-width: $tablet) {
+    grid-template-columns: 100%; 
+    grid-template-rows: repeat(6, 35vh);
+  }
+}
+
+.team-profile__stats-container {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  grid-gap: 2%;
+  margin-top: 5%;
+
+  @media (max-width: $tablet) {
+    grid-template-columns: 100%;
+  }
+};
+  
+.recharts-tooltip-cursor {
+  fill: rgba(255, 255, 255, 0.1)
+}
