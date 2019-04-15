@@ -8,6 +8,7 @@ const playersPlacementCalculation = require('./playersPlacementCalculation');
 const teamsStatsCalculation = require('./teamsStatsCalculation');
 const teamsTopBoardsCalculation = require('./teamsTopBoardCalculation');
 const playerGraphs = require('./playerGraphs');
+const playerGraphAverages = require('./playerGraphAverages');
 const playerMatches = require('./playerMatches');
 
 
@@ -21,24 +22,24 @@ async function grabParseCalculateData(db) {
   const TeamsTopBoardsCollection =  db.collection("TeamsTopBoards");
   const RecentMatchesCollection =  db.collection("RecentMatches");
 
-
   await downloadMatchData();
   await sleep(1000);
-  await parseData(db, LCSCollection);
+  await parseData(LCSCollection);
   await sleep(25000);
   //calculates other raw data to make aggregation easiser
-  await calculateOtherRawData(db);
+  await calculateOtherRawData(LCSCollection);
   await sleep(25000);
-  await playersStatsCalculation(db);
+  await playersStatsCalculation(LCSCollection);
   await sleep(25000);
-  await recentMatches(db);
-  await playersTopBoardCalculation(db);
-  await playersPlacementCalculation(db);
+  await recentMatches(LCSCollection);
+  await playersTopBoardCalculation(PlayersTopBoardsCollection, PlayersCollection);
+  await playersPlacementCalculation(PlayersCollection);
   await sleep(10000);
-  await playerGraphs(db);
-  await playerMatches(db);
-  await teamsStatsCalculation(db);
-  await teamsTopBoardsCalculation(db);
+  await playerGraphs(PlayersCollection, LCSCollection);
+  await playerGraphAverages(PlayersCollection, LCSCollection);
+  await playerMatches(PlayersCollection, LCSCollection);
+  await teamsStatsCalculation(LCSCollection);
+  await teamsTopBoardsCalculation(TeamsTopBoardsCollection, TeamsCollection);
   console.log("done");
 
   return;

@@ -2,7 +2,7 @@ var fs = require('fs');
 const moment = require('moment-msdate');
 
 // parses data.json file and stores the raw data into the database
-async function parseData(db, LCSCollection) {
+async function parseData(LCSCollection) {
 
     // clear collection
     await LCSCollection.remove({});
@@ -12,11 +12,10 @@ async function parseData(db, LCSCollection) {
         if (err) throw err;
         var obj = await JSON.parse(data).forEach(async function(data) {
           if (data.league == "LCS") {
-            data.k = parseInt(data.k);
             data.gameid = parseInt(data.gameid);
             data.date = parseFloat(data.date);
+            data.dateString = moment.fromOADate(data.date).format('L');
             data.date = moment.fromOADate(data.date);
-            //data.date = new Date(data.date);
             data.date = data.date._d
             /*if (data.week != 'T')
                 data.week = parseInt(data.week);
@@ -27,8 +26,13 @@ async function parseData(db, LCSCollection) {
             data.playerid = parseInt(data.playerid);
             data.gamelength = parseFloat(data.gamelength);
             data.result = parseInt(data.result);
+            data.k = parseInt(data.k);
             data.d = parseInt(data.d);
             data.a = parseInt(data.a);
+            if (data.d == 0)
+                data.kda = data.k + data.a;
+            else
+                data.kda = (data.k + data.a) / data.d;  
             data.teamkills = parseInt(data.teamkills);
             data.teamdeaths = parseInt(data.teamdeaths);
             if (data.doubles != '')

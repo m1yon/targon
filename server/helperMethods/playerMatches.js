@@ -1,11 +1,11 @@
 //creates a match object for each plyer which contains stats for each match
-async function playerMatches(db) {
+async function playerMatches(PlayersCollection, LCSCollection) {
 
     var options = {
         allowDiskUse: false
     };
 
-    var cursor = await db.collection("players").find().toArray();
+    var cursor = await PlayersCollection.find().toArray();
 
     cursor.forEach(
         async function(doc) {
@@ -50,7 +50,7 @@ async function playerMatches(db) {
                             "$first": "$d"
                         },
                         "dpm": {
-                            "$avg": "$dmgtochampsperminute"
+                            "$first": "$dmgtochampsperminute"
                         },
                         "earnedGoldPerMinute": {
                             "$first": "$earnedgpm"
@@ -114,10 +114,10 @@ async function playerMatches(db) {
                 },
             ];
 
-            var cursor2 = await db.collection("NALCS").aggregate(pipeline, options).toArray();
+            var cursor2 = await LCSCollection.aggregate(pipeline, options).toArray();
             cursor2.forEach(
                 async function(game) {
-                    await db.collection("players").updateOne({ "_id": doc._id }, { "$push": { "matches":  {"$each": [{game}], "$sort":{ "game.date": -1  } } } }, { "upsert": true } );
+                    await PlayersCollection.updateOne({ "_id": doc._id }, { "$push": { "matches":  {"$each": [{game}], "$sort":{ "game.date": -1  } } } }, { "upsert": true } );
                 }
             );
         }

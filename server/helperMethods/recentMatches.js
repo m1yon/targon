@@ -1,5 +1,5 @@
 // aggregrates through raw data to calculate recentMatches and store it into the collection "RecentMatches" in the database
-async function recentMatches(db) {
+async function recentMatches(LCSCollection) {
 
     var options = {
         allowDiskUse: false
@@ -56,7 +56,7 @@ async function recentMatches(db) {
         }
     ];
 
-    var cursor = await db.collection("NALCS").aggregate(pipeline, options).toArray();
+    var cursor = await LCSCollection.aggregate(pipeline, options).toArray();
 
 }
 

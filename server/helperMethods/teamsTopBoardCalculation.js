@@ -1,5 +1,5 @@
 // aggregrates thorugh the Teams collection and calculates the TopBoards, data will be stored in the TeamsTopBoards collection.
-async function teamsTopBoardsCalculation (db) {
+async function teamsTopBoardsCalculation (TeamsTopBoardsCollection, TeamsCollection) {
 
     var options = {
         allowDiskUse: false
@@ -35,7 +35,7 @@ async function teamsTopBoardsCalculation (db) {
         }
     ];
     
-    var cursor = await db.collection("Teams").aggregate(pipeline, options).toArray();
+    var cursor = await TeamsCollection.aggregate(pipeline, options).toArray();
 
     // calculate topBoardHeraldTime
     var pipeline = [
@@ -65,12 +65,12 @@ async function teamsTopBoardsCalculation (db) {
     ];
     
     // get aggregate result document
-    var cursor = await db.collection("Teams").aggregate(pipeline, options);
+    var cursor = await TeamsCollection.aggregate(pipeline, options);
 
     // update the document in TopBoards collection with the result document
     cursor.forEach(
         async function(doc) {
-            await db.collection("TeamsTopBoards").updateOne({ "_id": doc._id }, { "$set": { "teams": doc.teams} }, { "upsert": true } );
+            await TeamsTopBoardsCollection.updateOne({ "_id": doc._id }, { "$set": { "teams": doc.teams} }, { "upsert": true } );
         }, 
     );
 
@@ -102,12 +102,12 @@ async function teamsTopBoardsCalculation (db) {
     ];
     
     // get aggregate result document
-    var cursor = await db.collection("Teams").aggregate(pipeline, options);
+    var cursor = await TeamsCollection.aggregate(pipeline, options);
 
     // update the document in TopBoards collection with the result document
     cursor.forEach(
         async function(doc) {
-            await db.collection("TeamsTopBoards").updateOne({ "_id": doc._id }, { "$set": { "teams": doc.teams} }, { "upsert": true } );
+            await TeamsTopBoardsCollection.updateOne({ "_id": doc._id }, { "$set": { "teams": doc.teams} }, { "upsert": true } );
         }, 
     );
 
@@ -139,12 +139,12 @@ async function teamsTopBoardsCalculation (db) {
     ];
     
     // get aggregate result document
-    var cursor = await db.collection("Teams").aggregate(pipeline, options);
+    var cursor = await TeamsCollection.aggregate(pipeline, options);
 
     // update the document in TopBoards collection with the result document
     cursor.forEach(
         async function(doc) {
-            await db.collection("TeamsTopBoards").updateOne({ "_id": doc._id }, { "$set": { "teams": doc.teams} }, { "upsert": true } );
+            await TeamsTopBoardsCollection.updateOne({ "_id": doc._id }, { "$set": { "teams": doc.teams} }, { "upsert": true } );
         }, 
     );
 
@@ -176,12 +176,12 @@ async function teamsTopBoardsCalculation (db) {
     ];
     
     // get aggregate result document
-    var cursor = await db.collection("Teams").aggregate(pipeline, options);
+    var cursor = await TeamsCollection.aggregate(pipeline, options);
 
     // update the document in TopBoards collection with the result document
     cursor.forEach(
         async function(doc) {
-            await db.collection("TeamsTopBoards").updateOne({ "_id": doc._id }, { "$set": { "teams": doc.teams} }, { "upsert": true } );
+            await TeamsTopBoardsCollection.updateOne({ "_id": doc._id }, { "$set": { "teams": doc.teams} }, { "upsert": true } );
         }, 
     );
     
@@ -213,12 +213,12 @@ async function teamsTopBoardsCalculation (db) {
     ];
     
     // get aggregate result document
-    var cursor = await db.collection("Teams").aggregate(pipeline, options);
+    var cursor = await TeamsCollection.aggregate(pipeline, options);
 
     // update the document in TopBoards collection with the result document
     cursor.forEach(
         async function(doc) {
-            await db.collection("TeamsTopBoards").updateOne({ "_id": doc._id }, { "$set": { "teams": doc.teams} }, { "upsert": true } );
+            await TeamsTopBoardsCollection.updateOne({ "_id": doc._id }, { "$set": { "teams": doc.teams} }, { "upsert": true } );
         }, 
     );
 

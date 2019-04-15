@@ -1,5 +1,5 @@
 // aggregrate through raw data to calculate stats for each player. Results will be in the collection "players" in the database
-async function playersStatsCalculation(db) {
+async function playersStatsCalculation(LCSCollection) {
 
     var options = {
         allowDiskUse: false
@@ -31,6 +31,15 @@ async function playersStatsCalculation(db) {
                 },
                 "totalAssists": {
                     "$sum": "$a"
+                },
+                "avgKills": {
+                    "$avg": "$k"
+                },
+                "avgAssists": {
+                    "$avg": "$a"
+                },
+                "avgDeaths": {
+                    "$avg": "$d"
                 },
                 "totalWins": {
                     "$sum": "$result"
@@ -168,7 +177,7 @@ async function playersStatsCalculation(db) {
         }
     ];
     
-    var cursor = await db.collection("NALCS").aggregate(pipeline, options).toArray();
+    var cursor = await LCSCollection.aggregate(pipeline, options).toArray();
 
 }
 

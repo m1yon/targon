@@ -1,15 +1,15 @@
 // aggregrates through the players collection to callculate placements for each player based on position.
-async function playersPlacementCalculation (db) {
+async function playersPlacementCalculation (PlayersCollection) {
 
-    await placement(db, "Support");
-    await placement(db, "Middle");
-    await placement(db, "ADC");
-    await placement(db, "Jungle");
-    await placement(db, "Top");
+    await placement(PlayersCollection, "Support");
+    await placement(PlayersCollection, "Middle");
+    await placement(PlayersCollection, "ADC");
+    await placement(PlayersCollection, "Jungle");
+    await placement(PlayersCollection, "Top");
 
 }
 
-async function placement(db, position) {
+async function placement(PlayersCollection, position) {
 
     var options = {
         allowDiskUse: false
@@ -45,13 +45,13 @@ async function placement(db, position) {
         }
     ];
     
-    var cursor = await db.collection("players").aggregate(pipeline, options);
+    var cursor = await PlayersCollection.aggregate(pipeline, options);
 
     //store placements for each player
     cursor.forEach(
         async function(doc) {
             for (let i = 0; i < doc.players.length; i++) {
-                await db.collection("players").updateOne({ "_id": doc.players[i] }, { "$set": { totalKillsPlacement: i + 1} }, { "upsert": true } );
+                await PlayersCollection.updateOne({ "_id": doc.players[i] }, { "$set": { totalKillsPlacement: i + 1} }, { "upsert": true } );
             }
         }, 
     );
@@ -86,13 +86,13 @@ async function placement(db, position) {
         }
     ];
     
-    var cursor = await db.collection("players").aggregate(pipeline, options);
+    var cursor = await PlayersCollection.aggregate(pipeline, options);
 
     //store placements for each player
     cursor.forEach(
         async function(doc) {
             for (let i = 0; i < doc.players.length; i++) {
-                await db.collection("players").updateOne({ "_id": doc.players[i] }, { "$set": { totalDeathsPlacement: i + 1} }, { "upsert": true } );
+                await PlayersCollection.updateOne({ "_id": doc.players[i] }, { "$set": { totalDeathsPlacement: i + 1} }, { "upsert": true } );
             }
         }, 
     );
@@ -127,13 +127,13 @@ async function placement(db, position) {
         }
     ];
     
-    var cursor = await db.collection("players").aggregate(pipeline, options);
+    var cursor = await PlayersCollection.aggregate(pipeline, options);
 
     //store placements for each player
     cursor.forEach(
         async function(doc) {
             for (let i = 0; i < doc.players.length; i++) {
-                await db.collection("players").updateOne({ "_id": doc.players[i] }, { "$set": { totalAssistsPlacement: i + 1} }, { "upsert": true } );
+                await PlayersCollection.updateOne({ "_id": doc.players[i] }, { "$set": { totalAssistsPlacement: i + 1} }, { "upsert": true } );
             }
         }, 
     );
@@ -168,13 +168,13 @@ async function placement(db, position) {
         }
     ];
     
-    var cursor = await db.collection("players").aggregate(pipeline, options);
+    var cursor = await PlayersCollection.aggregate(pipeline, options);
 
     //store placements for each player
     cursor.forEach(
         async function(doc) {
             for (let i = 0; i < doc.players.length; i++) {
-                await db.collection("players").updateOne({ "_id": doc.players[i] }, { "$set": { kpPlacement: i + 1} }, { "upsert": true } );
+                await PlayersCollection.updateOne({ "_id": doc.players[i] }, { "$set": { kpPlacement: i + 1} }, { "upsert": true } );
             }
         }, 
     );
@@ -209,13 +209,13 @@ async function placement(db, position) {
         }
     ];
     
-    var cursor = await db.collection("players").aggregate(pipeline, options);
+    var cursor = await PlayersCollection.aggregate(pipeline, options);
 
     //store placements for each player
     cursor.forEach(
         async function(doc) {
             for (let i = 0; i < doc.players.length; i++) {
-                await db.collection("players").updateOne({ "_id": doc.players[i] }, { "$set": { kdaPlacement: i + 1} }, { "upsert": true } );
+                await PlayersCollection.updateOne({ "_id": doc.players[i] }, { "$set": { kdaPlacement: i + 1} }, { "upsert": true } );
             }
         }, 
     );
@@ -250,13 +250,13 @@ async function placement(db, position) {
         }
     ];
     
-    var cursor = await db.collection("players").aggregate(pipeline, options);
+    var cursor = await PlayersCollection.aggregate(pipeline, options);
 
     //store placements for each player
     cursor.forEach(
         async function(doc) {
             for (let i = 0; i < doc.players.length; i++) {
-                await db.collection("players").updateOne({ "_id": doc.players[i] }, { "$set": { dthPercentagePlacement: i + 1} }, { "upsert": true } );
+                await PlayersCollection.updateOne({ "_id": doc.players[i] }, { "$set": { dthPercentagePlacement: i + 1} }, { "upsert": true } );
             }
         }, 
     );
@@ -291,13 +291,13 @@ async function placement(db, position) {
         }
     ];
     
-    var cursor = await db.collection("players").aggregate(pipeline, options);
+    var cursor = await PlayersCollection.aggregate(pipeline, options);
 
     //store placements for each player
     cursor.forEach(
         async function(doc) {
             for (let i = 0; i < doc.players.length; i++) {
-                await db.collection("players").updateOne({ "_id": doc.players[i] }, { "$set": { fbPercentagePlacement: i + 1} }, { "upsert": true } );
+                await PlayersCollection.updateOne({ "_id": doc.players[i] }, { "$set": { fbPercentagePlacement: i + 1} }, { "upsert": true } );
             }
         }, 
     );
@@ -332,13 +332,13 @@ async function placement(db, position) {
         }
     ];
     
-    var cursor = await db.collection("players").aggregate(pipeline, options);
+    var cursor = await PlayersCollection.aggregate(pipeline, options);
 
     //store placements for each player
     cursor.forEach(
         async function(doc) {
             for (let i = 0; i < doc.players.length; i++) {
-                await db.collection("players").updateOne({ "_id": doc.players[i] }, { "$set": { gd10Placement: i + 1} }, { "upsert": true } );
+                await PlayersCollection.updateOne({ "_id": doc.players[i] }, { "$set": { gd10Placement: i + 1} }, { "upsert": true } );
             }
         }, 
     );
@@ -373,13 +373,13 @@ async function placement(db, position) {
         }
     ];
     
-    var cursor = await db.collection("players").aggregate(pipeline, options);
+    var cursor = await PlayersCollection.aggregate(pipeline, options);
 
     //store placements for each player
     cursor.forEach(
         async function(doc) {
             for (let i = 0; i < doc.players.length; i++) {
-                await db.collection("players").updateOne({ "_id": doc.players[i] }, { "$set": { xpd10Placement: i + 1} }, { "upsert": true } );
+                await PlayersCollection.updateOne({ "_id": doc.players[i] }, { "$set": { xpd10Placement: i + 1} }, { "upsert": true } );
             }
         }, 
     );
@@ -414,13 +414,13 @@ async function placement(db, position) {
         }
     ];
     
-    var cursor = await db.collection("players").aggregate(pipeline, options);
+    var cursor = await PlayersCollection.aggregate(pipeline, options);
 
     //store placements for each player
     cursor.forEach(
         async function(doc) {
             for (let i = 0; i < doc.players.length; i++) {
-                await db.collection("players").updateOne({ "_id": doc.players[i] }, { "$set": { csd10Placement: i + 1} }, { "upsert": true } );
+                await PlayersCollection.updateOne({ "_id": doc.players[i] }, { "$set": { csd10Placement: i + 1} }, { "upsert": true } );
             }
         }, 
     );
@@ -455,13 +455,13 @@ async function placement(db, position) {
         }
     ];
     
-    var cursor = await db.collection("players").aggregate(pipeline, options);
+    var cursor = await PlayersCollection.aggregate(pipeline, options);
 
     //store placements for each player
     cursor.forEach(
         async function(doc) {
             for (let i = 0; i < doc.players.length; i++) {
-                await db.collection("players").updateOne({ "_id": doc.players[i] }, { "$set": { cspmPlacement: i + 1} }, { "upsert": true } );
+                await PlayersCollection.updateOne({ "_id": doc.players[i] }, { "$set": { cspmPlacement: i + 1} }, { "upsert": true } );
             }
         }, 
     );
@@ -496,13 +496,13 @@ async function placement(db, position) {
         }
     ];
     
-    var cursor = await db.collection("players").aggregate(pipeline, options);
+    var cursor = await PlayersCollection.aggregate(pipeline, options);
 
     //store placements for each player
     cursor.forEach(
         async function(doc) {
             for (let i = 0; i < doc.players.length; i++) {
-               await  db.collection("players").updateOne({ "_id": doc.players[i] }, { "$set": { csPercent15Placement: i + 1} }, { "upsert": true } );
+               await  PlayersCollection.updateOne({ "_id": doc.players[i] }, { "$set": { csPercent15Placement: i + 1} }, { "upsert": true } );
             }
         }, 
     );
@@ -537,13 +537,13 @@ async function placement(db, position) {
         }
     ];
     
-    var cursor = await db.collection("players").aggregate(pipeline, options);
+    var cursor = await PlayersCollection.aggregate(pipeline, options);
 
     //store placements for each player
     cursor.forEach(
         async function(doc) {
             for (let i = 0; i < doc.players.length; i++) {
-                await db.collection("players").updateOne({ "_id": doc.players[i] }, { "$set": { dpmPlacement: i + 1} }, { "upsert": true } );
+                await PlayersCollection.updateOne({ "_id": doc.players[i] }, { "$set": { dpmPlacement: i + 1} }, { "upsert": true } );
             }
         }, 
     );
@@ -578,13 +578,13 @@ async function placement(db, position) {
         }
     ];
     
-    var cursor = await db.collection("players").aggregate(pipeline, options);
+    var cursor = await PlayersCollection.aggregate(pipeline, options);
 
     //store placements for each player
     cursor.forEach(
         async function(doc) {
             for (let i = 0; i < doc.players.length; i++) {
-                await db.collection("players").updateOne({ "_id": doc.players[i] }, { "$set": { dmgPercentagePlacement: i + 1} }, { "upsert": true } );
+                await PlayersCollection.updateOne({ "_id": doc.players[i] }, { "$set": { dmgPercentagePlacement: i + 1} }, { "upsert": true } );
             }
         }, 
     );
@@ -619,13 +619,13 @@ async function placement(db, position) {
         }
     ];
     
-    var cursor = await db.collection("players").aggregate(pipeline, options);
+    var cursor = await PlayersCollection.aggregate(pipeline, options);
 
     //store placements for each player
     cursor.forEach(
         async function(doc) {
             for (let i = 0; i < doc.players.length; i++) {
-                await db.collection("players").updateOne({ "_id": doc.players[i] }, { "$set": { earnedGoldPerMinutePlacement: i + 1} }, { "upsert": true } );
+                await PlayersCollection.updateOne({ "_id": doc.players[i] }, { "$set": { earnedGoldPerMinutePlacement: i + 1} }, { "upsert": true } );
             }
         }, 
     );
@@ -660,13 +660,13 @@ async function placement(db, position) {
         }
     ];
     
-    var cursor = await db.collection("players").aggregate(pipeline, options);
+    var cursor = await PlayersCollection.aggregate(pipeline, options);
 
     //store placements for each player
     cursor.forEach(
         async function(doc) {
             for (let i = 0; i < doc.players.length; i++) {
-                await db.collection("players").updateOne({ "_id": doc.players[i] }, { "$set": { goldPercentagePlacement: i + 1} }, { "upsert": true } );
+                await PlayersCollection.updateOne({ "_id": doc.players[i] }, { "$set": { goldPercentagePlacement: i + 1} }, { "upsert": true } );
             }
         }, 
     );
@@ -701,13 +701,13 @@ async function placement(db, position) {
         }
     ];
     
-    var cursor = await db.collection("players").aggregate(pipeline, options);
+    var cursor = await PlayersCollection.aggregate(pipeline, options);
 
     //store placements for each player
     cursor.forEach(
         async function(doc) {
             for (let i = 0; i < doc.players.length; i++) {
-                await db.collection("players").updateOne({ "_id": doc.players[i] }, { "$set": { wpmPlacement: i + 1} }, { "upsert": true } );
+                await PlayersCollection.updateOne({ "_id": doc.players[i] }, { "$set": { wpmPlacement: i + 1} }, { "upsert": true } );
             }
         }, 
     );
@@ -742,15 +742,15 @@ async function placement(db, position) {
         }
     ];
     
-    var cursor = await db.collection("players").aggregate(pipeline, options);
+    var cursor = await PlayersCollection.aggregate(pipeline, options);
 
     //store placements for each player
     cursor.forEach(
         async function(doc) {
             for (let i = 0; i < doc.players.length; i++) {
-                await db.collection("players").updateOne({ "_id": doc.players[i] }, { "$set": { wcpmPlacement: i + 1} }, { "upsert": true } );
+                await PlayersCollection.updateOne({ "_id": doc.players[i] }, { "$set": { wcpmPlacement: i + 1} }, { "upsert": true } );
                 // set number of players in the position
-                await db.collection("players").updateOne({ "_id": doc.players[i] }, { "$set": { numOfPlayersInPos: doc.players.length} }, { "upsert": true } );
+                await PlayersCollection.updateOne({ "_id": doc.players[i] }, { "$set": { numOfPlayersInPos: doc.players.length} }, { "upsert": true } );
             }
         }, 
     );

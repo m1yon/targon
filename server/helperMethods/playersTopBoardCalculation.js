@@ -1,5 +1,5 @@
 // aggregrates thorugh the players collection and calculates the TopBoards, data will be stored in the PlayersTopBoards collection.
-async function playersTopBoardCalculation(db) {
+async function playersTopBoardCalculation(PlayersTopBoardsCollection, PlayersCollection) {
 
     var options = {
         allowDiskUse: false
@@ -35,7 +35,7 @@ async function playersTopBoardCalculation(db) {
         }
     ];
     
-    var cursor = await db.collection("players").aggregate(pipeline, options).toArray();
+    var cursor = await PlayersCollection.aggregate(pipeline, options).toArray();
 
     // calculate topBoardAssists
     var pipeline = [
@@ -65,12 +65,12 @@ async function playersTopBoardCalculation(db) {
     ];
     
     // get aggregate result document
-    var cursor = await db.collection("players").aggregate(pipeline, options);
+    var cursor = await PlayersCollection.aggregate(pipeline, options);
 
     // update the document in TopBoards collection with the result document
     cursor.forEach(
         async function(doc) {
-            await db.collection("TopBoards").updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
+            await PlayersTopBoardsCollection.updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
         }, 
     );
 
@@ -102,12 +102,12 @@ async function playersTopBoardCalculation(db) {
     ];
 
     // get aggregate result document
-    var cursor = await db.collection("players").aggregate(pipeline, options);
+    var cursor = await PlayersCollection.aggregate(pipeline, options);
 
     // update the document in TopBoards collection with the result document
     cursor.forEach(
         async function(doc) {
-            await db.collection("TopBoards").updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
+            await PlayersTopBoardsCollection.updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
         }, 
     );
 
@@ -139,12 +139,12 @@ async function playersTopBoardCalculation(db) {
     ];
     
     // get aggregate result document
-    var cursor = await db.collection("players").aggregate(pipeline, options);
+    var cursor = await PlayersCollection.aggregate(pipeline, options);
 
     // update the document in TopBoards collection with the result document
     cursor.forEach(
         async function(doc) {
-            await db.collection("TopBoards").updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
+            await PlayersTopBoardsCollection.updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
         }, 
     );
 
@@ -175,12 +175,12 @@ async function playersTopBoardCalculation(db) {
     ];
 
     // get aggregate result document
-    var cursor = await db.collection("players").aggregate(pipeline, options);
+    var cursor = await PlayersCollection.aggregate(pipeline, options);
 
     // update the document in TopBoards collection with the result document
     cursor.forEach(
         async function(doc) {
-            await db.collection("TopBoards").updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
+            await PlayersTopBoardsCollection.updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
         }, 
     );
 
@@ -211,12 +211,12 @@ async function playersTopBoardCalculation(db) {
     ];
 
     // get aggregate result document
-    var cursor = await db.collection("players").aggregate(pipeline, options);
+    var cursor = await PlayersCollection.aggregate(pipeline, options);
 
     // update the document in TopBoards collection with the result document
     cursor.forEach(
         async function(doc) {
-            db.collection("TopBoards").updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
+            PlayersTopBoardsCollection.updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
         }, 
     );
 
@@ -247,12 +247,12 @@ async function playersTopBoardCalculation(db) {
     ];
 
     // get aggregate result document
-    var cursor = await db.collection("players").aggregate(pipeline, options);
+    var cursor = await PlayersCollection.aggregate(pipeline, options);
 
     // update the document in TopBoards collection with the result document
     cursor.forEach(
         async function(doc) {
-            await db.collection("TopBoards").updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
+            await PlayersTopBoardsCollection.updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
         }, 
     );
 
