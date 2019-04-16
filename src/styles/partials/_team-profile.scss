@@ -44,7 +44,7 @@
 .team-stats__charts {
   display: grid;
   grid-template-columns: 1% 49% 1% 49%;
-  grid-template-rows: repeat(3, 33.33%);
+  grid-template-rows: repeat(3, 17vw);
 
   @media (max-width: $tablet) {
     grid-template-columns: 100%; 

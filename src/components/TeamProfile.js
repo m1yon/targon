@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import Loading from "./Loading";
 import TeamStatsTable from './TeamStatsTable';
-import { MonsterTimeBarChart, WinratePieChart } from './PlayerProfileCharts';
+import { MonsterTimeBarChart, PlayerStatsAreaChart, WinratePieChart } from './PlayerProfileCharts';
 import { NavLink } from 'react-router-dom';
 
 const TeamProfile = ({ teams, players, location }) => {
@@ -44,10 +44,14 @@ const TeamStats = ({ team, players }) => (
         <hr className="hr-vert" />
         <MonsterTimeBarChart { ...team } />
         <hr className="hr-vert" />
-        <MonsterTimeBarChart { ...team } />
+        <PlayerStatsAreaChart stat="totalKills" player={players.Sneaky} color={COLORS[0]} />
         <hr className="hr-vert" />
-        <MonsterTimeBarChart { ...team } />
-        <hr className="hr-vert" />
+        <PlayerStatsAreaChart stat="kda" player={players.Sneaky} color={COLORS[0]} />
+        <hr className="hr-vert"/>
+        <PlayerStatsAreaChart stat="dpm" player={players.Sneaky} color={COLORS[0]} />
+        <hr className="hr-vert"/>
+        <PlayerStatsAreaChart stat="totalAssists" player={players.Sneaky} color={COLORS[0]} />
+        <hr className="hr-vert"/>
       </div>
     </div>
     {/* <h1 className="player-profile__match-history-title">Match History</h1> */}

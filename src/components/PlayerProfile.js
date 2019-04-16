@@ -83,7 +83,7 @@ const Profile = ({ players, location }) => {
   );
 };
 
-const COLORS = ['#4C61EE', '#8C43F7', '#4F3AD6', '#3A78D6', '#43BAF7'];
+const COLORS = ['#4C61EE', '#8C43F7', '#FA95CA', '#43FAB6', '#3A78D6', '#43BAF7', '#FA52D5', '#FC7C62', '#4F3AD6', '#FAC552', '#D94862', '#8AFFFF'];
 
 const PlayerStats = ({ player }) => (
   <div>
@@ -99,9 +99,9 @@ const PlayerStats = ({ player }) => (
         <hr className="hr-vert" />
         <PlayerStatsAreaChart stat="kda" player={player} color={COLORS[0]} />
         <hr className="hr-vert"/>
-        <PlayerStatsAreaChart stat="dpm" player={player} color={COLORS[3]} />
+        <PlayerStatsAreaChart stat="dpm" player={player} color={COLORS[0]} />
         <hr className="hr-vert"/>
-        <PlayerStatsAreaChart stat="totalAssists" player={player} color={COLORS[3]} />
+        <PlayerStatsAreaChart stat="totalAssists" player={player} color={COLORS[0]} />
         <hr className="hr-vert"/>
       </div>
     </div>

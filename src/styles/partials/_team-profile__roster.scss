@@ -5,6 +5,14 @@
   justify-content: center;
   height: 15vw;
   margin: 0 2% 0 2%;
+
+  @media (max-width: $tablet) {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-row: 15vh;
+
+  }
 }
 
 .team-profile__roster-header {
@@ -25,6 +33,11 @@
   }
   p {
     margin: 0;
+  }
+
+  @media (max-width: $tablet) {
+    height: 100%;
+    width: 100%;
   }
 }
 

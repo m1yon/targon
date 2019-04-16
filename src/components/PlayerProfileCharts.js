@@ -216,7 +216,7 @@ export const MonsterTimeBarChart = ({ firstBaronTime, firstDragonTime, firstTowe
   return(
     <div>
       <h1>Average First Objective Times</h1>
-      <ResponsiveContainer height="80%" width='93%' className="player-profile__area-chart" >
+      <ResponsiveContainer height="80%" width='85%' className="player-profile__area-chart" >
         <BarChart width={500} height={400} data={data}>
           <XAxis axisLine={true} tickLine={false} dataKey="name" tick={<MonsterTimeXAxisLabel />} />
           <YAxis axisLine={true} tickLine={true} tick={<MonsterTimeYAxisLabel />} />
