@@ -35,7 +35,7 @@ const COLORS = ['#4C61EE', '#8C43F7', '#4F3AD6', '#3A78D6', '#43BAF7'];
 
 const TeamStats = ({ team, players }) => (
   <div>
-    <Roster players={players} />
+    <Roster team={team} players={players} />
     <div className="team-profile__stats-container">
       <TeamStatsTable { ...team } />
       <div className="team-stats__charts">
@@ -55,15 +55,14 @@ const TeamStats = ({ team, players }) => (
   </div>
 );
 
-const Roster = ({ players }) => (
+const Roster = ({ team, players }) => (
   <div>
     <h1 className='team-profile__roster-header'>Roster</h1>
     <div className='team-profile__roster'>
-      <PlayerPortrait player={players.Sneaky} />
-      <PlayerPortrait player={players.Sneaky} />
-      <PlayerPortrait player={players.Sneaky} />
-      <PlayerPortrait player={players.Sneaky} />
-      <PlayerPortrait player={players.Sneaky} />
+
+      {team.roster.map((player, index) => (
+        <PlayerPortrait player={players[player]} key={index} />
+      ))}
     </div>
   </div>
 );

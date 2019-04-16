@@ -176,11 +176,16 @@
   }
 }
 
+.player-match-history__date-time-container {
+  text-align: center;
+  padding-right: 3.5%;
+}
+
 .player-match-history__column-2 {
   background-color: $base;
   border-radius: 5px;  
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 2.5fr 1fr 1fr 1fr;
   @media (max-width: $tablet) {
     margin-top: 2vh;
     grid-template-columns: 1fr;
@@ -212,7 +217,7 @@
   display: flex;
   flex-direction: row;
   font-family: $mono-font;
-  margin-left: 1vw;
+  margin-left: 25%;
 
   color: rgba(255, 255, 255, 0.5);
   font-weight: 700;
@@ -275,11 +280,21 @@
 }
 
 .player-match-history__date {
-  opacity: 0.5;
+  font-size: 2vh;
+  font-weight: 700;
   margin: 0;
-  padding-right: 1vw;
   @media (max-width: $tablet) {
+    font-size: 3vh;
     padding-top: 1vh;
+  }
+}
+
+.player-match-history__time {
+  font-size: 1.3vh;
+  margin: 0;
+  opacity: 0.5;
+  @media (max-width: $tablet) {
+    font-size: 2.1vh;
   }
 }
 
