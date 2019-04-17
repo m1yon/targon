@@ -11,12 +11,12 @@ async function playersTopBoardCalculation(PlayersTopBoardsCollection, PlayersCol
             "$project": {
                 "_id": "totalKills",
                 "player": "$_id",
-                "totalKills": 1.0
+                "stats.totalKills": 1.0
             }
         }, 
         {
             "$sort": {
-                "totalKills": -1.0
+                "stats.totalKills": -1.0
             }
         }, 
         {
@@ -29,13 +29,17 @@ async function playersTopBoardCalculation(PlayersTopBoardsCollection, PlayersCol
                     "$push": "$player"
                 }
             }
-        }, 
-        {
-            "$out": "TopBoards"
         }
     ];
     
     var cursor = await PlayersCollection.aggregate(pipeline, options).toArray();
+
+    // update the document in TopBoards collection with the result document
+    cursor.forEach(
+        async function(doc) {
+            await PlayersTopBoardsCollection.updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
+        }, 
+    );
 
     // calculate topBoardAssists
     var pipeline = [
@@ -43,12 +47,12 @@ async function playersTopBoardCalculation(PlayersTopBoardsCollection, PlayersCol
             "$project": {
                 "_id": "totalAssists",
                 "player": "$_id",
-                "totalAssists": 1.0
+                "stats.totalAssists": 1.0
             }
         }, 
         {
             "$sort": {
-                "totalAssists": -1.0
+                "stats.totalAssists": -1.0
             }
         }, 
         {
@@ -80,12 +84,12 @@ async function playersTopBoardCalculation(PlayersTopBoardsCollection, PlayersCol
             "$project": {
                 "_id": "kda",
                 "player": "$_id",
-                "kda": 1.0
+                "stats.kda": 1.0
             }
         }, 
         {
             "$sort": {
-                "kda": -1.0
+                "stats.kda": -1.0
             }
         }, 
         {
@@ -117,12 +121,12 @@ async function playersTopBoardCalculation(PlayersTopBoardsCollection, PlayersCol
             "$project": {
                 "_id": "dmgPercentage",
                 "player": "$_id",
-                "dmgPercentage": 1.0
+                "stats.dmgPercentage": 1.0
             }
         }, 
         {
             "$sort": {
-                "dmgPercentage": -1.0
+                "stats.dmgPercentage": -1.0
             }
         }, 
         {
@@ -153,12 +157,12 @@ async function playersTopBoardCalculation(PlayersTopBoardsCollection, PlayersCol
             "$project": {
                 "_id": "dpm",
                 "player": "$_id",
-                "dpm": 1.0
+                "stats.dpm": 1.0
             }
         }, 
         {
             "$sort": {
-                "dpm": -1.0
+                "stats.dpm": -1.0
             }
         }, 
         {
@@ -189,12 +193,12 @@ async function playersTopBoardCalculation(PlayersTopBoardsCollection, PlayersCol
             "$project": {
                 "_id": "kp",
                 "player": "$_id",
-                "kp": 1.0
+                "stats.kp": 1.0
             }
         }, 
         {
             "$sort": {
-                "kp": -1.0
+                "stats.kp": -1.0
             }
         }, 
         {
@@ -225,12 +229,12 @@ async function playersTopBoardCalculation(PlayersTopBoardsCollection, PlayersCol
             "$project": {
                 "_id": "goldPercentage",
                 "player": "$_id",
-                "goldPercentage": 1.0
+                "stats.goldPercentage": 1.0
             }
         }, 
         {
             "$sort": {
-                "goldPercentage": -1.0
+                "stats.goldPercentage": -1.0
             }
         }, 
         {

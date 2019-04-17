@@ -63,6 +63,8 @@ async function parseData(LCSCollection) {
             data.elders = parseInt(data.elders);
             data.oppelders = parseInt(data.oppelders);
             data.herald = parseInt(data.herald);
+            if (isNaN(data.herald))
+                data.herald = 0;
             data.heraldtime = parseFloat(data.heraldtime);
             if (isNaN(data.heraldtime))
                 data.heraldtime = 0;

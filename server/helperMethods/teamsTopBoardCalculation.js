@@ -11,12 +11,12 @@ async function teamsTopBoardsCalculation (TeamsTopBoardsCollection, TeamsCollect
             "$project": {
                 "_id": "winPercentage",
                 "team": "$_id",
-                "winPercentage": 1.0
+                "stats.winPercentage": 1.0
             }
         }, 
         {
             "$sort": {
-                "winPercentage": -1.0
+                "stats.winPercentage": -1.0
             }
         }, 
         {
@@ -29,13 +29,17 @@ async function teamsTopBoardsCalculation (TeamsTopBoardsCollection, TeamsCollect
                     "$push": "$team"
                 }
             }
-        }, 
-        {
-            "$out": "TeamsTopBoards"
         }
     ];
     
     var cursor = await TeamsCollection.aggregate(pipeline, options).toArray();
+
+    // update the document in TopBoards collection with the result document
+    cursor.forEach(
+        async function(doc) {
+            await TeamsTopBoardsCollection.updateOne({ "_id": doc._id }, { "$set": { "teams": doc.teams} }, { "upsert": true } );
+        }, 
+    );
 
     // calculate topBoardHeraldTime
     var pipeline = [
@@ -43,12 +47,12 @@ async function teamsTopBoardsCalculation (TeamsTopBoardsCollection, TeamsCollect
             "$project": {
                 "_id": "heraldTime",
                 "team": "$_id",
-                "heraldTime": 1.0
+                "stats.heraldTime": 1.0
             }
         }, 
         {
             "$sort": {
-                "heraldTime": -1.0
+                "stats.heraldTime": -1.0
             }
         }, 
         {
@@ -80,12 +84,12 @@ async function teamsTopBoardsCalculation (TeamsTopBoardsCollection, TeamsCollect
             "$project": {
                 "_id": "firstTowerTime",
                 "team": "$_id",
-                "firstTowerTime": 1.0
+                "stats.firstTowerTime": 1.0
             }
         }, 
         {
             "$sort": {
-                "firstTowerTime": -1.0
+                "stats.firstTowerTime": -1.0
             }
         }, 
         {
@@ -117,12 +121,12 @@ async function teamsTopBoardsCalculation (TeamsTopBoardsCollection, TeamsCollect
             "$project": {
                 "_id": "firstBaronTime",
                 "team": "$_id",
-                "firstBaronTime": 1.0
+                "stats.firstBaronTime": 1.0
             }
         }, 
         {
             "$sort": {
-                "firstBaronTime": -1.0
+                "stats.firstBaronTime": -1.0
             }
         }, 
         {
@@ -154,12 +158,12 @@ async function teamsTopBoardsCalculation (TeamsTopBoardsCollection, TeamsCollect
             "$project": {
                 "_id": "visibleWardClearRate",
                 "team": "$_id",
-                "visibleWardClearRate": 1.0
+                "stats.visibleWardClearRate": 1.0
             }
         }, 
         {
             "$sort": {
-                "visibleWardClearRate": -1.0
+                "stats.visibleWardClearRate": -1.0
             }
         }, 
         {
@@ -191,12 +195,12 @@ async function teamsTopBoardsCalculation (TeamsTopBoardsCollection, TeamsCollect
             "$project": {
                 "_id": "invisiblewardclearrate",
                 "team": "$_id",
-                "invisiblewardclearrate": 1.0
+                "stats.invisiblewardclearrate": 1.0
             }
         }, 
         {
             "$sort": {
-                "invisiblewardclearrate": -1.0
+                "stats.invisiblewardclearrate": -1.0
             }
         }, 
         {

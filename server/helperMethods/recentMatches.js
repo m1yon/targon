@@ -52,7 +52,7 @@ async function recentMatches(LCSCollection) {
             }
         }, 
         {
-            "$out": "RecentMatches"
+            "$out": "2019SpringRecentMatches"
         }
     ];
 

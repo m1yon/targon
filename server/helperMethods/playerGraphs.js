@@ -62,8 +62,8 @@ async function playerGraphs(PlayersCollection, LCSCollection) {
                             "$multiply": [
                                 {
                                     "$divide": [
-                                        "$totalWins",
-                                        "$totalLosses"
+                                        "$stats.totalWins",
+                                        "$stats.totalGames"
                                     ]
                                 },
                                 100.0

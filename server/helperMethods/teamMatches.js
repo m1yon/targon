@@ -1,5 +1,5 @@
-//creates a match object for each plyer which contains stats for each match
-async function playerMatches(PlayersCollection) {
+//creates a match object for each team which contains team stats for each match
+async function teamMatches(TeamsCollection) {
 
     var options = {
         allowDiskUse: false
@@ -10,16 +10,16 @@ async function playerMatches(PlayersCollection) {
             "$lookup": {
                 "from": "2019SpringNALCS",
                 "let": {
-                    "playerName": "$_id"
+                    "teamName": "$_id"
                 },
                 "pipeline": [
                     {
                         "$match": {
                             "$expr": {
-                                "$eq": [
-                                    "$$playerName",
-                                    "$player"
-                                ]
+                                "$and": [
+                                    { "$eq": ["$player","Team"] },
+                                    { "$eq": ["$$teamName","$team"] }
+                                ]                
                             }
                         }
                     },
@@ -34,14 +34,13 @@ async function playerMatches(PlayersCollection) {
         }
     ];
 
-    var cursor = await PlayersCollection.aggregate(pipeline, options).toArray();
+    var cursor = await TeamsCollection.aggregate(pipeline, options).toArray();
 
     cursor.forEach(
         async function(doc) {
-            //console.log(doc.games);
-            await PlayersCollection.updateOne({ "_id": doc._id }, { "$set": { "matches":  doc.games } }, { "upsert": true } );
+            await TeamsCollection.updateOne({ "_id": doc._id }, { "$set": { "matches":  doc.games } }, { "upsert": true } );
         }
     );
 }
 
-module.exports = playerMatches;
+module.exports = teamMatches;
