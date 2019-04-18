@@ -4,6 +4,7 @@ import Loading from "./Loading";
 import TeamStatsTable from './TeamStatsTable';
 import { MonsterTimeBarChart, PlayerStatsAreaChart, WinratePieChart } from './PlayerProfileCharts';
 import { NavLink } from 'react-router-dom';
+import TeamMatchHistory from './TeamMatchHistory';
 
 const TeamProfile = ({ teams, players, location }) => {
   return (
@@ -54,8 +55,8 @@ const TeamStats = ({ team, players }) => (
         <hr className="hr-vert"/>
       </div>
     </div>
-    {/* <h1 className="player-profile__match-history-title">Match History</h1> */}
-    {/* <PlayerMatchHistory player={player} /> */}
+    <h1 className="player-profile__match-history-title">Match History</h1>
+    <TeamMatchHistory team={team} />
   </div>
 );
 

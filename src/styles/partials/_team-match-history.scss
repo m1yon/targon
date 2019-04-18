@@ -1,0 +1,68 @@
+.team-match-history {
+  background-color: $light-1;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  height: 10vh;
+  padding: 1%;
+  margin-bottom: 1%;
+  border-radius: 5px;
+  @media (max-width: $tablet) {
+    grid-template-columns: 100%;
+    margin-bottom: 2vh;
+  }
+}
+
+.team-match-history--week-1 {
+  margin-bottom: 6vh;
+  @media (max-width: $tablet) {
+    margin-bottom: 9vh;
+  }
+}
+
+.team-match-history__column-1 {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  @media (max-width: $tablet) {
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.team-match-history__column-2 {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  @media (max-width: $tablet) {
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.team-match-history__column-3 {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  @media (max-width: $tablet) {
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.team-match-history__team-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 0;
+  padding-right: 2%;
+  width: 32.5%;
+}
+
+.team-match-history__opponent-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 0;
+  padding-left: 2%;
+  width: 32.5%;
+}

@@ -160,6 +160,7 @@
 .player-match-history__champion-img {
   height: 3vw;
   width: auto;
+  padding-right: 5%;
   @media (max-width: $tablet) {
     height: 7vh;
     padding: 1vh 0;
@@ -202,7 +203,7 @@
     color: rgba(255, 255, 255, 0.7);
     margin: 0;
     font-size: .7vw;
-    font-family: $mono-font;
+    font-family: $body-font;
     @media (max-width: $tablet) {
       margin: .5vh 0;
       font-size: 2vh;
@@ -250,9 +251,9 @@
   align-items: center;
   justify-content: center;
   background-color: white;
-  width: 7vw;
+  width: 35%;
   height: 65%;
-  margin-left: 1vw;
+  margin: 0;
   border-radius: 5px;
   @media (max-width: $tablet) {
     height: 10vw;

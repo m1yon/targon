@@ -32,9 +32,9 @@ const PlayerMatchHistory = ({ player }) => {
 
             <div className='player-match-history__column-2'>
               <div className='player-match-history__kda'>
-                <p className='player-match-history__kills'>{ match.k }</p> /
-                <p className='player-match-history__deaths'>{ match.d }</p> /
-                <p className='player-match-history__assists'>{ match.a }</p>
+                <p className='player-match-history__kills'>{ numeral(match.k).format('00') }</p> /
+                <p className='player-match-history__deaths'>{ numeral(match.d).format('00') }</p> /
+                <p className='player-match-history__assists'>{ numeral(match.a).format('00') }</p>
               </div>
               <div className='player-match-history__details'>
                 <p>CS: {match.minionkills}</p>
