@@ -1,6 +1,4 @@
 import React from 'react';
-import moment from 'moment';
-import numeral from 'numeral';
 
 const TeamMatchHistory = ({ team }) => {
 
@@ -13,6 +11,7 @@ const TeamMatchHistory = ({ team }) => {
             <div className='team-match-history__column-2'>
               <div className='team-match-history__team-container'>
                 <p>{team._id}</p>
+                <span style={{backgroundImage: `url(/assets/teams/icons/${team._id.replace(/ /g,"_")}.png)`}} onError={(e)=>{e.target.onerror = null; e.target.src="/assets/players/avi/default.jpg"}} className="match-history__team-icon"></span>
               </div>
               { match.result == 1 ? 
                 <div className='player-match-history__result-container player-match-history__result--victory'>
@@ -24,6 +23,7 @@ const TeamMatchHistory = ({ team }) => {
                 </div>
               } 
               <div className='team-match-history__opponent-container'>
+                <span style={{backgroundImage: `url(/assets/teams/icons/${match.opponentTeam.replace(/ /g,"_")}.png)`}} onError={(e)=>{e.target.onerror = null; e.target.src="/assets/players/avi/default.jpg"}} className="match-history__team-icon"></span>
                 <p>{match.opponentTeam}</p>
               </div>
             </div>
