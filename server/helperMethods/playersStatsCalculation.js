@@ -1,5 +1,5 @@
 // aggregrate through raw data to calculate stats for each player. Results will be in the collection "players" in the database
-async function playersStatsCalculation(db) {
+async function playersStatsCalculation(PlayersCollection, LCSCollection) {
 
     var options = {
         allowDiskUse: false
@@ -32,10 +32,19 @@ async function playersStatsCalculation(db) {
                 "totalAssists": {
                     "$sum": "$a"
                 },
+                "kills": {
+                    "$avg": "$k"
+                },
+                "assists": {
+                    "$avg": "$a"
+                },
+                "deaths": {
+                    "$avg": "$d"
+                },
                 "totalWins": {
                     "$sum": "$result"
                 },
-                "totalLosses": {
+                "totalGames": {
                     "$sum": 1.0
                 },
                 "kp": {
@@ -162,13 +171,25 @@ async function playersStatsCalculation(db) {
                     ]
                 }
             }
-        }, 
-        {
-            "$out": "players"
         }
     ];
     
-    var cursor = await db.collection("NALCS").aggregate(pipeline, options).toArray();
+    var cursor = await LCSCollection.aggregate(pipeline, options).toArray();
+
+    cursor.forEach(
+        async function(doc) {
+            let playerName = doc._id;
+            let playerTeam = doc.team;
+            let playerPosition = doc.position;
+            if (playerName == "Piglet") {
+                playerPosition = "ADC";
+            }
+            delete doc._id;
+            delete doc.team;
+            delete doc.position;
+            await PlayersCollection.updateOne({ "_id": playerName, "team": playerTeam, "position": playerPosition}, { "$set": {"stats": doc} }, { "upsert": true } );
+        }
+    );
 
 }
 

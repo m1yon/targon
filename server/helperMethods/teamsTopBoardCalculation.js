@@ -1,5 +1,5 @@
 // aggregrates thorugh the Teams collection and calculates the TopBoards, data will be stored in the TeamsTopBoards collection.
-async function teamsTopBoardsCalculation (db) {
+async function teamsTopBoardsCalculation (TeamsTopBoardsCollection, TeamsCollection) {
 
     var options = {
         allowDiskUse: false
@@ -11,12 +11,12 @@ async function teamsTopBoardsCalculation (db) {
             "$project": {
                 "_id": "winPercentage",
                 "team": "$_id",
-                "winPercentage": 1.0
+                "stats.winPercentage": 1.0
             }
         }, 
         {
             "$sort": {
-                "winPercentage": -1.0
+                "stats.winPercentage": -1.0
             }
         }, 
         {
@@ -29,13 +29,17 @@ async function teamsTopBoardsCalculation (db) {
                     "$push": "$team"
                 }
             }
-        }, 
-        {
-            "$out": "TeamsTopBoards"
         }
     ];
     
-    var cursor = await db.collection("Teams").aggregate(pipeline, options).toArray();
+    var cursor = await TeamsCollection.aggregate(pipeline, options).toArray();
+
+    // update the document in TopBoards collection with the result document
+    cursor.forEach(
+        async function(doc) {
+            await TeamsTopBoardsCollection.updateOne({ "_id": doc._id }, { "$set": { "teams": doc.teams} }, { "upsert": true } );
+        }, 
+    );
 
     // calculate topBoardHeraldTime
     var pipeline = [
@@ -43,12 +47,12 @@ async function teamsTopBoardsCalculation (db) {
             "$project": {
                 "_id": "heraldTime",
                 "team": "$_id",
-                "heraldTime": 1.0
+                "stats.heraldTime": 1.0
             }
         }, 
         {
             "$sort": {
-                "heraldTime": -1.0
+                "stats.heraldTime": -1.0
             }
         }, 
         {
@@ -65,12 +69,12 @@ async function teamsTopBoardsCalculation (db) {
     ];
     
     // get aggregate result document
-    var cursor = await db.collection("Teams").aggregate(pipeline, options);
+    var cursor = await TeamsCollection.aggregate(pipeline, options);
 
     // update the document in TopBoards collection with the result document
     cursor.forEach(
         async function(doc) {
-            await db.collection("TeamsTopBoards").updateOne({ "_id": doc._id }, { "$set": { "teams": doc.teams} }, { "upsert": true } );
+            await TeamsTopBoardsCollection.updateOne({ "_id": doc._id }, { "$set": { "teams": doc.teams} }, { "upsert": true } );
         }, 
     );
 
@@ -80,12 +84,12 @@ async function teamsTopBoardsCalculation (db) {
             "$project": {
                 "_id": "firstTowerTime",
                 "team": "$_id",
-                "firstTowerTime": 1.0
+                "stats.firstTowerTime": 1.0
             }
         }, 
         {
             "$sort": {
-                "firstTowerTime": -1.0
+                "stats.firstTowerTime": -1.0
             }
         }, 
         {
@@ -102,12 +106,12 @@ async function teamsTopBoardsCalculation (db) {
     ];
     
     // get aggregate result document
-    var cursor = await db.collection("Teams").aggregate(pipeline, options);
+    var cursor = await TeamsCollection.aggregate(pipeline, options);
 
     // update the document in TopBoards collection with the result document
     cursor.forEach(
         async function(doc) {
-            await db.collection("TeamsTopBoards").updateOne({ "_id": doc._id }, { "$set": { "teams": doc.teams} }, { "upsert": true } );
+            await TeamsTopBoardsCollection.updateOne({ "_id": doc._id }, { "$set": { "teams": doc.teams} }, { "upsert": true } );
         }, 
     );
 
@@ -117,12 +121,12 @@ async function teamsTopBoardsCalculation (db) {
             "$project": {
                 "_id": "firstBaronTime",
                 "team": "$_id",
-                "firstBaronTime": 1.0
+                "stats.firstBaronTime": 1.0
             }
         }, 
         {
             "$sort": {
-                "firstBaronTime": -1.0
+                "stats.firstBaronTime": -1.0
             }
         }, 
         {
@@ -139,12 +143,12 @@ async function teamsTopBoardsCalculation (db) {
     ];
     
     // get aggregate result document
-    var cursor = await db.collection("Teams").aggregate(pipeline, options);
+    var cursor = await TeamsCollection.aggregate(pipeline, options);
 
     // update the document in TopBoards collection with the result document
     cursor.forEach(
         async function(doc) {
-            await db.collection("TeamsTopBoards").updateOne({ "_id": doc._id }, { "$set": { "teams": doc.teams} }, { "upsert": true } );
+            await TeamsTopBoardsCollection.updateOne({ "_id": doc._id }, { "$set": { "teams": doc.teams} }, { "upsert": true } );
         }, 
     );
 
@@ -154,12 +158,12 @@ async function teamsTopBoardsCalculation (db) {
             "$project": {
                 "_id": "visibleWardClearRate",
                 "team": "$_id",
-                "visibleWardClearRate": 1.0
+                "stats.visibleWardClearRate": 1.0
             }
         }, 
         {
             "$sort": {
-                "visibleWardClearRate": -1.0
+                "stats.visibleWardClearRate": -1.0
             }
         }, 
         {
@@ -176,12 +180,12 @@ async function teamsTopBoardsCalculation (db) {
     ];
     
     // get aggregate result document
-    var cursor = await db.collection("Teams").aggregate(pipeline, options);
+    var cursor = await TeamsCollection.aggregate(pipeline, options);
 
     // update the document in TopBoards collection with the result document
     cursor.forEach(
         async function(doc) {
-            await db.collection("TeamsTopBoards").updateOne({ "_id": doc._id }, { "$set": { "teams": doc.teams} }, { "upsert": true } );
+            await TeamsTopBoardsCollection.updateOne({ "_id": doc._id }, { "$set": { "teams": doc.teams} }, { "upsert": true } );
         }, 
     );
     
@@ -191,12 +195,12 @@ async function teamsTopBoardsCalculation (db) {
             "$project": {
                 "_id": "invisiblewardclearrate",
                 "team": "$_id",
-                "invisiblewardclearrate": 1.0
+                "stats.invisiblewardclearrate": 1.0
             }
         }, 
         {
             "$sort": {
-                "invisiblewardclearrate": -1.0
+                "stats.invisiblewardclearrate": -1.0
             }
         }, 
         {
@@ -213,12 +217,12 @@ async function teamsTopBoardsCalculation (db) {
     ];
     
     // get aggregate result document
-    var cursor = await db.collection("Teams").aggregate(pipeline, options);
+    var cursor = await TeamsCollection.aggregate(pipeline, options);
 
     // update the document in TopBoards collection with the result document
     cursor.forEach(
         async function(doc) {
-            await db.collection("TeamsTopBoards").updateOne({ "_id": doc._id }, { "$set": { "teams": doc.teams} }, { "upsert": true } );
+            await TeamsTopBoardsCollection.updateOne({ "_id": doc._id }, { "$set": { "teams": doc.teams} }, { "upsert": true } );
         }, 
     );
 

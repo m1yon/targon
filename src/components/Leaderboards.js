@@ -18,27 +18,27 @@ const Leaderboards = ({ match, players }) => {
 const columns = [{
   Header: <p className='table--header'>Name</p>,
   Cell: (props) => <NavLink to={`/players/${props.value}`} className="cell--name">{props.value}</NavLink>,
-  accessor: "_id",
+  accessor: "stats._id",
   minWidth: 150,
 }, {
   Header: <p className='table--header'>K</p>,
-  accessor: "totalKills",
+  accessor: "stats.totalKills",
   minWidth: 35,
 }, {
   Header: <p className='table--header'>D</p>,
-  accessor: "totalDeaths",
+  accessor: "stats.totalDeaths",
   minWidth: 35
 }, {
   Header: <p className='table--header'>A</p>,
-  accessor: "totalAssists",
+  accessor: "stats.totalAssists",
   minWidth: 35
 }, {
   Header: <p className='table--header'>KDA</p>,
-  accessor: "kda",
+  accessor: "stats.kda",
   minWidth: 65,
 }, {
   Header: <p className='table--header'>KP</p>,
-  accessor: "kp",
+  accessor: "stats.kp",
   minWidth: 65,
   sortMethod: (a, b, desc) => {
     a = numeral(a).value();
@@ -51,7 +51,7 @@ const columns = [{
   } 
 }, {
   Header: <p className='table--header'>DTH%</p>,
-  accessor: "dthPercentage",
+  accessor: "stats.dthPercentage",
   minWidth: 65,
   sortMethod: (a, b, desc) => {
     a = numeral(a).value();
@@ -64,7 +64,7 @@ const columns = [{
   } 
 }, {
   Header: <p className='table--header'>FB%</p>,
-  accessor: "fbPercentage",
+  accessor: "stats.fbPercentage",
   minWidth: 65,
   sortMethod: (a, b, desc) => {
     a = numeral(a).value();
@@ -77,7 +77,7 @@ const columns = [{
   } 
 }, {
   Header: <p className='table--header'>GD10</p>,
-  accessor: "gd10",
+  accessor: "stats.gd10",
   minWidth: 65,
   sortMethod: (a, b, desc) => {
     a = numeral(a).value();
@@ -90,7 +90,7 @@ const columns = [{
   } 
 }, {
   Header: <p className='table--header'>XPD10</p>,
-  accessor: "xpd10",
+  accessor: "stats.xpd10",
   minWidth: 65,
   sortMethod: (a, b, desc) => {
     a = numeral(a).value();
@@ -103,7 +103,7 @@ const columns = [{
   } 
 }, {
   Header: <p className='table--header'>CSD10</p>,
-  accessor: "csd10",
+  accessor: "stats.csd10",
   minWidth: 65,
   sortMethod: (a, b, desc) => {
     a = numeral(a).value();
@@ -116,7 +116,7 @@ const columns = [{
   } 
 }, {
   Header: <p className='table--header'>CSPM</p>,
-  accessor: "cspm",
+  accessor: "stats.cspm",
   minWidth: 65,
   sortMethod: (a, b, desc) => {
     a = numeral(a).value();
@@ -129,7 +129,7 @@ const columns = [{
   } 
 }, {
   Header: <p className='table--header'>CS%P15</p>,
-  accessor: "csPercent15",
+  accessor: "stats.csPercent15",
   minWidth: 70,
   sortMethod: (a, b, desc) => {
     a = numeral(a).value();
@@ -142,7 +142,7 @@ const columns = [{
   } 
 }, {
   Header: <p className='table--header'>DPM</p>,
-  accessor: "dpm",
+  accessor: "stats.dpm",
   minWidth: 65,
   sortMethod: (a, b, desc) => {
     a = numeral(a).value();
@@ -155,7 +155,7 @@ const columns = [{
   } 
 }, {
   Header: <p className='table--header'>DMG%</p>,
-  accessor: "dmgPercentage",
+  accessor: "stats.dmgPercentage",
   minWidth: 65,
   sortMethod: (a, b, desc) => {
     a = numeral(a).value();
@@ -168,7 +168,7 @@ const columns = [{
   } 
 }, {
   Header: <p className='table--header'>EGPM</p>,
-  accessor: "earnedGoldPerMinute",
+  accessor: "stats.earnedGoldPerMinute",
   minWidth: 65,
   sortMethod: (a, b, desc) => {
     a = numeral(a).value();
@@ -181,7 +181,7 @@ const columns = [{
   } 
 }, {
   Header: <p className='table--header'>GOLD%</p>,
-  accessor: "goldPercentage",
+  accessor: "stats.goldPercentage",
   minWidth: 65,
   sortMethod: (a, b, desc) => {
     a = numeral(a).value();
@@ -194,7 +194,7 @@ const columns = [{
   } 
 }, {
   Header: <p className='table--header'>WPM</p>,
-  accessor: "wpm",
+  accessor: "stats.wpm",
   minWidth: 65,
   sortMethod: (a, b, desc) => {
     a = numeral(a).value();
@@ -207,7 +207,7 @@ const columns = [{
   } 
 }, {
   Header: <p className='table--header'>WCPM</p>,
-  accessor: "wcpm",
+  accessor: "stats.wcpm",
   minWidth: 65,
   sortMethod: (a, b, desc) => {
     a = numeral(a).value();

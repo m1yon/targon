@@ -1,5 +1,5 @@
-// aggregrates thorugh the players collection and calculates the TopBoards, data will be stored in the topBoards collection.
-async function topBoardCalculation(db) {
+// aggregrates thorugh the players collection and calculates the TopBoards, data will be stored in the PlayersTopBoards collection.
+async function playersTopBoardCalculation(PlayersTopBoardsCollection, PlayersCollection) {
 
     var options = {
         allowDiskUse: false
@@ -11,12 +11,12 @@ async function topBoardCalculation(db) {
             "$project": {
                 "_id": "totalKills",
                 "player": "$_id",
-                "totalKills": 1.0
+                "stats.totalKills": 1.0
             }
         }, 
         {
             "$sort": {
-                "totalKills": -1.0
+                "stats.totalKills": -1.0
             }
         }, 
         {
@@ -29,13 +29,17 @@ async function topBoardCalculation(db) {
                     "$push": "$player"
                 }
             }
-        }, 
-        {
-            "$out": "TopBoards"
         }
     ];
     
-    var cursor = await db.collection("players").aggregate(pipeline, options).toArray();
+    var cursor = await PlayersCollection.aggregate(pipeline, options).toArray();
+
+    // update the document in TopBoards collection with the result document
+    cursor.forEach(
+        async function(doc) {
+            await PlayersTopBoardsCollection.updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
+        }, 
+    );
 
     // calculate topBoardAssists
     var pipeline = [
@@ -43,12 +47,12 @@ async function topBoardCalculation(db) {
             "$project": {
                 "_id": "totalAssists",
                 "player": "$_id",
-                "totalAssists": 1.0
+                "stats.totalAssists": 1.0
             }
         }, 
         {
             "$sort": {
-                "totalAssists": -1.0
+                "stats.totalAssists": -1.0
             }
         }, 
         {
@@ -65,12 +69,12 @@ async function topBoardCalculation(db) {
     ];
     
     // get aggregate result document
-    var cursor = await db.collection("players").aggregate(pipeline, options);
+    var cursor = await PlayersCollection.aggregate(pipeline, options);
 
     // update the document in TopBoards collection with the result document
     cursor.forEach(
         async function(doc) {
-            await db.collection("TopBoards").updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
+            await PlayersTopBoardsCollection.updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
         }, 
     );
 
@@ -80,12 +84,12 @@ async function topBoardCalculation(db) {
             "$project": {
                 "_id": "kda",
                 "player": "$_id",
-                "kda": 1.0
+                "stats.kda": 1.0
             }
         }, 
         {
             "$sort": {
-                "kda": -1.0
+                "stats.kda": -1.0
             }
         }, 
         {
@@ -102,12 +106,12 @@ async function topBoardCalculation(db) {
     ];
 
     // get aggregate result document
-    var cursor = await db.collection("players").aggregate(pipeline, options);
+    var cursor = await PlayersCollection.aggregate(pipeline, options);
 
     // update the document in TopBoards collection with the result document
     cursor.forEach(
         async function(doc) {
-            await db.collection("TopBoards").updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
+            await PlayersTopBoardsCollection.updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
         }, 
     );
 
@@ -117,12 +121,12 @@ async function topBoardCalculation(db) {
             "$project": {
                 "_id": "dmgPercentage",
                 "player": "$_id",
-                "dmgPercentage": 1.0
+                "stats.dmgPercentage": 1.0
             }
         }, 
         {
             "$sort": {
-                "dmgPercentage": -1.0
+                "stats.dmgPercentage": -1.0
             }
         }, 
         {
@@ -139,12 +143,12 @@ async function topBoardCalculation(db) {
     ];
     
     // get aggregate result document
-    var cursor = await db.collection("players").aggregate(pipeline, options);
+    var cursor = await PlayersCollection.aggregate(pipeline, options);
 
     // update the document in TopBoards collection with the result document
     cursor.forEach(
         async function(doc) {
-            await db.collection("TopBoards").updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
+            await PlayersTopBoardsCollection.updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
         }, 
     );
 
@@ -153,12 +157,12 @@ async function topBoardCalculation(db) {
             "$project": {
                 "_id": "dpm",
                 "player": "$_id",
-                "dpm": 1.0
+                "stats.dpm": 1.0
             }
         }, 
         {
             "$sort": {
-                "dpm": -1.0
+                "stats.dpm": -1.0
             }
         }, 
         {
@@ -175,12 +179,12 @@ async function topBoardCalculation(db) {
     ];
 
     // get aggregate result document
-    var cursor = await db.collection("players").aggregate(pipeline, options);
+    var cursor = await PlayersCollection.aggregate(pipeline, options);
 
     // update the document in TopBoards collection with the result document
     cursor.forEach(
         async function(doc) {
-            await db.collection("TopBoards").updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
+            await PlayersTopBoardsCollection.updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
         }, 
     );
 
@@ -189,12 +193,12 @@ async function topBoardCalculation(db) {
             "$project": {
                 "_id": "kp",
                 "player": "$_id",
-                "kp": 1.0
+                "stats.kp": 1.0
             }
         }, 
         {
             "$sort": {
-                "kp": -1.0
+                "stats.kp": -1.0
             }
         }, 
         {
@@ -211,12 +215,12 @@ async function topBoardCalculation(db) {
     ];
 
     // get aggregate result document
-    var cursor = await db.collection("players").aggregate(pipeline, options);
+    var cursor = await PlayersCollection.aggregate(pipeline, options);
 
     // update the document in TopBoards collection with the result document
     cursor.forEach(
         async function(doc) {
-            db.collection("TopBoards").updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
+            PlayersTopBoardsCollection.updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
         }, 
     );
 
@@ -225,12 +229,12 @@ async function topBoardCalculation(db) {
             "$project": {
                 "_id": "goldPercentage",
                 "player": "$_id",
-                "goldPercentage": 1.0
+                "stats.goldPercentage": 1.0
             }
         }, 
         {
             "$sort": {
-                "goldPercentage": -1.0
+                "stats.goldPercentage": -1.0
             }
         }, 
         {
@@ -247,12 +251,12 @@ async function topBoardCalculation(db) {
     ];
 
     // get aggregate result document
-    var cursor = await db.collection("players").aggregate(pipeline, options);
+    var cursor = await PlayersCollection.aggregate(pipeline, options);
 
     // update the document in TopBoards collection with the result document
     cursor.forEach(
         async function(doc) {
-            await db.collection("TopBoards").updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
+            await PlayersTopBoardsCollection.updateOne({ "_id": doc._id }, { "$set": { "players": doc.players} }, { "upsert": true } );
         }, 
     );
 
@@ -262,4 +266,4 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-module.exports = topBoardCalculation;
+module.exports = playersTopBoardCalculation;

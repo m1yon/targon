@@ -10,8 +10,8 @@ const TeamMatchHistory = ({ team }) => {
             <div className='team-match-history__column-1'>start</div>
             <div className='team-match-history__column-2'>
               <div className='team-match-history__team-container'>
-                <p>{team._id}</p>
-                <span style={{backgroundImage: `url(/assets/teams/icons/${team._id.replace(/ /g,"_")}.png)`}} onError={(e)=>{e.target.onerror = null; e.target.src="/assets/players/avi/default.jpg"}} className="match-history__team-icon"></span>
+                <p>{match.team}</p>
+                <span style={{backgroundImage: `url(/assets/teams/icons/${match.team.replace(/ /g,"_")}.png)`}} onError={(e)=>{e.target.onerror = null; e.target.src="/assets/players/avi/default.jpg"}} className="match-history__team-icon"></span>
               </div>
               { match.result == 1 ? 
                 <div className='player-match-history__result-container player-match-history__result--victory'>

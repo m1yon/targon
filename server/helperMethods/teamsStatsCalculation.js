@@ -1,5 +1,5 @@
 // aggregrates through the raw data and calculates stats for each time and stores it into a collection called Teams in the database
-async function teamsStatsCalculation(db) {
+async function teamsStatsCalculation(TeamsCollection, LCSCollection) {
 
     var options = {
         allowDiskUse: false
@@ -25,19 +25,28 @@ async function teamsStatsCalculation(db) {
                 "totalAssists": {
                     "$sum": "$a"
                 },
+                "kills": {
+                    "$avg": "$k"
+                },
+                "assists": {
+                    "$avg": "$a"
+                },
+                "deaths": {
+                    "$avg": "$d"
+                },
                 "totalWins": {
                     "$sum": "$result"
                 },
-                "totalLosses": {
+                "totalGames": {
                     "$sum": 1.0
                 },
                 "kpm": {
                     "$sum": "$kpm"
                 },
-                "teamdragkills": {
+                "teamDragKills": {
                     "$avg": "$teamdragkills"
                 },
-                "totalTeamdragkills": {
+                "totalTeamDragKills": {
                     "$sum": "$teamdragkills"
                 },
                 "firstDragonTime": {
@@ -67,7 +76,7 @@ async function teamsStatsCalculation(db) {
                 "visibleWardClearRate": {
                     "$avg": "$visiblewardclearrate"
                 },
-                "invisiblewardclearrate": {
+                "invisibleWardClearRate": {
                     "$avg": "$invisiblewardclearrate"
                 },
                 "earnedGoldPerMinute": {
@@ -87,9 +96,6 @@ async function teamsStatsCalculation(db) {
                 },
                 "cspm": {
                     "$avg": "$cspm"
-                },
-                "games": {
-                    "$push": "$gameid"
                 }
             }
         }, 
@@ -127,7 +133,7 @@ async function teamsStatsCalculation(db) {
                         {
                             "$divide": [
                                 "$totalWins",
-                                "$totalLosses"
+                                "$totalGames"
                             ]
                         },
                         100.0
@@ -135,18 +141,23 @@ async function teamsStatsCalculation(db) {
                 },
                 "totalLosses": {
                     "$subtract": [
-                        "$totalLosses",
+                        "$totalGames",
                         "$totalWins"
                     ]
                 }
             }
         }, 
-        {
-            "$out": "Teams"
-        }
     ];
     
-    var cursor = await db.collection("NALCS").aggregate(pipeline, options).toArray();
+    var cursor = await LCSCollection.aggregate(pipeline, options).toArray();
+
+    cursor.forEach(
+        async function(doc) {
+            let teamName = doc._id;
+            delete doc._id;
+            await TeamsCollection.updateOne({ "_id": teamName }, { "$set": {"stats": doc} }, { "upsert": true } );
+        }
+    );
 
 }
 

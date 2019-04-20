@@ -1,5 +1,5 @@
 // calculates other raw data to make aggregation easiser
-async function calculateOtherRawData(db) {
+async function calculateOtherRawData(LCSCollection) {
 
     var options = {
         allowDiskUse: false
@@ -14,15 +14,15 @@ async function calculateOtherRawData(db) {
     };
 
     // calculate csPercent15
-    var cursor = await db.collection("NALCS").find({});
+    var cursor = await LCSCollection.find({});
 
     cursor.forEach(
         async function(doc) {
-            var cursor2 = await db.collection("NALCS").find({ "player": "Team", "team": doc.team, "gameid": doc.gameid }).project(projection);
+            var cursor2 = await LCSCollection.find({ "player": "Team", "team": doc.team, "gameid": doc.gameid }).project(projection);
             cursor2.forEach(
                 async function(doc2) {
                     var csPer15 = (doc.csat15 / doc2.csat15) * 100;
-                    await db.collection("NALCS").updateOne({ "_id": doc._id }, { "$set": { "csPercent15": csPer15} }, { "upsert": true } );
+                    await LCSCollection.updateOne({ "_id": doc._id }, { "$set": { "csPercent15": csPer15} }, { "upsert": true } );
                 }, 
             );
         }, 
@@ -32,21 +32,21 @@ async function calculateOtherRawData(db) {
     await sleep(15000);
 
     // calculate deathPercentage
-    var cursor = await db.collection("NALCS").find({});
+    var cursor = await LCSCollection.find({});
     cursor.forEach(
         async function(doc) {
             if (doc.d != 0) {
                 var deathPer = (doc.d / doc.teamdeaths) * 100;
-                await db.collection("NALCS").updateOne({ "_id": doc._id }, { "$set": { "deathPercent": deathPer} }, { "upsert": true } );
+                await LCSCollection.updateOne({ "_id": doc._id }, { "$set": { "deathPercent": deathPer} }, { "upsert": true } );
             }
             else {
-                await db.collection("NALCS").updateOne({ "_id": doc._id }, { "$set": { "deathPercent": 0} }, { "upsert": true } );
+                await LCSCollection.updateOne({ "_id": doc._id }, { "$set": { "deathPercent": 0} }, { "upsert": true } );
             }
         }, 
     );
 
     // calculate opponents
-    var cursor = await db.collection("NALCS").find({}).toArray();
+    var cursor = await LCSCollection.find({}).toArray();
     cursor.forEach(
         async function(doc) {
             var pipeline = [
@@ -64,10 +64,10 @@ async function calculateOtherRawData(db) {
                     }
                 },
             ];
-            var cursor2 = await db.collection("NALCS").aggregate(pipeline, options).toArray();;
+            var cursor2 = await LCSCollection.aggregate(pipeline, options).toArray();;
             cursor2.forEach(
                 async function(doc2) {
-                    await db.collection("NALCS").updateOne({ "_id": doc._id }, { "$set": { "opponentTeam": doc2.team} }, { "upsert": true } );
+                    await LCSCollection.updateOne({ "_id": doc._id }, { "$set": { "opponentTeam": doc2.team} }, { "upsert": true } );
                 },
             );
         },

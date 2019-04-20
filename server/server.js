@@ -41,26 +41,32 @@ MongoClient.connect(url,{ useNewUrlParser: true }, (err, client) => {
 
 app.use(express.static(publicPath));
 
+app.get('/api/seasons', (req,res) => {
+  let seasons = ['2016Regional', '2016Spring', '2016Summer', '2017Regional', '2017Spring', '2017Summer', '2018Spring', '2018Summer', '2019Spring'];
+  res.send(seasons);
+});
+
+
 // API GET request which sends all the data
-app.get('/api/data', (req,res) => {
+app.get('/api/data/:id', (req,res) => {
   let returnedValue = {};
-  db.collection('players').find({}).toArray().then((docs) => {
+  console.log(req.params.id)
+  db.collection(req.params.id + 'Players').find({}).toArray().then((docs) => {
     returnedValue.players = arrayToObjects(docs);
 
-    db.collection('Teams').find({}).toArray().then((docs2) =>{
+    db.collection(req.params.id + 'Teams').find({}).toArray().then((docs2) =>{
       returnedValue.teams = arrayToObjects(docs2);
       
-      db.collection('TopBoards').find({}).toArray().then((docs3) => {
+      db.collection(req.params.id + 'PlayersTopBoards').find({}).toArray().then((docs3) => {
         returnedValue.playersTopBoards = arrayToObjects(docs3);
 
-        db.collection('TeamsTopBoards').find({}).toArray().then((docs4) => {
+        db.collection(req.params.id + 'TeamsTopBoards').find({}).toArray().then((docs4) => {
           returnedValue.teamsTopBoards = arrayToObjects(docs4);
           res.send(returnedValue);
         }).catch((e) => {
           res.status(500).send();
         });
 
-        console.log(returnedValue);
       }).catch((e) => {
         res.status(500).send();
       });

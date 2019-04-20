@@ -2,12 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { statToPretty } from "./PlayerProfile";
 
-const PlayerStatsTable = ({ totalKills, totalDeaths, totalAssists, kda, kp, dthPercentage, fbPercentage, gd10,
-  xpd10, csd10, cspm, dpm, csPercent15, dmgPercentage, earnedGoldPerMinute, goldPercentage, 
-  wpm, wcpm, numOfPlayersInPos, totalKillsPlacement, totalDeathsPlacement, totalAssistsPlacement, kdaPlacement,
-  kpPlacement, dthPercentagePlacement, fbPercentagePlacement, gd10Placement, xpd10Placement,
-  csd10Placement, cspmPlacement, csPercent15Placement, dpmPlacement, dmgPercentagePlacement, 
-  earnedGoldPerMinutePlacement, goldPercentagePlacement, wpmPlacement, wcpmPlacement }) => (
+const PlayerStatsTable = ({ stats, placement }) => (
   <div>
     <h1 className="player-stats__statistics-title">Statistics</h1>
     
@@ -18,24 +13,24 @@ const PlayerStatsTable = ({ totalKills, totalDeaths, totalAssists, kda, kp, dthP
         <p>Placement</p>
       </div>
 
-      <StatsheetEntry statname={"totalKills"} avg={ totalKills } placement={ totalKillsPlacement } placementTotal={ numOfPlayersInPos } alt="0"/>
-      <StatsheetEntry statname={"totalDeaths"} avg={ totalDeaths } placement={ totalDeathsPlacement } placementTotal={ numOfPlayersInPos } alt="1"/>
-      <StatsheetEntry statname={"totalAssists"} avg={ totalAssists } placement={ totalAssistsPlacement } placementTotal={ numOfPlayersInPos } alt="0"/>
-      <StatsheetEntry statname={"kda"} avg={ kda } placement={ kdaPlacement } placementTotal={ numOfPlayersInPos } alt="1"/>
-      <StatsheetEntry statname={"kp"} avg={ kp } placement={ kpPlacement } placementTotal={ numOfPlayersInPos } alt="0"/>
-      <StatsheetEntry statname={"dthPercentage"} avg={ dthPercentage } placement={ dthPercentagePlacement } placementTotal={ numOfPlayersInPos } alt="1"/>
-      <StatsheetEntry statname={"fbPercentage"} avg={ fbPercentage } placement={ fbPercentagePlacement } placementTotal={ numOfPlayersInPos } alt="0"/>
-      <StatsheetEntry statname={"gd10"} avg={ gd10 } placement={ gd10Placement } placementTotal={ numOfPlayersInPos } alt="1"/>
-      <StatsheetEntry statname={"xpd10"} avg={ xpd10 } placement={ xpd10Placement } placementTotal={ numOfPlayersInPos } alt="0"/>
-      <StatsheetEntry statname={"csd10"} avg={ csd10 } placement={ csd10Placement } placementTotal={ numOfPlayersInPos } alt="1"/>
-      <StatsheetEntry statname={"cspm"} avg={ cspm } placement={ cspmPlacement } placementTotal={ numOfPlayersInPos } alt="0"/>
-      <StatsheetEntry statname={"csPercent15"} avg={ csPercent15 } placement={ csPercent15Placement } placementTotal={ numOfPlayersInPos } alt="1"/>
-      <StatsheetEntry statname={"dpm"} avg={ dpm } placement={ dpmPlacement } placementTotal={ numOfPlayersInPos } alt="0"/>
-      <StatsheetEntry statname={"dmgPercentage"} avg={ dmgPercentage } placement={ dmgPercentagePlacement } placementTotal={ numOfPlayersInPos } alt="1"/>
-      <StatsheetEntry statname={"earnedGoldPerMinute"} avg={ earnedGoldPerMinute } placement={ earnedGoldPerMinutePlacement } placementTotal={ numOfPlayersInPos } alt="0"/>
-      <StatsheetEntry statname={"goldPercentage"} avg={ goldPercentage } placement={ goldPercentagePlacement } placementTotal={ numOfPlayersInPos } alt="1"/>
-      <StatsheetEntry statname={"wpm"} avg={ wpm } placement={ wpmPlacement } placementTotal={ numOfPlayersInPos } alt="0"/>
-      <StatsheetEntry statname={"wcpm"} avg={ wcpm } placement={ wcpmPlacement } placementTotal={ numOfPlayersInPos } alt="1"/>
+      <StatsheetEntry statname={"totalKills"} avg={ stats.totalKills } placement={ placement.kills } placementTotal={ placement.numOfPlayersInPos } alt="0"/>
+      <StatsheetEntry statname={"totalDeaths"} avg={ stats.totalDeaths } placement={ placement.deaths } placementTotal={ placement.numOfPlayersInPos } alt="1"/>
+      <StatsheetEntry statname={"totalAssists"} avg={ stats.totalAssists } placement={ placement.assists } placementTotal={ placement.numOfPlayersInPos } alt="0"/>
+      <StatsheetEntry statname={"kda"} avg={ stats.kda } placement={ placement.kda } placementTotal={ placement.numOfPlayersInPos } alt="1"/>
+      <StatsheetEntry statname={"kp"} avg={ stats.kp } placement={ placement.kp } placementTotal={ placement.numOfPlayersInPos } alt="0"/>
+      <StatsheetEntry statname={"dthPercentage"} avg={ stats.dthPercentage } placement={ placement.dthPercentage } placementTotal={ placement.numOfPlayersInPos } alt="1"/>
+      <StatsheetEntry statname={"fbPercentage"} avg={ stats.fbPercentage } placement={ placement.fbPercentage } placementTotal={ placement.numOfPlayersInPos } alt="0"/>
+      <StatsheetEntry statname={"gd10"} avg={ stats.gd10 } placement={ placement.gd10 } placementTotal={ placement.numOfPlayersInPos } alt="1"/>
+      <StatsheetEntry statname={"xpd10"} avg={ stats.xpd10 } placement={ placement.xpd10 } placementTotal={ placement.numOfPlayersInPos } alt="0"/>
+      <StatsheetEntry statname={"csd10"} avg={ stats.csd10 } placement={ placement.csd10 } placementTotal={ placement.numOfPlayersInPos } alt="1"/>
+      <StatsheetEntry statname={"cspm"} avg={ stats.cspm } placement={ placement.cspm } placementTotal={ placement.numOfPlayersInPos } alt="0"/>
+      <StatsheetEntry statname={"csPercent15"} avg={ stats.csPercent15 } placement={ placement.csPercent15 } placementTotal={ placement.numOfPlayersInPos } alt="1"/>
+      <StatsheetEntry statname={"dpm"} avg={ stats.dpm } placement={ placement.dpm } placementTotal={ placement.numOfPlayersInPos } alt="0"/>
+      <StatsheetEntry statname={"dmgPercentage"} avg={ stats.dmgPercentage } placement={ placement.dmgPercentage } placementTotal={ placement.numOfPlayersInPos } alt="1"/>
+      <StatsheetEntry statname={"earnedGoldPerMinute"} avg={ stats.earnedGoldPerMinute } placement={ placement.earnedGoldPerMinute } placementTotal={ placement.numOfPlayersInPos } alt="0"/>
+      <StatsheetEntry statname={"goldPercentage"} avg={ stats.goldPercentage } placement={ placement.goldPercentage } placementTotal={ placement.numOfPlayersInPos } alt="1"/>
+      <StatsheetEntry statname={"wpm"} avg={ stats.wpm } placement={ placement.wpm } placementTotal={ placement.numOfPlayersInPos } alt="0"/>
+      <StatsheetEntry statname={"wcpm"} avg={ stats.wcpm } placement={ placement.wcpm } placementTotal={ placement.numOfPlayersInPos } alt="1"/>
     </div>
   </div>
 );

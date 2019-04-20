@@ -13,7 +13,7 @@ const TeamOverview = () => (
           <TopBoard type='teams' stat="firstBaronTime" />
           <TopBoard type='teams' stat="firstTowerTime" />
           <TopBoard type='teams' stat="heraldTime" />
-          <TopBoard type='teams' stat="invisiblewardclearrate" />
+          {/* <TopBoard type='teams' stat="invisibleWardClearRate" /> */}
           <TopBoard type='teams' stat="visibleWardClearRate" />
         </div>
       </div>

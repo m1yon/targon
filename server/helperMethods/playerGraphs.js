@@ -1,11 +1,11 @@
 // calculates graph data for each player
-async function playerGraphs(db) {
+async function playerGraphs(PlayersCollection, LCSCollection) {
 
     var options = {
         allowDiskUse: false
     };
 
-    var cursor = await db.collection("players").find().project({"_id": "$_id"}).toArray();
+    var cursor = await PlayersCollection.find().project({"_id": "$_id"}).toArray();
     
     cursor.forEach(
         async function(doc) {
@@ -33,17 +33,17 @@ async function playerGraphs(db) {
                     }
                 } 
             ];
-            var cursor2 = await db.collection("NALCS").aggregate(pipeline, options);
+            var cursor2 = await LCSCollection.aggregate(pipeline, options);
             cursor2.forEach(
                 async function(championsPlayedPieChart) {
-                    await db.collection("players").updateOne({ "_id": doc._id }, { "$set": { 'graphs.championsPlayedPieChart':  championsPlayedPieChart  } }, { "upsert": true } );
+                    await PlayersCollection.updateOne({ "_id": doc._id }, { "$set": { 'graphs.championsPlayedPieChart':  championsPlayedPieChart  } }, { "upsert": true } );
                 }, 
             );
         }
     );
 
     //win rate pie chart
-    var cursor = await db.collection("players").find().project({"_id": "$_id"}).toArray();
+    var cursor = await PlayersCollection.find().project({"_id": "$_id"}).toArray();
     
     cursor.forEach(
         async function(doc) {
@@ -62,8 +62,8 @@ async function playerGraphs(db) {
                             "$multiply": [
                                 {
                                     "$divide": [
-                                        "$totalWins",
-                                        "$totalLosses"
+                                        "$stats.totalWins",
+                                        "$stats.totalGames"
                                     ]
                                 },
                                 100.0
@@ -78,10 +78,10 @@ async function playerGraphs(db) {
                     }
                 },
             ];
-            var cursor2 = await db.collection("players").aggregate(pipeline, options);
+            var cursor2 = await PlayersCollection.aggregate(pipeline, options);
             cursor2.forEach(
                 async function(winRatePieChart) {
-                    await db.collection("players").updateOne({ "_id": doc._id }, { "$set": { 'graphs.winRatePieChart':  winRatePieChart } }, { "upsert": true } );
+                    await PlayersCollection.updateOne({ "_id": doc._id }, { "$set": { 'graphs.winRatePieChart':  winRatePieChart } }, { "upsert": true } );
                 }, 
             );
         }
@@ -90,7 +90,7 @@ async function playerGraphs(db) {
 
     //stat history graphs
     // total kills
-    var cursor = await db.collection("players").find().toArray();
+    var cursor = await PlayersCollection.find().toArray();
 
     cursor.forEach(
         async function(doc) {
@@ -157,17 +157,17 @@ async function playerGraphs(db) {
                     }
                 },
             ];
-            var cursor2 = await db.collection("NALCS").aggregate(pipeline, options);
+            var cursor2 = await LCSCollection.aggregate(pipeline, options);
             cursor2.forEach(
                 async function(totalKills) {
-                    await db.collection("players").updateOne({ "_id": doc._id }, { "$set": { 'graphs.statHistoryGraphs.totalKills':  totalKills  } }, { "upsert": true } );
+                    await PlayersCollection.updateOne({ "_id": doc._id }, { "$set": { 'graphs.statHistoryGraphs.totalKills':  totalKills  } }, { "upsert": true } );
                 }
             );
         }
     );
 
     // totalAssists
-    var cursor = await db.collection("players").find().toArray();
+    var cursor = await PlayersCollection.find().toArray();
 
     cursor.forEach(
         async function(doc) {
@@ -233,17 +233,17 @@ async function playerGraphs(db) {
                     }
                 },
             ];
-            var cursor2 = await db.collection("NALCS").aggregate(pipeline, options);
+            var cursor2 = await LCSCollection.aggregate(pipeline, options);
             cursor2.forEach(
                 async function(totalAssists) {
-                    await db.collection("players").updateOne({ "_id": doc._id }, { "$set": { 'graphs.statHistoryGraphs.totalAssists':  totalAssists  } }, { "upsert": true } );
+                    await PlayersCollection.updateOne({ "_id": doc._id }, { "$set": { 'graphs.statHistoryGraphs.totalAssists':  totalAssists  } }, { "upsert": true } );
                 }
             );
         }
     );
 
     // dpm
-    var cursor = await db.collection("players").find().toArray();
+    var cursor = await PlayersCollection.find().toArray();
 
     cursor.forEach(
         async function(doc) {
@@ -311,17 +311,17 @@ async function playerGraphs(db) {
                 },
             ];
 
-            var cursor2 = await db.collection("NALCS").aggregate(pipeline, options);
+            var cursor2 = await LCSCollection.aggregate(pipeline, options);
             cursor2.forEach(
                 async function(dpm) {
-                    await db.collection("players").updateOne({ "_id": doc._id }, { "$set": { 'graphs.statHistoryGraphs.dpm':  dpm  } }, { "upsert": true } );
+                    await PlayersCollection.updateOne({ "_id": doc._id }, { "$set": { 'graphs.statHistoryGraphs.dpm':  dpm  } }, { "upsert": true } );
                 }
             );
         }
     );
 
     //kda
-    var cursor = await db.collection("players").find().toArray();
+    var cursor = await PlayersCollection.find().toArray();
 
     cursor.forEach(
         async function(doc) {
@@ -426,10 +426,10 @@ async function playerGraphs(db) {
                 },
             ];
 
-            var cursor2 = await db.collection("NALCS").aggregate(pipeline, options);
+            var cursor2 = await LCSCollection.aggregate(pipeline, options);
             cursor2.forEach(
                 async function(kda) {
-                    await db.collection("players").updateOne({ "_id": doc._id }, { "$set": { 'graphs.statHistoryGraphs.kda':  kda  } }, { "upsert": true } );
+                    await PlayersCollection.updateOne({ "_id": doc._id }, { "$set": { 'graphs.statHistoryGraphs.kda':  kda  } }, { "upsert": true } );
                 }
             );
         }

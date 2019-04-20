@@ -47,7 +47,7 @@ const Entry = ( { stat, type, rank, name, data } ) => (
       {/* <p className="top-board__team-sfx">{player.team}</p> */}
     </div>
     <p className={`top-board__stat-${rank}`}>
-      { data[stat] }
+      { data.stats[stat] }
     </p>
   </div>
 )

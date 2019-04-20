@@ -41,9 +41,9 @@ const TeamStats = ({ team, players }) => (
       <TeamStatsTable { ...team } />
       <div className="team-stats__charts">
         <hr className="hr-vert" />
-        <WinratePieChart winrate={ team.winPercentage } />
+        <WinratePieChart winrate={ team.graphs.winRatePieChart.winRate } />
         <hr className="hr-vert" />
-        <MonsterTimeBarChart { ...team } />
+        <MonsterTimeBarChart { ...team.stats } />
         <hr className="hr-vert" />
         <PlayerStatsAreaChart stat="totalKills" player={players.Sneaky} color={COLORS[0]} />
         <hr className="hr-vert" />
