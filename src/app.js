@@ -13,7 +13,7 @@ import "./styles/main.scss";
 const store = configureStore();
 store.subscribe(() => { console.log(store.getState()) });
 
-store.dispatch(fetchData());
+store.dispatch(fetchData('2019Spring'));
 
 const jsx = (
   <Provider store={store}>

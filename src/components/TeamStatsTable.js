@@ -3,8 +3,6 @@ import { NavLink } from "react-router-dom";
 import { statToPretty } from "./PlayerProfile";
 
 const TeamStatsTable = ({ stats, placement }) => {
-  const totalKillsPlacement = 1;
-  const numOfPlayersInPos = 8;
   return (
     <div>
       <h1 className="player-stats__statistics-title">Statistics</h1>
@@ -31,8 +29,6 @@ const TeamStatsTable = ({ stats, placement }) => {
         <StatsheetEntry statname={"kpm"} avg={ stats.kpm } placement={ placement.kpm } placementTotal={ placement.numOfTeams } alt="0"/>
         <StatsheetEntry statname={"invisibleWardClearRate"} avg={ stats.invisibleWardClearRate } placement={ placement.invisibleWardClearRate } placementTotal={ placement.numOfTeams } alt="1"/>
         <StatsheetEntry statname={"visibleWardClearRate"} avg={ stats.visibleWardClearRate } placement={ placement.visibleWardClearRate } placementTotal={ placement.numOfTeams } alt="0"/>
-
-
       </div>
     </div>
   );

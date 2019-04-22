@@ -5,10 +5,10 @@ let percentageFormat = "0.00%";
 let decimalFormat = "0,0.00";
 
 // Fetches all players
-export const fetchData = () => {
+export const fetchData = (season) => {
   return (dispatch) => {
     dispatch(requestGet());
-    return fetch("/api/data/2019Spring")
+    return fetch(`/api/data/${season}`)
       .then(
         response => response.json(),
         error => console.log("An error occured.", error)

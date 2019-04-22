@@ -1,5 +1,9 @@
 .navbar__top {
+  align-items: flex-start;
   background-color: $light-1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   height: 3vw;
   margin: 0;
   padding: 1rem 0;
@@ -40,5 +44,49 @@
   @media (max-width: $mobile) {
     display: flex;
     justify-self: flex-start;
+  }
+}
+
+.navbar__top-season-dropdown {
+  font-family: $body-font;
+  margin-left: 70vw;
+  width: 12vw;
+
+  .Dropdown-control {
+    background-color: $light-3;
+    border: none;
+    color: white;
+    width: 100%;
+  }
+
+  .Dropdown-group {
+    outline: 0;
+  }
+
+  .Dropdown-menu {
+    background-color: $base;
+    border: none;
+    
+  }
+
+  .Dropdown-title {
+    color: white !important;
+  }
+
+  .Dropdown-option {
+    color: white;
+    opacity: 0.8;
+  }
+
+  .Dropdown-option:hover {
+    background-color: $light-4;
+    color: white;
+    opacity: 1;
+  }
+
+  .is-selected {
+    background-color: $light-3;
+    opacity: 1;
+    color: white !important;
   }
 }

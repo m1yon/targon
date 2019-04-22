@@ -29,3 +29,13 @@ a {
   color: $white;
   font-family: $header-font;
 }
+
+::-webkit-scrollbar {
+  width: 1em;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $light-2;
+  outline: 1px solid slategrey;
+  z-index: 10;
+}
