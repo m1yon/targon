@@ -18,7 +18,7 @@ const Leaderboards = ({ match, players }) => {
 const columns = [{
   Header: <p className='table--header'>Name</p>,
   Cell: (props) => <NavLink to={`/players/${props.value}`} className="cell--name">{props.value}</NavLink>,
-  accessor: "stats._id",
+  accessor: "_id",
   minWidth: 150,
 }, {
   Header: <p className='table--header'>K</p>,
