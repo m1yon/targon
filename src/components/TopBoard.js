@@ -15,19 +15,27 @@ const topBoard = ( { type, stat, data = {} } ) => {
     <div className="player-overview__top-board">
       {/* title */}
       <div className="top-board__stat-title">
-        <NavLink to={"/leaderboards/"}>
+        <NavLink to={`/leaderboards/${stat}`}>
           {statToPretty[stat]}
         </NavLink>
       </div>
 
       {/* Top 5 List */}
       <div>
-        <Entry rank={1} type={type} stat={stat} name={topBoards[stat][type][0]} data={data[topBoards[stat][type][0]]} />
-        <Entry rank={2} type={type} stat={stat} name={topBoards[stat][type][1]} data={data[topBoards[stat][type][1]]} />
-        <Entry rank={3} type={type} stat={stat} name={topBoards[stat][type][2]} data={data[topBoards[stat][type][2]]} />
-        <Entry rank={4} type={type} stat={stat} name={topBoards[stat][type][3]} data={data[topBoards[stat][type][3]]} />
-        <Entry rank={5} type={type}  stat={stat} name={topBoards[stat][type][4]} data={data[topBoards[stat][type][4]]} />
+        {
+          topBoards[stat][type].map((value, index) => 
+            <Entry 
+              key={index + 1}
+              rank={index + 1} 
+              type={type} 
+              stat={stat} 
+              name={topBoards[stat][type][index]} 
+              data={data[topBoards[stat][type][index]]} 
+            />
+          )        
+        }
       </div>
+      
     </div>
   );
 };

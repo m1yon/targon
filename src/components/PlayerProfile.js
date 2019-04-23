@@ -5,6 +5,7 @@ import PlayerStatsTable from './PlayerStatsTable';
 import PlayerMatchHistory from './PlayerMatchHistory';
 import { ChampionsPlayedPieChart, PlayerStatsAreaChart, WinratePieChart} from './PlayerProfileCharts';
 import Loading from "./Loading";
+import { Redirect } from 'react-router';
 
 export const statToPretty =  {
   totalKills: 'Kills',
@@ -58,6 +59,12 @@ const PlayerProfile = ({ players, location }) => {
 
 const Profile = ({ players, location }) => {
   const playerName = location.pathname.slice(9);
+
+  // check if player exists
+  if(!players[playerName])
+    return (
+      <Redirect to='/' />
+    );
 
   return (
     <div>

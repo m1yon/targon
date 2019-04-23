@@ -5,6 +5,7 @@ import TeamStatsTable from './TeamStatsTable';
 import { MonsterTimeBarChart, PlayerStatsAreaChart, WinratePieChart } from './PlayerProfileCharts';
 import { NavLink } from 'react-router-dom';
 import TeamMatchHistory from './TeamMatchHistory';
+import { Redirect } from 'react-router';
 
 const TeamProfile = ({ teams, players, location }) => {
   return (
@@ -19,7 +20,11 @@ const TeamProfile = ({ teams, players, location }) => {
 const Profile = ({ teams, players, location }) => {
   const teamName = location.pathname.slice(7);
 
-  console.log('teamName', teams[teamName]);
+  // check if player exists
+  if(!teams[teamName])
+    return (
+      <Redirect to='/' />
+    );
 
   return (
     <div>

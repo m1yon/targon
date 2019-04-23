@@ -235,7 +235,7 @@ const LeaderboardTable = ({ dsort, players }) => {
         }}
         defaultPageSize={players.length}
         defaultSorted={[{
-          id: dsort,
+          id: `stats.${dsort}`,
           desc: true
         }]}
         defaultSortDesc={true}

@@ -14,7 +14,7 @@ const PlayerMatchHistory = ({ player }) => {
           <div className={ match.game != 1 ? 'player-match-history' : 'player-match-history player-match-history--week-1' } key={index}>
             <div className='player-match-history__column-1'>
               <div className='player-match-history__date-time-container'>
-                <p className='player-match-history__date'>{ moment(match.date).format('MM/DD') }</p>
+                <p className='player-match-history__date'>{ moment(match.date).format('MM/DD/YY') }</p>
                 <p className='player-match-history__time'>{numeral(match.gamelength * 100).format('0:00')}</p>
               </div>
               <img className='player-match-history__champion-img' src={`http://ddragon.leagueoflegends.com/cdn/9.7.1/img/champion/${match.champion[0] + match.champion.replace(/[^A-Za-z0-9]/g, '').slice(1).toLowerCase()}.png`} />
