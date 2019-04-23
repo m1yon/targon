@@ -34,7 +34,9 @@ const TopNavbar = ({ changeSeason, seasons, season }) => {
   );
 }
 
-const SeasonDropdown = ({ changeSeason, seasons, season }) => {
+export const SeasonDropdown = ({ changeSeason, seasons, season, setNavMenuDisplayed, mobile }) => {
+  if (mobile)
+    return <Dropdown className='navbar__top-season-dropdown navbar__top-season-dropdown--mobile' onChange={(val) => {console.log('val', val); setNavMenuDisplayed(false); changeSeason(val.value);}} options={seasons} value={season} />
   return (
     <Dropdown className='navbar__top-season-dropdown' onChange={(val) => {console.log('val', val); changeSeason(val.value);}} options={seasons} value={season} />
   );

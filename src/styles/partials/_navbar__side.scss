@@ -17,10 +17,12 @@
   padding: 1rem 0;
   width: 15vw;
 
-  h1 {
+  a {
     font-family: $logo-font !important;
     font-weight: 700;
+    font-size: 2vw;
     margin: 0;
+    text-decoration: none;
   }
 }
 

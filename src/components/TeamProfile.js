@@ -29,7 +29,7 @@ const Profile = ({ teams, players, location }) => {
   return (
     <div>
       <div className="team-profile__team-banner">
-        <img className='team-profile__team-banner-logo' src={`/assets/teams/logos/${teamName.replace(/ /g,"_")}.png`} onError={(e)=>{e.target.onerror = null; e.target.src="/assets/teams/avi/default.jpg"}} />
+        <img className='team-profile__team-banner-logo' src={`/assets/teams/logos/${teamName.replace(/ /g,"_")}.png`} onError={(e)=>{e.target.onerror = null; e.target.src="/assets/players/avi/default.jpg"}} />
           <h1 className='team-profile__team-banner-text'>{teamName}</h1>
       </div>
       <TeamStats team={teams[teamName]} players={players} />

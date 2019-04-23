@@ -52,11 +52,24 @@
   margin-left: 70vw;
   width: 12vw;
 
+  @media (max-width: $mobile) {
+    display: none;
+  }
+
+  .Dropdown-arrow {
+    @media (max-width: $mobile) {
+      top: 45%;
+    }
+  }
+
   .Dropdown-control {
     background-color: $light-3;
     border: none;
     color: white;
     width: 100%;
+    @media (max-width: $mobile) {
+      padding: 2vh 10px;
+    }
   }
 
   .Dropdown-group {
@@ -66,16 +79,21 @@
   .Dropdown-menu {
     background-color: $base;
     border: none;
-    
   }
 
   .Dropdown-title {
     color: white !important;
+    @media (max-width: $mobile) {
+      padding: 2vh 10px !important;
+    }
   }
 
   .Dropdown-option {
     color: white;
     opacity: 0.8;
+    @media (max-width: $mobile) {
+      padding: 2vh 10px !important;
+    }
   }
 
   .Dropdown-option:hover {
@@ -89,4 +107,11 @@
     opacity: 1;
     color: white !important;
   }
+}
+
+.navbar__top-season-dropdown--mobile {
+  align-self: center;
+  display: block !important;
+  margin: 2vh 0 0 0;
+  width: 80%;
 }

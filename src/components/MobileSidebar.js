@@ -1,22 +1,27 @@
 import React from 'react';
+import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faUser, faUsers, faListOl, faCalendar, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
+import { SeasonDropdown } from './TopNavbar';
+import { fetchData } from '../actions/fetchData';
+
 
 library.add(faHome, faUser, faUsers, faListOl, faCalendar, faQuestionCircle);
 
-const MobileSidebar = ({ setNavMenuDisplayed }) => (
+const MobileSidebar = ({ changeSeason, seasons, season, setNavMenuDisplayed }) => (
   <div>
     <div className="mobile-sidebar__unfocus" onClick={() => (setNavMenuDisplayed(false))}/>
     <div className='mobile-sidebar'>
-      <MobileSidebarButtons setNavMenuDisplayed={setNavMenuDisplayed}/>
+      <MobileSidebarButtons changeSeason={changeSeason} seasons={seasons} season={season} setNavMenuDisplayed={setNavMenuDisplayed}/>
     </div>
   </div>
 );
 
-const MobileSidebarButtons = ({ setNavMenuDisplayed }) => (
+const MobileSidebarButtons = ({ changeSeason, seasons, season, setNavMenuDisplayed }) => (
   <div className="mobile-sidebar-button__container">
+    
     <NavLink 
       className="mobile-sidebar__button" 
       to="/" 
@@ -59,6 +64,8 @@ const MobileSidebarButtons = ({ setNavMenuDisplayed }) => (
       <p>Leaderboards</p>
     </NavLink>
 
+    <SeasonDropdown changeSeason={changeSeason} seasons={seasons} season={season} setNavMenuDisplayed={setNavMenuDisplayed} mobile />
+
     {/* <NavLink 
       className="mobile-sidebar__button" 
       to="/schedule/" 
@@ -83,4 +90,17 @@ const MobileSidebarButtons = ({ setNavMenuDisplayed }) => (
   </div>
 )
 
-export default MobileSidebar;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    changeSeason: (value) => dispatch(fetchData(value))
+  }
+}
+
+const mapStateToProps = (state) => {
+  return {
+    seasons: state.seasons,
+    season: state.season,
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MobileSidebar);

@@ -21,6 +21,7 @@ export const fetchData = (season) => {
           ...data,
           players: { ...formattedPlayerData },
           teams: { ...formattedTeamData },
+          season,
         }));
       }
     )

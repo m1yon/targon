@@ -9,7 +9,7 @@ library.add(faHome, faUser, faUsers, faListOl, faCalendar, faQuestionCircle);
 const SideNavbar = () => (
   <div className="navbar__side">
     <div className="navbar__side__logo">
-      <h1>Targon</h1>
+      <NavLink to='/'>Targon</NavLink>
     </div>
     <div className="navbar-button__container">
       <NavLink className="navbutton" to="/" activeClassName="is-active" exact={true}>
