@@ -178,8 +178,11 @@
 }
 
 .player-match-history__date-time-container {
-  text-align: center;
+  text-align: start;
   padding-right: 3.5%;
+  @media (max-width: $mobile) {
+    text-align: center;
+  }
 }
 
 .player-match-history__column-2 {
@@ -261,15 +264,19 @@
   }
 }
 
-.player-match-history__result {
-  color: white;
-  font-size: 1vw;
-  font-family: $header-font;
-  font-weight: 700;
-  margin: 0;
+.player-match-history__result-container--team {
+  padding: 2%;
   @media (max-width: $tablet) {
     font-size: 3vh; 
   }
+}
+
+.player-match-history__result {
+  color: white;
+  font-size: 100%;
+  font-family: $header-font;
+  font-weight: 700;
+  margin: 0;
 }
 
 .player-match-history__result--victory {
@@ -291,7 +298,7 @@
 }
 
 .player-match-history__time {
-  font-size: 1.3vh;
+  font-size: 1.7vh;
   margin: 0;
   opacity: 0.5;
   @media (max-width: $tablet) {

@@ -8,15 +8,20 @@
 
   @media (max-width: $tablet) {
     height: 100%;
+    width: 100%;
+    margin: 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-row: 15vh;
+    grid-template-rows: 25vh 25vh 25vh;
   }
 }
 
 .team-profile__roster-header {
   font-size: 1.5vw !important;
   margin-top: 4% !important;
+  @media (max-width: $tablet) {
+    font-size: 3vh !important;
+  }
 }
 
 .team-profile__roster-player {

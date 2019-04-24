@@ -2,7 +2,7 @@
   background-color: $light-1;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  height: 10vh;
+  height: 100%;
   padding: 1%;
   margin-bottom: 1%;
   border-radius: 5px;
@@ -21,11 +21,19 @@
 
 .team-match-history__column-1 {
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   display: flex;
   @media (max-width: $tablet) {
     flex-direction: column;
     justify-content: center;
+  }
+}
+
+.team-match-history__date-time-container {
+  text-align: start;
+  padding-right: 3.5%;
+  @media (max-width: $mobile) {
+    text-align: center;
   }
 }
 
@@ -34,18 +42,22 @@
   justify-content: center;
   font-size: 1vw;
   font-family: $logo-font;
-  font-size: 1vw;
+  font-size: 1.2vw;
   font-weight: 700;
   display: flex;
   @media (max-width: $tablet) {
     flex-direction: column;
     justify-content: center;
   }
+
+  p {
+    margin: 0;
+  }
 }
 
 .team-match-history__column-3 {
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   display: flex;
   @media (max-width: $tablet) {
     flex-direction: column;
@@ -61,6 +73,13 @@
   margin: 0;
   padding-right: 2%;
   width: 32.5%;
+  @media (max-width: $mobile) {
+    padding-right: 0%;
+    flex-direction: column-reverse;
+    font-size: 2vh;
+    text-align: center;
+    margin-bottom: 2%;
+  }
 }
 
 .team-match-history__opponent-container {
@@ -70,4 +89,19 @@
   margin: 0;
   padding-left: 2%;
   width: 32.5%;
+  @media (max-width: $mobile) {
+    padding-left: 0%;
+    flex-direction: column-reverse;
+    font-size: 2vh;
+    text-align: center;
+    margin-top: 2%;
+  }
+}
+
+.team-match-history__week {
+  font-size: .8vw;
+  opacity: 0.5;
+  @media (max-width: $mobile) {
+    font-size: 2vh;
+  }
 }

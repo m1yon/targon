@@ -50,13 +50,13 @@ const TeamStats = ({ team, players }) => (
         <hr className="hr-vert" />
         <MonsterTimeBarChart { ...team.stats } />
         <hr className="hr-vert" />
-        <PlayerStatsAreaChart stat="totalKills" player={players.Sneaky} color={COLORS[0]} />
+        <PlayerStatsAreaChart stat="csd10" player={team} color={COLORS[0]} />
         <hr className="hr-vert" />
-        <PlayerStatsAreaChart stat="kda" player={players.Sneaky} color={COLORS[0]} />
+        <PlayerStatsAreaChart stat="xpd10" player={team} color={COLORS[0]} />
         <hr className="hr-vert"/>
-        <PlayerStatsAreaChart stat="dpm" player={players.Sneaky} color={COLORS[0]} />
+        <PlayerStatsAreaChart stat="gd10" player={team} color={COLORS[0]} />
         <hr className="hr-vert"/>
-        <PlayerStatsAreaChart stat="totalAssists" player={players.Sneaky} color={COLORS[0]} />
+        <PlayerStatsAreaChart stat="cspm" player={team} color={COLORS[0]} />
         <hr className="hr-vert"/>
       </div>
     </div>
