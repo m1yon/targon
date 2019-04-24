@@ -56,7 +56,7 @@ const MobileSidebarButtons = ({ changeSeason, seasons, season, setNavMenuDisplay
 
     <NavLink 
       className="mobile-sidebar__button" 
-      to="/leaderboard/" 
+      to="/leaderboards/" 
       activeClassName="is-active"
       onClick={() => setNavMenuDisplayed(false)}
     >
