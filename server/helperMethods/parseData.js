@@ -17,11 +17,6 @@ async function parseData(LCSCollection) {
             data.dateString = moment.fromOADate(data.date).format('L');
             data.date = moment.fromOADate(data.date);
             data.date = data.date._d
-            /*if (data.week != 'T')
-                data.week = parseInt(data.week);
-            if (data.game != 'T')
-                data.game = parseInt(data.game);*/
-            
             data.patchno = parseFloat(data.patchno);
             data.playerid = parseInt(data.playerid);
             data.gamelength = parseFloat(data.gamelength);

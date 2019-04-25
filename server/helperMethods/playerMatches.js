@@ -1,5 +1,5 @@
 //creates a match object for each plyer which contains stats for each match
-async function playerMatches(PlayersCollection) {
+async function playerMatches(PlayersCollection, NALCS) {
 
     var options = {
         allowDiskUse: false
@@ -8,7 +8,7 @@ async function playerMatches(PlayersCollection) {
     var pipeline = [
         {
             "$lookup": {
-                "from": "2019SpringNALCS",
+                "from": NALCS,
                 "let": {
                     "playerName": "$_id"
                 },
@@ -38,7 +38,6 @@ async function playerMatches(PlayersCollection) {
 
     cursor.forEach(
         async function(doc) {
-            //console.log(doc.games);
             await PlayersCollection.updateOne({ "_id": doc._id }, { "$set": { "matches":  doc.games } }, { "upsert": true } );
         }
     );

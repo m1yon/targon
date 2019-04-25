@@ -5,102 +5,6 @@ async function teamsPlacement(TeamsCollection) {
         allowDiskUse: false
     };
 
-    /*//Kills
-    var pipeline = [
-        {
-            "$project": {
-                "team": "$_id",
-                "stats.kills": 1.0
-            }
-        },
-        {
-            "$sort": {
-                "stats.kills": -1.0
-            }
-        },
-        {
-            "$group": {
-                "_id": "placing",
-                "teams": {"$push": "$team"}
-            }
-        }
-    ];
-    
-    var cursor = await TeamsCollection.aggregate(pipeline, options);
-
-    //store placements for each player
-    cursor.forEach(
-        async function(doc) {  
-            for (let i = 0; i < doc.teams.length; i++) {
-                await TeamsCollection.updateOne({ "_id": doc.teams[i] }, { "$set": { "placement.kills": i + 1} }, { "upsert": true } );
-            }
-        }, 
-    );
-
-    //assists
-    var pipeline = [
-        {
-            "$project": {
-                "team": "$_id",
-                "stats.assists": 1.0
-            }
-        },
-        {
-            "$sort": {
-                "stats.assists": -1.0
-            }
-        },
-        {
-            "$group": {
-                "_id": "placing",
-                "teams": {"$push": "$team"}
-            }
-        }
-    ];
-    
-    var cursor = await TeamsCollection.aggregate(pipeline, options);
-
-    //store placements for each player
-    cursor.forEach(
-        async function(doc) {  
-            for (let i = 0; i < doc.teams.length; i++) {
-                await TeamsCollection.updateOne({ "_id": doc.teams[i] }, { "$set": { "placement.assists": i + 1} }, { "upsert": true } );
-            }
-        }, 
-    );
-
-    //deaths
-    var pipeline = [
-        {
-            "$project": {
-                "team": "$_id",
-                "stats.deaths": 1.0
-            }
-        },
-        {
-            "$sort": {
-                "stats.deaths": 1.0
-            }
-        },
-        {
-            "$group": {
-                "_id": "placing",
-                "teams": {"$push": "$team"}
-            }
-        }
-    ];
-    
-    var cursor = await TeamsCollection.aggregate(pipeline, options);
-
-    //store placements for each player
-    cursor.forEach(
-        async function(doc) {  
-            for (let i = 0; i < doc.teams.length; i++) {
-                await TeamsCollection.updateOne({ "_id": doc.teams[i] }, { "$set": { "placement.deaths": i + 1} }, { "upsert": true } );
-            }
-        }, 
-    );*/
-
     //kda
     var pipeline = [
         {
@@ -517,17 +421,17 @@ async function teamsPlacement(TeamsCollection) {
         }, 
     );
 
-    //invisibleWardCleaRrate
+    //invisibleWardClearRrate
     var pipeline = [
         {
             "$project": {
                 "team": "$_id",
-                "stats.invisibleWardCleaRrate": 1.0
+                "stats.invisibleWardClearRate": 1.0
             }
         },
         {
             "$sort": {
-                "stats.invisibleWardCleaRrate": -1.0
+                "stats.invisibleWardClearRate": -1.0
             }
         },
         {
@@ -544,7 +448,7 @@ async function teamsPlacement(TeamsCollection) {
     cursor.forEach(
         async function(doc) {  
             for (let i = 0; i < doc.teams.length; i++) {
-                await TeamsCollection.updateOne({ "_id": doc.teams[i] }, { "$set": { "placement.invisibleWardCleaRrate": i + 1} }, { "upsert": true } );
+                await TeamsCollection.updateOne({ "_id": doc.teams[i] }, { "$set": { "placement.invisibleWardClearRate": i + 1} }, { "upsert": true } );
             }
         }, 
     );

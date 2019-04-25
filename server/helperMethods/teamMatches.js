@@ -1,5 +1,5 @@
 //creates a match object for each team which contains team stats for each match
-async function teamMatches(TeamsCollection) {
+async function teamMatches(TeamsCollection, NALCS) {
 
     var options = {
         allowDiskUse: false
@@ -8,7 +8,7 @@ async function teamMatches(TeamsCollection) {
     var pipeline = [
         {
             "$lookup": {
-                "from": "2019SpringNALCS",
+                "from": NALCS,
                 "let": {
                     "teamName": "$_id"
                 },

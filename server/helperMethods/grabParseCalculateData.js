@@ -2,7 +2,6 @@ const downloadMatchData = require('./downloadMatchData');
 const parseData = require('./parseData');
 const calculateOtherRawData = require('./calculateOtherRawData');
 const playersStatsCalculation = require('./playersStatsCalculation');
-const recentMatches = require('./recentMatches');
 const playersTopBoardCalculation = require('./playersTopBoardCalculation');
 const playersPlacementCalculation = require('./playersPlacementCalculation');
 const teamsStatsCalculation = require('./teamsStatsCalculation');
@@ -13,6 +12,9 @@ const playerMatches = require('./playerMatches');
 const teamMatches = require('./teamMatches');
 const teamRosters = require('./teamRosters');
 const teamsPlacement = require('./teamsPlacement');
+const teamGraphs = require('./teamGraphs');
+const teamGraphAverage = require('./teamGraphAverages');
+const updatePlayers = require('./updatePlayers');
 
 
 async function grabParseCalculateData(db) {
@@ -23,7 +25,8 @@ async function grabParseCalculateData(db) {
   const PlayersTopBoardsCollection =  db.collection("2019SpringPlayersTopBoards");
   const TeamsCollection =  db.collection("2019SpringTeams");
   const TeamsTopBoardsCollection =  db.collection("2019SpringTeamsTopBoards");
-  const RecentMatchesCollection =  db.collection("2019SpringRecentMatches");
+  var rawData = "2019SpringNALCS";
+
 
   await downloadMatchData();
   await sleep(1000);
@@ -32,9 +35,10 @@ async function grabParseCalculateData(db) {
   //calculates other raw data to make aggregation easiser
   await calculateOtherRawData(LCSCollection);
   await sleep(25000);
+  await updatePlayers(PlayersCollection, LCSCollection);
+  await sleep(10000);
   await playersStatsCalculation(PlayersCollection, LCSCollection);
   await sleep(25000);
-  await recentMatches(LCSCollection);
   await playersTopBoardCalculation(PlayersTopBoardsCollection, PlayersCollection);
   await playersPlacementCalculation(PlayersCollection);
   await sleep(10000);
@@ -42,17 +46,21 @@ async function grabParseCalculateData(db) {
   await sleep(1500);
   await playerGraphAverages(PlayersCollection, LCSCollection);
   await sleep(1500);
-  await playerMatches(PlayersCollection);
+  await playerMatches(PlayersCollection, rawData);
   await sleep(10000);
   await teamsStatsCalculation(TeamsCollection, LCSCollection);
   await sleep(15000);
   await teamsPlacement(TeamsCollection);
   await sleep(1500);
-  await teamRosters(TeamsCollection, PlayersCollection);
+  await teamRosters(TeamsCollection, LCSCollection);
   await sleep(1500);
-  await teamMatches(TeamsCollection);
+  await teamMatches(TeamsCollection, rawData);
   await sleep(1500);
   await teamsTopBoardsCalculation(TeamsTopBoardsCollection, TeamsCollection);
+  await sleep(1500);
+  await teamGraphs(TeamsCollection, LCSCollection);
+  await sleep(1500);
+  await teamGraphAverage(TeamsCollection, LCSCollection);
   console.log("done");
 
   return;

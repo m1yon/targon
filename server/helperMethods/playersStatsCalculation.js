@@ -17,12 +17,6 @@ async function playersStatsCalculation(PlayersCollection, LCSCollection) {
         {
             "$group": {
                 "_id": "$player",
-                "team": {
-                    "$first": "$team"
-                },
-                "position": {
-                    "$first": "$position"
-                },
                 "totalKills": {
                     "$sum": "$k"
                 },
@@ -179,15 +173,8 @@ async function playersStatsCalculation(PlayersCollection, LCSCollection) {
     cursor.forEach(
         async function(doc) {
             let playerName = doc._id;
-            let playerTeam = doc.team;
-            let playerPosition = doc.position;
-            if (playerName == "Piglet") {
-                playerPosition = "ADC";
-            }
             delete doc._id;
-            delete doc.team;
-            delete doc.position;
-            await PlayersCollection.updateOne({ "_id": playerName, "team": playerTeam, "position": playerPosition}, { "$set": {"stats": doc} }, { "upsert": true } );
+            await PlayersCollection.updateOne({ "_id": playerName}, { "$set": {"stats": doc} }, { "upsert": true } );
         }
     );
 

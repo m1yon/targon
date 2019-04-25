@@ -1,5 +1,5 @@
 // aggregrates through raw data to calculate recentMatches and store it into the collection "RecentMatches" in the database
-async function recentMatches(LCSCollection) {
+async function recentMatches(LCSCollection, collection) {
 
     var options = {
         allowDiskUse: false
@@ -52,7 +52,7 @@ async function recentMatches(LCSCollection) {
             }
         }, 
         {
-            "$out": "2019SpringRecentMatches"
+            "$out": collection
         }
     ];
 
