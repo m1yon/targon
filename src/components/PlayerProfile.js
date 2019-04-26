@@ -44,6 +44,8 @@ export const statToPretty =  {
   totalLosses: 'Loses',
   totalTeamdragkills: 'Dragon Kills',
   totalWins: 'Wins',
+  goldAt10:'Gold at 10',
+  xpAt10: 'XP at 10',
 
 };
 

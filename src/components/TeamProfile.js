@@ -50,13 +50,13 @@ const TeamStats = ({ team, players }) => (
         <hr className="hr-vert" />
         <MonsterTimeBarChart { ...team.stats } />
         <hr className="hr-vert" />
-        <PlayerStatsAreaChart stat="csd10" player={team} color={COLORS[0]} />
+        <PlayerStatsAreaChart stat="goldAt10" player={team} color={COLORS[0]} />
         <hr className="hr-vert" />
-        <PlayerStatsAreaChart stat="xpd10" player={team} color={COLORS[0]} />
-        <hr className="hr-vert"/>
-        <PlayerStatsAreaChart stat="gd10" player={team} color={COLORS[0]} />
-        <hr className="hr-vert"/>
         <PlayerStatsAreaChart stat="cspm" player={team} color={COLORS[0]} />
+        <hr className="hr-vert"/>
+        <PlayerStatsAreaChart stat="goldPerGame" player={team} color={COLORS[0]} />
+        <hr className="hr-vert"/>
+        <PlayerStatsAreaChart stat="xpAt10" player={team} color={COLORS[0]} />
         <hr className="hr-vert"/>
       </div>
     </div>
@@ -70,14 +70,14 @@ const Roster = ({ team, players }) => (
     <h1 className='team-profile__roster-header'>Roster</h1>
     <div className='team-profile__roster'>
 
-      {team.roster.map((player, index) => (
-        <PlayerPortrait player={players[player]} key={index} />
+      {team.roster.player.map((player, index) => (
+        <PlayerPortrait player={players[player]} role={team.roster.position[index]} key={index} />
       ))}
     </div>
   </div>
 );
 
-const PlayerPortrait = ({ player }) => (
+const PlayerPortrait = ({ player, role }) => (
   <div className='team-profile__roster-player'>
     <img 
       src={`/assets/players/avi/${player._id}.png`.replace(/ /g,"_")} 
@@ -85,7 +85,7 @@ const PlayerPortrait = ({ player }) => (
       className="team-profile__roster-picture" 
     />
     <NavLink className='team-profile__player-name' to={`/players/${player._id}`}>{player._id}</NavLink>
-    <p>{player.position}</p>
+    <p>{role}</p>
   </div>
 );
 
